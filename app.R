@@ -24,7 +24,7 @@ ui <- fluidPage(
               step = 0.1,
               animate = TRUE),
   checkboxInput(inputId = "plotSeaLevel",
-                label = "SHow sea level",
+                label = "Show sea level",
                 value = FALSE),
   checkboxInput(inputId = "plotGaps",
                 label = "Display Gaps",
@@ -32,7 +32,7 @@ ui <- fluidPage(
   actionButton('refreshSimulations',label = 'refresh simulations'),
   selectInput(inputId = "noOfSims",
               label="Number of Simulations",
-              choices = list("1","2","3","4","5")),
+              choices = list("1","2","3")),
   selectInput(inputId = "modeOfEvolution",
               label="mode of evolution",
               choices = list("Random Walk","Stasis","Ornstein-Uhlenbeck")),
@@ -86,12 +86,14 @@ ui <- fluidPage(
                               step = 0.1))
   
   ),
-  column(6,
-  plotOutput("ageDepthModelPlot"),
-  plotOutput("stratDomainPlot"),
-  plotOutput("timeDomainPlot")
+  column(8,
+         fluidRow(
+                column(4,plotOutput("stratDomainPlot")) ,  
+  column(8,plotOutput("ageDepthModelPlot"))),
+  column(8,plotOutput("timeDomainPlot"),offset=4)
   )
 )
+
 
 
 server <- function(input, output) {

@@ -3,5 +3,6 @@ makeAgeDepthModelPlot=function(ageDepthModel){
        y=ageDepthModel$heightMod,
        type="l",
        xlab="Time [Ma]",
-       ylab="Height [m]")
+       ylab="Height [m]",
+       lwd=3)
 }
