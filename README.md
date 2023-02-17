@@ -2,9 +2,9 @@
 App to visualize the effect of carbonate stratigraphy on trait evolution
 
 ## Authors
-Niklas Hohmann (n.hohmann@uu.nl), Utrecht University
-Emilia Jarochowska, Utrecht University
-Peter Burgess, University of Liverpool
+Niklas Hohmann (n.hohmann@uu.nl), Utrecht University  
+Emilia Jarochowska, Utrecht University  
+Peter Burgess, University of Liverpool  
 
 ## Requirements
 R version >=3.0.2  
