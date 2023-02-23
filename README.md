@@ -26,7 +26,7 @@ Before usage, make sure the shiny package is installed and loaded by running the
 if (!require("shiny")) install.package("shiny")
 ```
 
-Then set your working DIR to where the file "app.R" is located using
+Then set your working directory DIR to where the file "app.R" is located using
 
 ``` R
 setwd(DIR)
