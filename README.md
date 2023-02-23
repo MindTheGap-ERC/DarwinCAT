@@ -20,7 +20,7 @@ R package "shiny"
 
 ## Offline Usage
 
-Before usage, make sure the shiny package is installed and loaded by running the following lines in R:
+Before usage, make sure the shiny package is installed and loaded by running the following in R:
 
 ``` R
 if (!require("shiny")) install.package("shiny")
