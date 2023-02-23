@@ -1,16 +1,16 @@
 library(shiny)
 
 # load data
-source("global.R")
+source("src/global.R")
 
 
-source("getAgeDepthModel.R") # determines age-depth models
-source("getEvolutionarySimulations.R") # simulates trait evolution
+source("src/getAgeDepthModel.R") # determines age-depth models
+source("src/getEvolutionarySimulations.R") # simulates trait evolution
 
 # functions to make the plots
-source("makeAgeDepthModelPlot.R")
-source("makeTimeDomainPlot.R")
-source("makeStratDomainPlot.R")
+source("src/makeAgeDepthModelPlot.R")
+source("src/makeTimeDomainPlot.R")
+source("src/makeStratDomainPlot.R")
 
 
 
