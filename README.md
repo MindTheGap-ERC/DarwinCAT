@@ -1,30 +1,40 @@
 # DarwinCAT
+
 App to visualize the effect of carbonate stratigraphy on trait evolution
 
 ## Authors
+
 Niklas Hohmann (n.hohmann@uu.nl), Utrecht University  
 Emilia Jarochowska, Utrecht University  
 Peter Burgess, University of Liverpool  
 
 ## Requirements
+
 R version 3.0.2  or later  
 R package "shiny"
 
 ## Offline Usage
+
 Before usage, make sure the shiny package is installed and loaded by running the following lines in R:
+
 ``` R
 if (!require("shiny")) install.package("shiny")
 ```
+
 Then set your working DIR to where the file "app.R" is located using
+
 ``` R
 setwd(DIR)
 ```
+
 Now you can start the app using the command
+
 ``` R
 shiny::runApp()
 ```
 
 ## Online Usage
+
 Coming soon
 
 ## Repository structure
@@ -40,4 +50,8 @@ Coming soon
 - makeTimeDomainPlot.R : plot evo sims in time domain
 
 ## Funding
-This app is part of the ERC project "MindTheGap", PI Emilia Jarochowska.
+
+This app is part of the ERC project "MindTheGap", PI Emilia Jarochowska.  
+<img src="www/MtG_logo.png"
+     width="200"
+     alt="Mind the Gap logo">
