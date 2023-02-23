@@ -63,6 +63,6 @@ Coming soon
 ## Funding
 
 This app is part of the ERC project "MindTheGap", PI Emilia Jarochowska.  
-<img src="www/MtG_logo.png"
+<img src="www/logos/mind_the_gap_logo.png"
      width="200"
      alt="Mind the Gap logo">
