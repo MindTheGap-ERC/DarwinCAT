@@ -15,7 +15,7 @@ __Peter Burgess__, University of Liverpool
 
 ## Requirements
 
-R version 3.0.2  or later  
+R version 3.0.2 or later  
 R package "shiny"
 
 ## Offline Usage
