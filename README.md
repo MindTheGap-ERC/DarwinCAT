@@ -1,5 +1,7 @@
 # DarwinCAT
 
+## Description
+
 App to visualize the effect of carbonate stratigraphy on trait evolution
 
 ## Authors
@@ -23,13 +25,15 @@ R package "shiny"
 Before usage, make sure the shiny package is installed and loaded by running the following in R:
 
 ``` R
-if (!require("shiny")) install.package("shiny")
+if (!require("shiny")) {
+  install.package("shiny")
+}
 ```
 
-Then set your working directory DIR to where the file "app.R" is located using
+Then set your working directory "DIR" to where the file "app.R" is located using
 
 ``` R
-setwd(DIR)
+setwd("DIR")
 ```
 
 Now you can start the app using the command

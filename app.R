@@ -1,9 +1,9 @@
 library(shiny)
 
-# load data
+# load data into workspace
 source("src/global.R")
 
-
+# load functions into workspace
 source("src/getAgeDepthModel.R") # determines age-depth models
 source("src/getEvolutionarySimulations.R") # simulates trait evolution
 
@@ -13,7 +13,7 @@ source("src/makeTimeDomainPlot.R")
 source("src/makeStratDomainPlot.R")
 
 
-
+# Generate user interface
 ui <- navbarPage(
   title = "DarwinCAT",
   id = "DarwinCAT_app",
