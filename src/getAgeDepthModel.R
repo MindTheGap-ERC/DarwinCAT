@@ -5,7 +5,7 @@ getAgeDepthModel <- function(distanceFromShore) {
   #' 
   #' @param distanceFromShore numeric, km. location of the age-depth model
   #' 
-  #' @return A list with fields "heightMod" and "time
+  #' @return A list with fields "heightMod" and "time"
   #' 
   indexInList <- 10 * distanceFromShore
   ageDepthModel <- ageDepthModelList[[indexInList]]
