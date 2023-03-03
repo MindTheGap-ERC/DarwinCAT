@@ -1,12 +1,12 @@
 makeTimeDomainPlot <- function(evolutionarySimulations, 
                                ageDepthModel, 
-                               ymin,
-                               ymax,
-                               trait_name, 
-                               plotSeaLevel = FALSE, plot_time_gaps = FALSE) {
+                               ymin = -1,
+                               ymax = 1,
+                               trait_name = "", 
+                               plotSeaLevel = FALSE, 
+                               plot_time_gaps = FALSE) {
 
-  
-  
+
   # plotting framework
   plot(NULL,
     xlim = range(t),
@@ -22,17 +22,14 @@ makeTimeDomainPlot <- function(evolutionarySimulations,
     col = zero_axis_col,
     lty = zero_axis_lty,
     lwd = zero_axis_lwd
-    
   )
   
   # plot removed time intervals
   if (plot_time_gaps) {
     for (i in seq_along(ageDepthModel$hiatusTimeList)) {
-      hiatusStart <- ageDepthModel$hiatusTimeList[[i]]$hiatusStart
-      hiatusEnd <- ageDepthModel$hiatusTimeList[[i]]$hiatusEnd
       rect(
-        xleft = hiatusStart,
-        xright = hiatusEnd,
+        xleft = ageDepthModel$hiatusTimeList[[i]]$hiatusStart,
+        xright = ageDepthModel$hiatusTimeList[[i]]$hiatusEnd,
         ybottom = ymin,
         ytop = ymax,
         col = removed_time_col,
@@ -40,7 +37,6 @@ makeTimeDomainPlot <- function(evolutionarySimulations,
       )
     }
   }
-  
   
   
   mtext(
@@ -58,13 +54,14 @@ makeTimeDomainPlot <- function(evolutionarySimulations,
     )
   }
 
-  if (plotSeaLevel == TRUE) {
+  if (plotSeaLevel) {
     lines(t, seaLevel / max(seaLevel) * 0.5 * (ymax - ymin) + 0.5 * (ymax + ymin),
       col = sl_col,
       lwd = sl_lwd,
       lty = sl_lty
     )
-    mtext("Sea Level",
+    mtext(
+      text = "Sea Level",
       side = 4,
       col = sl_col
     )

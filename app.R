@@ -62,6 +62,7 @@ ui <- navbarPage(
         value = FALSE
       ),
       wellPanel(
+        tags$h3("Evolutionary Simulations"),
       actionButton("refreshSimulations", label = "refresh simulations"),
       selectInput(
         inputId = "noOfSims",
@@ -145,6 +146,7 @@ ui <- navbarPage(
       )
       ),
       wellPanel(
+        tags$h3("Plot Options"),
         sliderInput(
           inputId = "min_trait_value",
           label = "y axis minimum",
