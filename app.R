@@ -52,10 +52,16 @@ ui <- navbarPage(
         value = FALSE
       ),
       checkboxInput(
-        inputId = "plotGaps",
-        label = "Display Gaps",
+        inputId = "plot_time_gaps",
+        label = "Display Gaps in Time",
         value = FALSE
       ),
+      checkboxInput(
+        inputId = "plot_hiatuses",
+        label = "Display Hiatuses in Rock",
+        value = FALSE
+      ),
+      wellPanel(
       actionButton("refreshSimulations", label = "refresh simulations"),
       selectInput(
         inputId = "noOfSims",
@@ -137,6 +143,33 @@ ui <- navbarPage(
           step = 0.1
         )
       )
+      ),
+      wellPanel(
+        sliderInput(
+          inputId = "min_trait_value",
+          label = "y axis minimum",
+          min = -5,
+          max = 0,
+          value = -1,
+          step = 0.1,
+          animate = FALSE
+        ),
+        sliderInput(
+          inputId = "max_trait_value",
+          label = "y axis maximum",
+          min = 0.1,
+          max = 5,
+          value = 1,
+          step = 0.1,
+          animate = FALSE
+        ),
+        textInput(
+          inputId = "trait_name",
+          label = "Trait",
+          value="log10(Body Size)")
+        
+      ),
+      
     ),
     column(
       8,
@@ -173,26 +206,39 @@ server <- function(input, output) {
     )
   })
   ageDepthModel <- reactive({
-    getAgeDepthModel(distanceFromShore = input$distFromShore)
+    getAgeDepthModel(
+      distanceFromShore = input$distFromShore
+    )
   })
 
   output$ageDepthModelPlot <- renderPlot({
-    makeAgeDepthModelPlot(ageDepthModel = ageDepthModel())
+    makeAgeDepthModelPlot(
+      ageDepthModel = ageDepthModel(),
+      plot_time_gaps = input$plot_time_gaps,
+      plot_hiatuses = input$plot_hiatuses)
   })
 
   output$timeDomainPlot <- renderPlot({
-    makeTimeDomainPlot(evolutionarySimulations(),
+    makeTimeDomainPlot(
+      evolutionarySimulations(),
       ageDepthModel = ageDepthModel(),
+      trait_name = input$trait_name,
+      ymax = input$max_trait_value,
+      ymin = input$min_trait_value,
       plotSeaLevel = input$plotSeaLevel,
-      plotGaps = input$plotGaps
+      plot_time_gaps = input$plot_time_gaps
     )
   })
 
   output$stratDomainPlot <- renderPlot({
-    makeStratDomainPlot(ageDepthModel(),
+    makeStratDomainPlot(
+      ageDepthModel(),
       evolutionarySimulations(),
+      ymax = input$max_trait_value,
+      ymin = input$min_trait_value,
+      trait_name = input$trait_name,
       plotSeaLevel = input$plotSeaLevel,
-      plotGaps = input$plotGaps
+      plot_hiatuses = input$plot_hiatuses
     )
   })
 }
