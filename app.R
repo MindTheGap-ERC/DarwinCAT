@@ -28,119 +28,129 @@ ui <- navbarPage(
   tabPanel(
     title = "Modes of Evolution",
     "Intro to Evo Modes goes here",
-    column(width = 4, 
-    wellPanel(
-      tags$h3("Evolutionary Simulations"),
-      
-      actionButton("refreshSimulations", label = "refresh simulations"),
-      selectInput(
-        inputId = "noOfSims",
-        label = "Number of Simulations",
-        choices = list("1", "2", "3")
-      ),
-      selectInput(
-        inputId = "modeOfEvolution",
-        label = "mode of evolution",
-        choices = list("Random Walk", "Stasis", "Ornstein-Uhlenbeck")
-      ),
-      conditionalPanel(
-        condition = "input.modeOfEvolution == 'Random Walk'",
-        sliderInput(
-          inputId = "parameter1", "Variability sigma",
-          min = 0,
-          max = 4,
-          value = 1,
-          step = 0.1
+    column(
+      width = 4,
+      wellPanel(
+        tags$h3("Evolutionary Simulations"),
+        actionButton("refreshSimulations", label = "refresh simulations"),
+        selectInput(
+          inputId = "noOfSims",
+          label = "Number of Simulations",
+          choices = list("1", "2", "3")
         ),
-        sliderInput(
-          inputId = "parameter2", "Drift my",
-          min = -2,
-          max = 2,
-          value = 0,
-          step = 0.1
+        selectInput(
+          inputId = "modeOfEvolution",
+          label = "mode of evolution",
+          choices = list("Random Walk", "Stasis", "Ornstein-Uhlenbeck")
         ),
-        sliderInput(
-          inputId = "parameter3", "initial  value",
-          min = -1,
-          max = 1,
-          value = 0,
-          step = 0.1
+        conditionalPanel(
+          condition = "input.modeOfEvolution == 'Random Walk'",
+          sliderInput(
+            inputId = "parameter1",
+            label = "Variability sigma",
+            min = 0,
+            max = 4,
+            value = 1,
+            step = 0.1
+          ),
+          sliderInput(
+            inputId = "parameter2",
+            label = "Drift my",
+            min = -2,
+            max = 2,
+            value = 0,
+            step = 0.1
+          ),
+          sliderInput(
+            inputId = "parameter3",
+            label = "initial  value",
+            min = -1,
+            max = 1,
+            value = 0,
+            step = 0.1
+          )
+        ),
+        conditionalPanel(
+          condition = "input.modeOfEvolution == 'Stasis'",
+          sliderInput(
+            inputId = "parameter4",
+            label = "mean value",
+            min = -1,
+            max = 1,
+            value = 0,
+            step = 0.1
+          ),
+          sliderInput(
+            inputId = "parameter5",
+            label = "Variance",
+            min = 0,
+            max = 2,
+            value = 1,
+            step = 0.1
+          )
+        ),
+        conditionalPanel(
+          condition = "input.modeOfEvolution == 'Ornstein-Uhlenbeck'",
+          sliderInput(
+            inputId = "parameter6",
+            label = "long term mean value mu",
+            min = -2,
+            max = 2,
+            value = 0,
+            step = 0.1
+          ),
+          sliderInput(
+            inputId = "parameter7",
+            lable = "pressure of selection theta",
+            min = 0,
+            max = 10,
+            value = 1,
+            step = 0.1
+          ),
+          sliderInput(
+            inputId = "parameter8",
+            label = "volatility/variability sigma",
+            min = 0,
+            max = 2,
+            value = 1,
+            step = 0.1
+          ),
+          sliderInput(
+            inputId = "parameter9",
+            label = "initial value",
+            min = -4,
+            max = 4,
+            value = 2,
+            step = 0.1
+          )
         )
       ),
-      conditionalPanel(
-        condition = "input.modeOfEvolution == 'Stasis'",
+      wellPanel(
+        tags$h3("Plot Options"),
         sliderInput(
-          inputId = "parameter4", "mean value",
-          min = -1,
-          max = 1,
-          value = 0,
-          step = 0.1
-        ),
-        sliderInput("parameter5", "Variance",
-                    min = 0,
-                    max = 2,
-                    value = 1,
-                    step = 0.1
-        )
-      ),
-      conditionalPanel(
-        condition = "input.modeOfEvolution == 'Ornstein-Uhlenbeck'",
-        sliderInput(
-          inputId = "parameter6", "long term mean value mu",
-          min = -2,
-          max = 2,
-          value = 0,
-          step = 0.1
-        ),
-        sliderInput("parameter7", "pressure of selection theta",
-                    min = 0,
-                    max = 10,
-                    value = 1,
-                    step = 0.1
+          inputId = "min_trait_value",
+          label = "y axis minimum",
+          min = -5,
+          max = 0,
+          value = -1,
+          step = 0.1,
+          animate = FALSE
         ),
         sliderInput(
-          inputId = "parameter8", "volatility/variability sigma",
-          min = 0,
-          max = 2,
+          inputId = "max_trait_value",
+          label = "y axis maximum",
+          min = 0.1,
+          max = 5,
           value = 1,
-          step = 0.1
+          step = 0.1,
+          animate = FALSE
         ),
-        sliderInput(
-          inputId = "parameter9", "initial value",
-          min = -4,
-          max = 4,
-          value = 2,
-          step = 0.1
+        textInput(
+          inputId = "trait_name",
+          label = "Trait",
+          value = "log10(Body Size)"
         )
       )
-    ),
-    wellPanel(
-      tags$h3("Plot Options"),
-      sliderInput(
-        inputId = "min_trait_value",
-        label = "y axis minimum",
-        min = -5,
-        max = 0,
-        value = -1,
-        step = 0.1,
-        animate = FALSE
-      ),
-      sliderInput(
-        inputId = "max_trait_value",
-        label = "y axis maximum",
-        min = 0.1,
-        max = 5,
-        value = 1,
-        step = 0.1,
-        animate = FALSE
-      ),
-      textInput(
-        inputId = "trait_name",
-        label = "Trait",
-        value="log10(Body Size)"
-      )
-      
-    )
     )
   ),
   tabPanel(
@@ -182,7 +192,6 @@ ui <- navbarPage(
       column(8, plotOutput("timeDomainPlot"), offset = 4)
     )
   ),
-
   tabPanel(
     title = "StratPal",
     column(
@@ -213,87 +222,87 @@ ui <- navbarPage(
       ),
       wellPanel(
         tags$h3("Evolutionary Simulations"),
-      actionButton("refreshSimulations", label = "refresh simulations"),
-      selectInput(
-        inputId = "noOfSims",
-        label = "Number of Simulations",
-        choices = list("1", "2", "3")
-      ),
-      selectInput(
-        inputId = "modeOfEvolution",
-        label = "mode of evolution",
-        choices = list("Random Walk", "Stasis", "Ornstein-Uhlenbeck")
-      ),
-      conditionalPanel(
-        condition = "input.modeOfEvolution == 'Random Walk'",
-        sliderInput(
-          inputId = "parameter1", "Variability sigma",
-          min = 0,
-          max = 4,
-          value = 1,
-          step = 0.1
+        actionButton("refreshSimulations", label = "refresh simulations"),
+        selectInput(
+          inputId = "noOfSims",
+          label = "Number of Simulations",
+          choices = list("1", "2", "3")
         ),
-        sliderInput(
-          inputId = "parameter2", "Drift my",
-          min = -2,
-          max = 2,
-          value = 0,
-          step = 0.1
+        selectInput(
+          inputId = "modeOfEvolution",
+          label = "mode of evolution",
+          choices = list("Random Walk", "Stasis", "Ornstein-Uhlenbeck")
         ),
-        sliderInput(
-          inputId = "parameter3", "initial  value",
-          min = -1,
-          max = 1,
-          value = 0,
-          step = 0.1
+        conditionalPanel(
+          condition = "input.modeOfEvolution == 'Random Walk'",
+          sliderInput(
+            inputId = "parameter1", "Variability sigma",
+            min = 0,
+            max = 4,
+            value = 1,
+            step = 0.1
+          ),
+          sliderInput(
+            inputId = "parameter2", "Drift my",
+            min = -2,
+            max = 2,
+            value = 0,
+            step = 0.1
+          ),
+          sliderInput(
+            inputId = "parameter3", "initial  value",
+            min = -1,
+            max = 1,
+            value = 0,
+            step = 0.1
+          )
+        ),
+        conditionalPanel(
+          condition = "input.modeOfEvolution == 'Stasis'",
+          sliderInput(
+            inputId = "parameter4", "mean value",
+            min = -1,
+            max = 1,
+            value = 0,
+            step = 0.1
+          ),
+          sliderInput("parameter5", "Variance",
+            min = 0,
+            max = 2,
+            value = 1,
+            step = 0.1
+          )
+        ),
+        conditionalPanel(
+          condition = "input.modeOfEvolution == 'Ornstein-Uhlenbeck'",
+          sliderInput(
+            inputId = "parameter6", "long term mean value mu",
+            min = -2,
+            max = 2,
+            value = 0,
+            step = 0.1
+          ),
+          sliderInput("parameter7", "pressure of selection theta",
+            min = 0,
+            max = 10,
+            value = 1,
+            step = 0.1
+          ),
+          sliderInput(
+            inputId = "parameter8", "volatility/variability sigma",
+            min = 0,
+            max = 2,
+            value = 1,
+            step = 0.1
+          ),
+          sliderInput(
+            inputId = "parameter9", "initial value",
+            min = -4,
+            max = 4,
+            value = 2,
+            step = 0.1
+          )
         )
-      ),
-      conditionalPanel(
-        condition = "input.modeOfEvolution == 'Stasis'",
-        sliderInput(
-          inputId = "parameter4", "mean value",
-          min = -1,
-          max = 1,
-          value = 0,
-          step = 0.1
-        ),
-        sliderInput("parameter5", "Variance",
-          min = 0,
-          max = 2,
-          value = 1,
-          step = 0.1
-        )
-      ),
-      conditionalPanel(
-        condition = "input.modeOfEvolution == 'Ornstein-Uhlenbeck'",
-        sliderInput(
-          inputId = "parameter6", "long term mean value mu",
-          min = -2,
-          max = 2,
-          value = 0,
-          step = 0.1
-        ),
-        sliderInput("parameter7", "pressure of selection theta",
-          min = 0,
-          max = 10,
-          value = 1,
-          step = 0.1
-        ),
-        sliderInput(
-          inputId = "parameter8", "volatility/variability sigma",
-          min = 0,
-          max = 2,
-          value = 1,
-          step = 0.1
-        ),
-        sliderInput(
-          inputId = "parameter9", "initial value",
-          min = -4,
-          max = 4,
-          value = 2,
-          step = 0.1
-        )
-      )
       ),
       wellPanel(
         tags$h3("Plot Options"),
@@ -318,19 +327,27 @@ ui <- navbarPage(
         textInput(
           inputId = "trait_name",
           label = "Trait",
-          value="log10(Body Size)"
+          value = "log10(Body Size)"
         )
-        
       ),
-      
     ),
     column(
-      8,
+      width = 8,
       fluidRow(
-        column(4, plotOutput("stratDomainPlot")),
-        column(8, plotOutput("ageDepthModelPlot"))
+        column(
+          width = 4,
+          plotOutput("stratDomainPlot")
+        ),
+        column(
+          width = 8,
+          plotOutput("ageDepthModelPlot")
+        )
       ),
-      column(8, plotOutput("timeDomainPlot"), offset = 4)
+      column(
+        width = 8,
+        plotOutput("timeDomainPlot"),
+        offset = 4
+      )
     )
   )
 )
@@ -368,7 +385,8 @@ server <- function(input, output) {
     makeAgeDepthModelPlot(
       ageDepthModel = ageDepthModel(),
       plot_time_gaps = input$plot_time_gaps,
-      plot_hiatuses = input$plot_hiatuses)
+      plot_hiatuses = input$plot_hiatuses
+    )
   })
 
   output$timeDomainPlot <- renderPlot({
