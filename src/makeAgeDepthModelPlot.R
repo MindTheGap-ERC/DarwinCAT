@@ -14,7 +14,8 @@ makeAgeDepthModelPlot <- function(ageDepthModel,
     xlab = "Time [Ma]",
     ylab = "Height [m]",
     xlim = range(t),
-    ylim = range(ageDepthModel$heightMod, na.rm = TRUE, finite = TRUE)
+    ylim = range(ageDepthModel$heightRaw),
+    type = "l"
   )
   
   # Plot time intervals that are not preserved
@@ -24,7 +25,7 @@ makeAgeDepthModelPlot <- function(ageDepthModel,
         xleft = ageDepthModel$hiatusTimeList[[i]]$hiatusStart,
         xright = ageDepthModel$hiatusTimeList[[i]]$hiatusEnd,
         ybottom = 0,
-        ytop = max(ageDepthModel$heightMod, na.rm = TRUE, finite = TRUE),
+        ytop = max(ageDepthModel$heightRaw),
         col = removed_time_col,
         lty = 0
       )

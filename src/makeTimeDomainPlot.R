@@ -1,18 +1,24 @@
 makeTimeDomainPlot <- function(evolutionarySimulations, 
                                ageDepthModel, 
-                               ymin = -1,
-                               ymax = 1,
+                               axis_limits = c(-1,1),
                                trait_name = "", 
                                plotSeaLevel = FALSE, 
                                plot_time_gaps = FALSE) {
-
+  ymin = min(axis_limits)
+  ymax = max(axis_limits)
+  if (ymin == ymax){
+    ymin = -1
+    ymax = 1
+  }
 
   # plotting framework
-  plot(NULL,
+  plot(
+    NULL,
     xlim = range(t),
     ylim = c(ymin, ymax),
     xlab = "Time [Ma]",
-    ylab = ""
+    ylab = "",
+    type = "l"
   )
   
   # plot 0 axis
@@ -55,7 +61,9 @@ makeTimeDomainPlot <- function(evolutionarySimulations,
   }
 
   if (plotSeaLevel) {
-    lines(t, seaLevel / max(seaLevel) * 0.5 * (ymax - ymin) + 0.5 * (ymax + ymin),
+    lines(
+      x = t, 
+      y = seaLevel / max(seaLevel) * 0.5 * (ymax - ymin) + 0.5 * (ymax + ymin),
       col = sl_col,
       lwd = sl_lwd,
       lty = sl_lty

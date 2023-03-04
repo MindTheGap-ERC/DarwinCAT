@@ -26,4 +26,4 @@ trait_ltys <- rep(1, 3)
 # plot option zero axis
 zero_axis_col <- grey(0.2)
 zero_axis_lty <- 3
-zero_axis_lwd <- 0.5
+zero_axis_lwd <- 1

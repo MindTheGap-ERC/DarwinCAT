@@ -1,23 +1,46 @@
 makeStratDomainPlot <- function(ageDepthModel,
                                 evolutionarySimulations,
-                                ymin = -1,
-                                ymax = 1,
+                                axis_limits = c(-1,1),
                                 trait_name = "",
                                 plotSeaLevel = TRUE,
-                                plot_hiatuses = TRUE) {
+                                plot_hiatuses = TRUE,
+                                sampling_strategy = "Constant Distance",
+                                no_of_samples = 10,
+                                dist_between_samples = 1) {
+  
+  if (sampling_strategy == "Constant Distance") {
+    sampling_locations = seq(
+      from = min(ageDepthModel$heightRaw) + dist_between_samples,
+      to = max(ageDepthModel$heightRaw),
+      by = dist_between_samples
+    )
+  } else if (sampling_strategy == "Constant Number") {
+    sampling_locations = seq(
+      from = min(ageDepthModel$heightRaw),
+      to = max(ageDepthModel$heightRaw),
+      length.out = no_of_samples
+    )
+  } else {
+    stop("Something went Wrong")
+  }
+  
+  ymin = min(axis_limits)
+  ymax = max(axis_limits)
+  if (ymin == ymax){
+    ymin = -1
+    ymax = 1
+  }
   
 
   
   # plot framwework
-  plot(NULL,
-    ylim = range(
-      ageDepthModel$heightRaw,
-      na.rm = TRUE,
-      finite = TRUE
-    ),
+  plot(
+    NULL,
+    ylim = range(ageDepthModel$heightRaw),
     xlim = c(ymin, ymax),
     ylab = "Height [m]",
-    xlab = ""
+    xlab = "",
+    type = "l"
   )
 
   mtext(
@@ -27,11 +50,7 @@ makeStratDomainPlot <- function(ageDepthModel,
 
   # zero line
   lines(
-    y = range(
-      ageDepthModel$heightRaw,
-      na.rm = TRUE,
-      finite = TRUE
-    ),
+    y = range(ageDepthModel$heightRaw),
     x = c(0, 0),
     lwd = zero_axis_lwd,
     lty = zero_axis_lty,
@@ -40,9 +59,12 @@ makeStratDomainPlot <- function(ageDepthModel,
 
   # plot evo sims in strat
   for (i in seq_along(evolutionarySimulations)) {
+    trait_vals = approx(x = ageDepthModel$heightRaw,
+                        y = evolutionarySimulations[[i]],
+                        xout = sampling_locations)
     lines(
-      y = ageDepthModel$heightRaw,
-      x = evolutionarySimulations[[i]],
+      y = trait_vals$x,
+      x = trait_vals$y,
       col = trait_cols[i],
       lwd = trait_cols[i],
       lty = trait_ltys[i]

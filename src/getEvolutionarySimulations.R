@@ -55,4 +55,5 @@ getEvolutionarySimulations <- function(noOfSims, mode, ...) {
     }
     return(evolutionarySimulationList)
   }
+  stop("something went wrong with the evolutionary simulations")
 }
