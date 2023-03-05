@@ -1,4 +1,4 @@
-load(file = "data/ageDepthModelsForShinyApp.RData")
+load(file = "data/age_depth_models_for_shiny_app.Rdata")
 
 # Age-depth model plot options
 col_adm <- "black"
