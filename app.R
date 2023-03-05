@@ -195,9 +195,9 @@ ui <- navbarPage(
         sliderInput(
           inputId = "axis_limits",
           label = "y axis limits",
-          min = -5,
-          max = 5,
-          value = c(-1,1),
+          min = -8,
+          max = 8,
+          value = c(-3,3),
           step = 0.1,
           animate = FALSE
         ),
