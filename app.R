@@ -44,7 +44,13 @@ ui <- navbarPage(
   ),
   tabPanel(
     title = "Carbonate Stratigraphy",
-    "Intro to Strat Pal goes here"
+    "Intro to Strat Pal goes here",
+    plotOutput(
+      outputId = "wheelerDiagram"
+    ),
+    plotOutput(
+      outputId = "basinTransect"
+    )
   ),
   tabPanel(
     title = "Stratigraphic Paleobiology",
@@ -54,7 +60,7 @@ ui <- navbarPage(
         inputId = "distFromShore",
         label = "Distance from Shore",
         min = 0.1,
-        max = 15,
+        max = max_dist_from_shore_km,
         value = 1,
         step = 0.1,
         animate = TRUE
@@ -290,6 +296,16 @@ server <- function(input, output) {
       dist_between_samples = input$dist_between_samples,
       no_of_samples = input$no_of_samples
     )
+  })
+  
+  output$wheelerDiagram = renderPlot({
+    makeWheelerDiagram(
+      distanceFromShore = input$distFromShore)
+  })
+  
+  output$basinTransect = renderPlot({
+    makeBasinTransectPlot(
+      distanceFromShore = input$distFromShore)
   })
 }
 
