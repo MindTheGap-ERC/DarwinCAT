@@ -1,4 +1,5 @@
 library(shiny)
+library(png)
 
 # load data into workspace
 source("src/global.R")
