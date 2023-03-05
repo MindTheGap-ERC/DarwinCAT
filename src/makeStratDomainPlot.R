@@ -71,7 +71,7 @@ makeStratDomainPlot <- function(ageDepthModel,
       x = trait_vals$y,
       y = trait_vals$x,
       col = trait_cols[i],
-      lwd = trait_cols[i],
+      lwd = trait_lwds[i],
       lty = trait_ltys[i]
     )
   }
