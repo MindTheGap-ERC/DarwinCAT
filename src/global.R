@@ -1,5 +1,18 @@
 load(file = "data/age_depth_models_for_shiny_app.Rdata")
 
+max_dist_from_shore_km = 12
+
+wheeler_diagram = readPNG("www/geology/wheeler_diagram.png")
+basin_transect = readPNG("www/geology/basin_transect.png")
+
+wheeler_diagram_lty = 1
+wheeler_diagram_lwd = 1
+wheeler_diagram_col = "black"
+  
+basin_transect_lty = 1
+basin_transect_lwd = 1
+basin_transect_col = "black"
+
 # Age-depth model plot options
 col_adm <- "black"
 lwd_adm <- 3
