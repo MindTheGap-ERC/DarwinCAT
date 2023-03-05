@@ -1,12 +1,16 @@
 getEvolutionarySimulations <- function(noOfSims, mode, ...) {
-  noOfSims <- as.character(noOfSims)
+  noOfSims <- as.numeric(noOfSims)
   parameters <- list(...)
+  
+  # pre-allocate 
+  evolutionarySimulationList <- vector("list",noOfSims)
+  
   if (mode == "Random Walk") {
     sigma <- parameters[[1]]
     mu <- parameters[[2]]
     x0 <- parameters[[3]]
     standardDeviations <- sqrt(diff(t))
-    evolutionarySimulationList <- list()
+   
     for (i in 1:noOfSims) {
       increments <- rnorm(
         n = length(t) - 1,
@@ -22,7 +26,6 @@ getEvolutionarySimulations <- function(noOfSims, mode, ...) {
   if (mode == "Stasis") {
     mean <- parameters[[4]]
     variance <- parameters[[5]]
-    evolutionarySimulationList <- list()
     for (i in 1:noOfSims) {
       stasisValues <- rnorm(
         n = length(t),
@@ -34,7 +37,6 @@ getEvolutionarySimulations <- function(noOfSims, mode, ...) {
     return(evolutionarySimulationList)
   }
   if (mode == "Ornstein-Uhlenbeck") {
-    evolutionarySimulationList <- list()
     mu <- parameters[[6]]
     theta <- parameters[[7]]
     sigma <- parameters[[8]]
@@ -56,4 +58,5 @@ getEvolutionarySimulations <- function(noOfSims, mode, ...) {
     return(evolutionarySimulationList)
   }
   stop("something went wrong with the evolutionary simulations")
+  
 }
