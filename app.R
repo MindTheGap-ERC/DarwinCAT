@@ -20,9 +20,21 @@ ui <- navbarPage(
   windowTitle = "DarwinCAT",
   tabPanel(
     title = "Introduction",
-    "Intro goes here",
+    "Sneak peek of DarwinCAT, not an official release! To view model outputs, navigate to the Panel \"Stratigraphic Paleobiology\"",
     hr(),
-    fluidRow("Funding Info Goes Here"),
+    fluidRow(
+      "Online access to the App is made possible by the IDUB programme of the University of Warsaw (Grant BOB-IDUB-622-18/2022). Co-funded by the European Union (ERC, MindTheGap, StG project no 101041077). Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Research Council. Neither the European Union nor the granting authority can be held responsible for them."
+      ),
+    fluidRow(
+      column(3,
+             img(src='logos/UW_logo.svg',alt="Logo of UW", width="30%",align = "left")),
+      column(3,
+             img(src='logos/IDUB_logo.jpeg',alt="Logo of IDUB", width="30%",align = "left")),
+      column(3,
+             img(src='logos/mind_the_gap_logo.png',alt="Logo of MindTheGap", width="70%",align = "left")),
+      column(3,
+             img(src='logos/UU_logo.jpg', width="70%",alt="Logo of UU",align = "left"))
+    ),
     hr()
   ),
   tabPanel(
@@ -34,7 +46,7 @@ ui <- navbarPage(
     "Intro to Strat Pal goes here"
   ),
   tabPanel(
-    title = "StratPal",
+    title = "Stratigraphic Paleobiology",
     column(
       2,
       sliderInput(
