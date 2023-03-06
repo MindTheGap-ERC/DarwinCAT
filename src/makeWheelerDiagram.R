@@ -5,7 +5,7 @@ makeWheelerDiagram <- function(distanceFromShore) {
   # create empty plot
   plot(
     NULL,
-    ylim = range(t),
+    ylim = range(time_myr),
     xlim = c(0, max_dist_from_shore_km),
     xlab = "Distance from Shore [km]",
     ylab = "Time [Myr]"
@@ -17,13 +17,13 @@ makeWheelerDiagram <- function(distanceFromShore) {
     xleft = 0,
     xright = max_dist_from_shore_km,
     ybottom = 0,
-    ytop = max(t)
+    ytop = max(time_myr)
   )
 
   # mark position in basin
   lines(
     x = rep(dist_from_shore_km, 2),
-    y = range(t),
+    y = range(time_myr),
     lty = wheeler_diagram_lty,
     lwd = wheeler_diagram_lwd,
     col = wheeler_diagram_col

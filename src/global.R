@@ -4,7 +4,7 @@ load(file = "data/age_depth_models_for_shiny_app.Rdata")
 max_depth_basin_transect = - max(sapply(ageDepthModelList, function (x) max(x$heightRaw)))
 
 # cut off for sliders & adms
-max_dist_from_shore_km = 12
+max_dist_from_shore_km = 12 # maximum: 13 km
 
 # load background images
 wheeler_diagram = readPNG("www/geology/wheeler_diagram.png")

@@ -9,16 +9,16 @@ getEvolutionarySimulations <- function(noOfSims, mode, ...) {
     sigma <- parameters[[1]]
     mu <- parameters[[2]]
     x0 <- parameters[[3]]
-    standardDeviations <- sqrt(diff(t))
+    standardDeviations <- sqrt(diff(time_myr))
    
     for (i in 1:noOfSims) {
       increments <- rnorm(
-        n = length(t) - 1,
+        n = length(time_myr) - 1,
         mean = 0,
         sd = standardDeviations
       )
       brownianMotionPath <- cumsum(c(x0, increments))
-      brownianDriftPath <- sigma * brownianMotionPath + mu * t
+      brownianDriftPath <- sigma * brownianMotionPath + mu * time_myr
       evolutionarySimulationList[[i]] <- brownianDriftPath
     }
     return(evolutionarySimulationList)
@@ -28,7 +28,7 @@ getEvolutionarySimulations <- function(noOfSims, mode, ...) {
     variance <- parameters[[5]]
     for (i in 1:noOfSims) {
       stasisValues <- rnorm(
-        n = length(t),
+        n = length(time_myr),
         mean = mean,
         sd = sqrt(variance)
       )
@@ -43,13 +43,13 @@ getEvolutionarySimulations <- function(noOfSims, mode, ...) {
     x0 <- parameters[[9]]
     for (i in 1:noOfSims) {
       noiseIncrements <- rnorm(
-        n = length(t) - 1,
+        n = length(time_myr) - 1,
         mean = 0,
         sd = sqrt(diff(t))
       )
-      ouval <- rep(NA, length(t))
+      ouval <- rep(NA, length(time_myr))
       ouval[1] <- x0
-      for (j in 2:length(t)) {
+      for (j in 2:length(time_myr)) {
         ouval[j] <- ouval[j - 1] + 0.001 * (theta * (mu - ouval[j - 1])) +
           sigma * noiseIncrements[j - 1]
       }

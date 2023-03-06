@@ -13,7 +13,7 @@ makeAgeDepthModelPlot <- function(ageDepthModel,
     NULL,
     xlab = "Time [Ma]",
     ylab = "Height [m]",
-    xlim = range(t),
+    xlim = range(time_myr),
     ylim = range(ageDepthModel$heightRaw),
     type = "l"
   )
@@ -34,7 +34,7 @@ makeAgeDepthModelPlot <- function(ageDepthModel,
   
   # plot adm
   lines(
-    x = t, 
+    x = time_myr, 
     y = ageDepthModel$heightMod,
     col = col_adm, 
     lwd = lwd_adm,
@@ -46,7 +46,7 @@ makeAgeDepthModelPlot <- function(ageDepthModel,
     for (i in seq_along(ageDepthModel$hiatusHeights)){
       lines(
         y = rep(ageDepthModel$hiatusHeights[i],2),
-        x = range(t),
+        x = range(time_myr),
         col = hiatus_strat_col,
         lwd = hiatus_strat_lwd,
         lty = hiatus_strat_lty)

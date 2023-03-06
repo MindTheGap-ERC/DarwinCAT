@@ -14,7 +14,7 @@ makeTimeDomainPlot <- function(evolutionarySimulations,
   # plotting framework
   plot(
     NULL,
-    xlim = range(t),
+    xlim = range(time_myr),
     ylim = c(ymin, ymax),
     xlab = "Time [Ma]",
     ylab = "",
@@ -23,7 +23,7 @@ makeTimeDomainPlot <- function(evolutionarySimulations,
   
   # plot 0 axis
   lines(
-    x = range(t),
+    x = range(time_myr),
     y = c(0, 0),
     col = zero_axis_col,
     lty = zero_axis_lty,
@@ -52,7 +52,7 @@ makeTimeDomainPlot <- function(evolutionarySimulations,
   
   for (i in seq_along(evolutionarySimulations)) {
     lines(
-      x = t,
+      x = time_myr,
       y = evolutionarySimulations[[i]],
       col = trait_cols[i],
       lwd = trait_lwds[i],
@@ -62,7 +62,7 @@ makeTimeDomainPlot <- function(evolutionarySimulations,
 
   if (plotSeaLevel) {
     lines(
-      x = t, 
+      x = time_myr, 
       y = seaLevel / max(seaLevel) * 0.5 * (ymax - ymin) + 0.5 * (ymax + ymin),
       col = sl_col,
       lwd = sl_lwd,
