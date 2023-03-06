@@ -12,6 +12,8 @@ source("src/getEvolutionarySimulations.R") # simulates trait evolution
 source("src/makeAgeDepthModelPlot.R")
 source("src/makeTimeDomainPlot.R")
 source("src/makeStratDomainPlot.R")
+source("src/makeBasinTransectPlot.R")
+source("src/makeWheelerDiagram.R")
 
 
 # Generate user interface
@@ -26,6 +28,8 @@ ui <- navbarPage(
     fluidRow(
       "Online access to the App is made possible by the IDUB programme of the University of Warsaw (Grant BOB-IDUB-622-18/2022). Co-funded by the European Union (ERC, MindTheGap, StG project no 101041077). Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Research Council. Neither the European Union nor the granting authority can be held responsible for them."
       ),
+    #### Funding
+    hr(),
     fluidRow(
       column(3,
              img(src='logos/UW_logo.svg',alt="Logo of UW", width="30%",align = "left")),
@@ -35,12 +39,23 @@ ui <- navbarPage(
              img(src='logos/mind_the_gap_logo.png',alt="Logo of MindTheGap", width="70%",align = "left")),
       column(3,
              img(src='logos/UU_logo.jpg', width="70%",alt="Logo of UU",align = "left"))
-    ),
-    hr()
+    )
   ),
   tabPanel(
     title = "Modes of Evolution",
-    "Intro to Evo Modes goes here"
+    "Intro to Evo Modes goes here",
+    #### Funding
+    hr(),
+    fluidRow(
+      column(3,
+             img(src='logos/UW_logo.svg',alt="Logo of UW", width="30%",align = "left")),
+      column(3,
+             img(src='logos/IDUB_logo.jpeg',alt="Logo of IDUB", width="30%",align = "left")),
+      column(3,
+             img(src='logos/mind_the_gap_logo.png',alt="Logo of MindTheGap", width="70%",align = "left")),
+      column(3,
+             img(src='logos/UU_logo.jpg', width="70%",alt="Logo of UU",align = "left"))
+    )
   ),
   tabPanel(
     title = "Carbonate Stratigraphy",
@@ -50,6 +65,21 @@ ui <- navbarPage(
     ),
     plotOutput(
       outputId = "basinTransect"
+    ),
+    plotOutput(
+      outputId = "ageDepthModelPlot_carb_strat"
+    ),
+    #### Funding
+    hr(),
+    fluidRow(
+      column(3,
+             img(src='logos/UW_logo.svg',alt="Logo of UW", width="30%",align = "left")),
+      column(3,
+             img(src='logos/IDUB_logo.jpeg',alt="Logo of IDUB", width="30%",align = "left")),
+      column(3,
+             img(src='logos/mind_the_gap_logo.png',alt="Logo of MindTheGap", width="70%",align = "left")),
+      column(3,
+             img(src='logos/UU_logo.jpg', width="70%",alt="Logo of UU",align = "left"))
     )
   ),
   tabPanel(
@@ -224,7 +254,7 @@ ui <- navbarPage(
         ),
         column(
           width = 8,
-          plotOutput("ageDepthModelPlot")
+          plotOutput("ageDepthModelPlot_strat_pal")
         )
       ),
       column(
@@ -232,8 +262,22 @@ ui <- navbarPage(
         plotOutput("timeDomainPlot"),
         offset = 4
       )
+    ),
+    #### Funding
+    hr(),
+    fluidRow(
+      column(3,
+             img(src='logos/UW_logo.svg',alt="Logo of UW", width="30%",align = "left")),
+      column(3,
+             img(src='logos/IDUB_logo.jpeg',alt="Logo of IDUB", width="30%",align = "left")),
+      column(3,
+             img(src='logos/mind_the_gap_logo.png',alt="Logo of MindTheGap", width="70%",align = "left")),
+      column(3,
+             img(src='logos/UU_logo.jpg', width="70%",alt="Logo of UU",align = "left"))
     )
+    
   )
+  
 )
 
 
@@ -265,7 +309,7 @@ server <- function(input, output) {
     )
   })
 
-  output$ageDepthModelPlot <- renderPlot({
+  output$ageDepthModelPlot_strat_pal <- output$ageDepthModelPlot_carb_strat <- renderPlot({
     makeAgeDepthModelPlot(
       ageDepthModel = ageDepthModel(),
       plot_time_gaps = input$plot_time_gaps,
