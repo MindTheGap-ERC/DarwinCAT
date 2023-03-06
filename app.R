@@ -14,6 +14,7 @@ source("src/makeTimeDomainPlot.R")
 source("src/makeStratDomainPlot.R")
 source("src/makeBasinTransectPlot.R")
 source("src/makeWheelerDiagram.R")
+source("src/makeTimeDOmainPlot_no_gap.R")
 
 
 # Generate user interface
@@ -42,8 +43,118 @@ ui <- navbarPage(
     )
   ),
   tabPanel(
+    #### Panel: Modes of Evolution ####
     title = "Modes of Evolution",
     "Intro to Evo Modes goes here",
+    plotOutput(
+      outputId = "timeDomainPlot_trait_evo"
+    ),
+    wellPanel(
+      tags$h3("Evolutionary Simulations"),
+      actionButton(
+        inputId = "refreshSimulations_trait_evo", 
+        label = "Refresh Simulations"
+        ),
+      selectInput(
+        inputId = "noOfSims_trait_evo",
+        label = "Number of Simulations",
+        choices = list("1", "2", "3")
+      ),
+      selectInput(
+        inputId = "modeOfEvolution_trait_evo",
+        label = "mode of evolution",
+        choices = list("Random Walk", "Stasis", "Ornstein-Uhlenbeck")
+      ),
+      conditionalPanel(
+        condition = "input.modeOfEvolution_trait_evo == 'Random Walk'",
+        sliderInput(
+          inputId = "parameter1_trait_evo", "Variability sigma",
+          min = 0,
+          max = 4,
+          value = 1,
+          step = 0.1
+        ),
+        sliderInput(
+          inputId = "parameter2_trait_evo", "Drift my",
+          min = -2,
+          max = 2,
+          value = 0,
+          step = 0.1
+        ),
+        sliderInput(
+          inputId = "parameter3_trait_evo", "initial  value",
+          min = -1,
+          max = 1,
+          value = 0,
+          step = 0.1
+        )
+      ),
+      conditionalPanel(
+        condition = "input.modeOfEvolution_trait_evo == 'Stasis'",
+        sliderInput(
+          inputId = "parameter4_trait_evo", "mean value",
+          min = -1,
+          max = 1,
+          value = 0,
+          step = 0.1
+        ),
+        sliderInput("parameter5_trait_evo", "Variance",
+                    min = 0,
+                    max = 2,
+                    value = 1,
+                    step = 0.1
+        )
+      ),
+      conditionalPanel(
+        condition = "input.modeOfEvolution_trait_evo == 'Ornstein-Uhlenbeck'",
+        sliderInput(
+          inputId = "parameter6_trait_evo", "long term mean value mu",
+          min = -2,
+          max = 2,
+          value = 0,
+          step = 0.1
+        ),
+        sliderInput("parameter7_trait_evo", "pressure of selection theta",
+                    min = 0,
+                    max = 10,
+                    value = 1,
+                    step = 0.1
+        ),
+        sliderInput(
+          inputId = "parameter8_trait_evo", "volatility/variability sigma",
+          min = 0,
+          max = 2,
+          value = 1,
+          step = 0.1
+        ),
+        sliderInput(
+          inputId = "parameter9_trait_evo", "initial value",
+          min = -4,
+          max = 4,
+          value = 2,
+          step = 0.1
+        )
+      )
+    ),
+    wellPanel(
+      tags$h3("Plot Options"),
+      sliderInput(
+        inputId = "axis_limits_trait_evo",
+        label = "y axis limits",
+        min = -8,
+        max = 8,
+        value = c(-3,3),
+        step = 0.1,
+        animate = FALSE
+      ),
+      textInput(
+        inputId = "trait_name_trait_evo",
+        label = "Trait",
+        value = "log10(Body Size)"
+      )
+    ),
+    
+    
     #### Funding
     hr(),
     fluidRow(
@@ -58,8 +169,28 @@ ui <- navbarPage(
     )
   ),
   tabPanel(
+    #### Panel: Carbonate Stratigraphy ####
     title = "Carbonate Stratigraphy",
     "Intro to Strat Pal goes here",
+    sliderInput(
+      inputId = "distFromShore_carb_strat",
+      label = "Distance from Shore",
+      min = 0.1,
+      max = max_dist_from_shore_km,
+      value = 1,
+      step = 0.1,
+      animate = TRUE
+    ),
+    checkboxInput(
+      inputId = "plot_time_gaps_carb_strat",
+      label = "Display Gaps in Time",
+      value = FALSE
+    ),
+    checkboxInput(
+      inputId = "plot_hiatuses_carb_strat",
+      label = "Display Hiatuses in Rock",
+      value = FALSE
+    ),
     plotOutput(
       outputId = "wheelerDiagram"
     ),
@@ -283,6 +414,65 @@ ui <- navbarPage(
 
 
 server <- function(input, output) {
+  #### Trait Evolution: Reactive Variables ####
+  eventReactive(eventExpr = input$refreshSimulations_trait_evo, {
+    evolutionarySimulations_trait_evo()
+  })
+  
+  evolutionarySimulations_trait_evo <- reactive({
+    input$refreshSimulations_trait_evo
+    getEvolutionarySimulations(
+      noOfSims = input$noOfSims_trait_evo,
+      mode = input$modeOfEvolution_trait_evo,
+      input$parameter1_trait_evo,
+      input$parameter2_trait_evo,
+      input$parameter3_trait_evo,
+      input$parameter4_trait_evo,
+      input$parameter5_trait_evo,
+      input$parameter6_trait_evo,
+      input$parameter7_trait_evo,
+      input$parameter8_trait_evo,
+      input$parameter9_trait_evo
+    )
+  })
+  
+  #### Trait Evolution: Outputs ####
+  
+  output$timeDomainPlot_trait_evo <- renderPlot({
+    makeTimeDomainPlot_no_gap(
+      evolutionarySimulations = evolutionarySimulations_trait_evo(),
+      trait_name = input$trait_name_trait_evo,
+      axis_limits = input$axis_limits_trait_evo
+    )
+  })
+  
+  #### Carbonate Stratigraphy: Reactive Variables ####
+  ageDepthModel_carb_strat <- reactive({
+    getAgeDepthModel(
+      distanceFromShore = input$distFromShore_carb_strat
+    )
+  })
+  
+  #### Carbonate Stratigraphy: Outputs ####
+  output$wheelerDiagram = renderPlot({
+    makeWheelerDiagram(
+      distanceFromShore = input$distFromShore_carb_strat)
+  })
+  
+  output$basinTransect = renderPlot({
+    makeBasinTransectPlot(
+      distanceFromShore = input$distFromShore_carb_strat)
+  })
+  
+  output$ageDepthModelPlot_carb_strat <- renderPlot({
+    makeAgeDepthModelPlot(
+      ageDepthModel = ageDepthModel_carb_strat(),
+      plot_time_gaps = input$plot_time_gaps_carb_strat,
+      plot_hiatuses = input$plot_hiatuses_carb_strat
+    )
+  })
+  
+  #### Stratigraphic Paleobiology: Reactive Variables ####
   eventReactive(eventExpr = input$refreshSimulations, {
     evolutionarySimulations()
   })
@@ -303,13 +493,14 @@ server <- function(input, output) {
       input$parameter9
     )
   })
+  
   ageDepthModel <- reactive({
     getAgeDepthModel(
       distanceFromShore = input$distFromShore
     )
   })
-
-  output$ageDepthModelPlot_strat_pal <- output$ageDepthModelPlot_carb_strat <- renderPlot({
+  #### Stratigraphic Paleobiology: Outputs ####
+  output$ageDepthModelPlot_strat_pal <- renderPlot({
     makeAgeDepthModelPlot(
       ageDepthModel = ageDepthModel(),
       plot_time_gaps = input$plot_time_gaps,
@@ -341,16 +532,7 @@ server <- function(input, output) {
       no_of_samples = input$no_of_samples
     )
   })
-  
-  output$wheelerDiagram = renderPlot({
-    makeWheelerDiagram(
-      distanceFromShore = input$distFromShore)
-  })
-  
-  output$basinTransect = renderPlot({
-    makeBasinTransectPlot(
-      distanceFromShore = input$distFromShore)
-  })
+
 }
 
 shinyApp(ui = ui, server = server)
