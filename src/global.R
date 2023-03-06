@@ -1,24 +1,27 @@
 load(file = "data/age_depth_models_for_shiny_app.Rdata")
 
 # max depth for basin transect plot
-max_depth_basin_transect = - max(sapply(ageDepthModelList, function (x) max(x$heightRaw)))
+max_depth_basin_transect <- -max(sapply(
+  ageDepthModelList,
+  function(x) max(x$heightRaw)
+))
 
 # cut off for sliders & adms
-max_dist_from_shore_km = 12 # maximum: 13 km
+max_dist_from_shore_km <- 12 # maximum: 13 km
 
 # load background images
-wheeler_diagram = readPNG("www/geology/wheeler_diagram.png")
-basin_transect = readPNG("www/geology/basin_transect.png")
+wheeler_diagram <- readPNG("www/geology/wheeler_diagram.png")
+basin_transect <- readPNG("www/geology/basin_transect.png")
 
 # plot options: wheeler diagram
-wheeler_diagram_lty = 1
-wheeler_diagram_lwd = 1
-wheeler_diagram_col = "black"
+wheeler_diagram_lty <- 1
+wheeler_diagram_lwd <- 1
+wheeler_diagram_col <- "black"
 
-# plot options: basin transect  
-basin_transect_lty = 1
-basin_transect_lwd = 1
-basin_transect_col = "black"
+# plot options: basin transect
+basin_transect_lty <- 1
+basin_transect_lwd <- 1
+basin_transect_col <- "black"
 
 # plot options: adm
 col_adm <- "black"

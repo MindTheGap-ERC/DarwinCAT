@@ -1,14 +1,15 @@
 makeTimeDomainPlot_no_gap <- function(evolutionarySimulations,
-                               axis_limits = c(-1,1),
-                               trait_name = "") {
-  ymin = min(axis_limits)
-  ymax = max(axis_limits)
-  if (ymin == ymax){
-    ymin = -1
-    ymax = 1
+                                      axis_limits = c(-1, 1),
+                                      trait_name = "") {
+  # determine y axis limits
+  ymin <- min(axis_limits)
+  ymax <- max(axis_limits)
+  if (ymin == ymax) {
+    ymin <- -1
+    ymax <- 1
   }
-  
-  # plotting framework
+
+  # make empty plot
   plot(
     NULL,
     xlim = range(time_myr),
@@ -17,8 +18,8 @@ makeTimeDomainPlot_no_gap <- function(evolutionarySimulations,
     ylab = "",
     type = "l"
   )
-  
-  # plot 0 axis
+
+  # plot 0 line
   lines(
     x = range(time_myr),
     y = c(0, 0),
@@ -26,12 +27,14 @@ makeTimeDomainPlot_no_gap <- function(evolutionarySimulations,
     lty = zero_axis_lty,
     lwd = zero_axis_lwd
   )
-  
-    mtext(
+
+  # plot trait name
+  mtext(
     text = trait_name,
     side = 2
   )
-  
+
+  # plot traits
   for (i in seq_along(evolutionarySimulations)) {
     lines(
       x = time_myr,
@@ -41,5 +44,4 @@ makeTimeDomainPlot_no_gap <- function(evolutionarySimulations,
       lty = trait_ltys[i]
     )
   }
-  
 }
