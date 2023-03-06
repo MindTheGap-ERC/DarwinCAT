@@ -26,169 +26,241 @@ ui <- navbarPage(
   tabPanel(
     title = "Introduction",
     "Sneak peek of DarwinCAT, not an official release! To view model outputs, navigate to the Panel \"Stratigraphic Paleobiology\"",
+    fluidRow(
+      div(style = "margin-left: 1em; margin-bottom: -0.5em", tags$h4(" Creators")),
+      column(
+        6,
+        tags$h5(tags$b("Niklas Hohmann")),
+        fluidRow(
+          column(5, img(src = "people/niklas_hohmann.jpg", alt = "Picture of Niklas Hohmann", align = "left", width = "100%")),
+          column(
+            7,
+            div(style = "margin-left: -4em", tags$ul(
+              "PhD candidate", br(),
+              "Utrecht University, The Netherlands", br(),
+              "Email: N.Hohmann (at) uu.nl", br(),
+              HTML("Twitter: <a href=https://twitter.com/HohmannNiklas target=\"_blank\" > @HohmannNiklas </a>"), br(),
+              HTML("Mastodon: <a href=https://ecoevo.social/@Niklas_Hohmann target=\"_blank\" > @Niklas_Hohmann@ecoevo.social </a>"), br(),
+              HTML("<a href=https://scholar.google.com/citations?hl=de&user=2CB_ktEAAAAJ target=\"_blank\" > Google Scholar profile </a>"), br(),
+              HTML("Profile on the <a href=https://www.uu.nl/staff/NHohmann target=\"_blank\" > university webpage </a>"), br(),
+              HTML("<a href=https://github.com/NiklasHohmann target=\"_blank\" > GitHub page </a>")
+            )),
+          )
+        )
+      ),
+      column(
+        6,
+        tags$h5(tags$b("Dr. Emilia Jarochowska")),
+        fluidRow(
+          column(5, img(src = "people/emilia_jarochowska.jpg", alt = "Picture of Emilia Jarochowska", align = "left", width = "100%")),
+          column(7, div(style = "margin-left: -4em", tags$ul(
+            "Utrecht University, The Netherlands", br(),
+            "Email: e.b.jarochowska (at) uu.nl", br(),
+            HTML("Mastodon: <a href=https://circumstances.run/@Emiliagnathus target=\"_blank\" > @Emiliagnathus@circumstances.run </a>"), br(),
+            HTML("<a href=https://scholar.google.de/citations?user=Zrldp2MAAAAJ&hl=en target=\"_blank\" > Google Scholar profile </a>"), br(),
+            HTML("Profile on the <a href=https://www.uu.nl/staff/EBJarochowska target=\"_blank\" > university webpage </a>")
+          )), )
+        )
+      )
+    ),
     hr(),
     fluidRow(
-      "Online access to the App is made possible by the IDUB programme of the University of Warsaw (Grant BOB-IDUB-622-18/2022). Co-funded by the European Union (ERC, MindTheGap, StG project no 101041077). Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Research Council. Neither the European Union nor the granting authority can be held responsible for them."
-      ),
+      tags$h4("Code Acailability"),
+      tags$p("The code for this app is available under <a href=https://github.com/NiklasHohmann/DarinCAT target=\"_blank\" > github.com/NiklasHohmann/DarwinCAT </a>"),
+      tags$h4("Funding"),
+      tags$p("Online access to the App is made possible by the IDUB programme of the University of Warsaw (Grant BOB-IDUB-622-18/2022). Co-funded by the European Union (ERC, MindTheGap, StG project no 101041077). Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Research Council. Neither the European Union nor the granting authority can be held responsible for them.")
+    ),
+    tags$h4("References"),
+    tags$p("Coming Soon"),
     #### Funding
     hr(),
     fluidRow(
-      column(3,
-             img(src='logos/UW_logo.svg',alt="Logo of UW", width="30%",align = "left")),
-      column(3,
-             img(src='logos/IDUB_logo.jpeg',alt="Logo of IDUB", width="30%",align = "left")),
-      column(3,
-             img(src='logos/mind_the_gap_logo.png',alt="Logo of MindTheGap", width="70%",align = "left")),
-      column(3,
-             img(src='logos/UU_logo.jpg', width="70%",alt="Logo of UU",align = "left"))
+      column(
+        3,
+        img(src = "logos/UW_logo.svg", alt = "Logo of UW", width = "30%", align = "left")
+      ),
+      column(
+        3,
+        img(src = "logos/IDUB_logo.jpeg", alt = "Logo of IDUB", width = "30%", align = "left")
+      ),
+      column(
+        3,
+        img(src = "logos/mind_the_gap_logo.png", alt = "Logo of MindTheGap", width = "70%", align = "left")
+      ),
+      column(
+        3,
+        img(src = "logos/UU_logo.jpg", width = "70%", alt = "Logo of UU", align = "left")
+      )
     )
   ),
   #### Panel: Modes of Evolution ####
   tabPanel(
     title = "Modes of Evolution",
-    "Intro to Evo Modes goes here",
-    column(
-      width = 4,
-    wellPanel(
-      tags$h3("Evolutionary Simulations"),
-      actionButton(
-        inputId = "refreshSimulations_trait_evo", 
-        label = "Refresh Simulations"
-        ),
-      selectInput(
-        inputId = "noOfSims_trait_evo",
-        label = "Number of Simulations",
-        choices = list("1", "2", "3")
-      ),
-      selectInput(
-        inputId = "modeOfEvolution_trait_evo",
-        label = "Mode of Evolution",
-        choices = list("Random Walk", "Stasis", "Ornstein-Uhlenbeck")
-      ),
-      conditionalPanel(
-        condition = "input.modeOfEvolution_trait_evo == 'Random Walk'",
-        sliderInput(
-          inputId = "parameter1_trait_evo", "Variability sigma",
-          min = 0,
-          max = 4,
-          value = 1,
-          step = 0.1
-        ),
-        sliderInput(
-          inputId = "parameter2_trait_evo", "Drift my",
-          min = -2,
-          max = 2,
-          value = 0,
-          step = 0.1
-        ),
-        sliderInput(
-          inputId = "parameter3_trait_evo", "initial  value",
-          min = -1,
-          max = 1,
-          value = 0,
-          step = 0.1
+    fluidRow(
+      column(
+        width = 2,
+        wellPanel(
+          tags$h3("Evolutionary Simulations"),
+          actionButton(
+            inputId = "refreshSimulations_trait_evo",
+            label = "Refresh"
+          ),
+          selectInput(
+            inputId = "noOfSims_trait_evo",
+            label = "Number of Lineages",
+            choices = list("1", "2", "3")
+          ),
+          selectInput(
+            inputId = "modeOfEvolution_trait_evo",
+            label = "Mode of Evolution",
+            choices = list("Random Walk", "Stasis", "Ornstein-Uhlenbeck")
+          ),
+          conditionalPanel(
+            condition = "input.modeOfEvolution_trait_evo == 'Random Walk'",
+            sliderInput(
+              inputId = "parameter1_trait_evo",
+              label = "Variability (sigma)",
+              min = 0,
+              max = 4,
+              value = 1,
+              step = 0.1
+            ),
+            sliderInput(
+              inputId = "parameter2_trait_evo",
+              label = "Drift (my)",
+              min = -2,
+              max = 2,
+              value = 0,
+              step = 0.1
+            ),
+            sliderInput(
+              inputId = "parameter3_trait_evo",
+              label = "Initial Trait Value",
+              min = -1,
+              max = 1,
+              value = 0,
+              step = 0.1
+            )
+          ),
+          conditionalPanel(
+            condition = "input.modeOfEvolution_trait_evo == 'Stasis'",
+            sliderInput(
+              inputId = "parameter4_trait_evo",
+              label = "Mean Trait Value",
+              min = -1,
+              max = 1,
+              value = 0,
+              step = 0.1
+            ),
+            sliderInput(
+              inputId = "parameter5_trait_evo",
+              label = "Variance",
+              min = 0,
+              max = 2,
+              value = 1,
+              step = 0.1
+            )
+          ),
+          conditionalPanel(
+            condition = "input.modeOfEvolution_trait_evo == 'Ornstein-Uhlenbeck'",
+            sliderInput(
+              inputId = "parameter6_trait_evo",
+              label = "Long Term Mean",
+              min = -2,
+              max = 2,
+              value = 0,
+              step = 0.1
+            ),
+            sliderInput(
+              inputId = "parameter7_trait_evo",
+              label = "Pressure of Selection",
+              min = 0,
+              max = 10,
+              value = 1,
+              step = 0.1
+            ),
+            sliderInput(
+              inputId = "parameter8_trait_evo",
+              label = "Volatility",
+              min = 0,
+              max = 2,
+              value = 1,
+              step = 0.1
+            ),
+            sliderInput(
+              inputId = "parameter9_trait_evo",
+              label = "Initial Trait Value",
+              min = -4,
+              max = 4,
+              value = 2,
+              step = 0.1
+            )
+          )
         )
       ),
-      conditionalPanel(
-        condition = "input.modeOfEvolution_trait_evo == 'Stasis'",
-        sliderInput(
-          inputId = "parameter4_trait_evo", "mean value",
-          min = -1,
-          max = 1,
-          value = 0,
-          step = 0.1
+      column(
+        width = 8,
+        plotOutput(
+          outputId = "timeDomainPlot_trait_evo"
         ),
-        sliderInput("parameter5_trait_evo", "Variance",
-                    min = 0,
-                    max = 2,
-                    value = 1,
-                    step = 0.1
-        )
       ),
-      conditionalPanel(
-        condition = "input.modeOfEvolution_trait_evo == 'Ornstein-Uhlenbeck'",
-        sliderInput(
-          inputId = "parameter6_trait_evo", "long term mean value mu",
-          min = -2,
-          max = 2,
-          value = 0,
-          step = 0.1
-        ),
-        sliderInput("parameter7_trait_evo", "pressure of selection theta",
-                    min = 0,
-                    max = 10,
-                    value = 1,
-                    step = 0.1
-        ),
-        sliderInput(
-          inputId = "parameter8_trait_evo", "volatility/variability sigma",
-          min = 0,
-          max = 2,
-          value = 1,
-          step = 0.1
-        ),
-        sliderInput(
-          inputId = "parameter9_trait_evo", "initial value",
-          min = -4,
-          max = 4,
-          value = 2,
-          step = 0.1
+      column(
+        width = 2,
+        wellPanel(
+          tags$h3("Plot Options"),
+          sliderInput(
+            inputId = "axis_limits_trait_evo",
+            label = "y axis limits",
+            min = -8,
+            max = 8,
+            value = c(-3, 3),
+            step = 0.1,
+            animate = FALSE
+          ),
+          textInput(
+            inputId = "trait_name_trait_evo",
+            label = "Name of Trait",
+            value = "log10(Body Size)"
+          )
         )
       )
     ),
-    wellPanel(
-      tags$h3("Plot Options"),
-      sliderInput(
-        inputId = "axis_limits_trait_evo",
-        label = "y axis limits",
-        min = -8,
-        max = 8,
-        value = c(-3,3),
-        step = 0.1,
-        animate = FALSE
-      ),
-      textInput(
-        inputId = "trait_name_trait_evo",
-        label = "Name of Trait",
-        value = "log10(Body Size)"
-      )
-    )
-    
-    ),
-    column(width = 8,
-           plotOutput(
-             outputId = "timeDomainPlot_trait_evo"
-           )
-    ),
-    
-    
+
     #### Funding
     hr(),
     fluidRow(
-      column(3,
-             img(src='logos/UW_logo.svg',alt="Logo of UW", width="30%",align = "left")),
-      column(3,
-             img(src='logos/IDUB_logo.jpeg',alt="Logo of IDUB", width="30%",align = "left")),
-      column(3,
-             img(src='logos/mind_the_gap_logo.png',alt="Logo of MindTheGap", width="70%",align = "left")),
-      column(3,
-             img(src='logos/UU_logo.jpg', width="70%",alt="Logo of UU",align = "left"))
+      column(
+        3,
+        img(src = "logos/UW_logo.svg", alt = "Logo of UW", width = "30%", align = "left")
+      ),
+      column(
+        3,
+        img(src = "logos/IDUB_logo.jpeg", alt = "Logo of IDUB", width = "30%", align = "left")
+      ),
+      column(
+        3,
+        img(src = "logos/mind_the_gap_logo.png", alt = "Logo of MindTheGap", width = "70%", align = "left")
+      ),
+      column(
+        3,
+        img(src = "logos/UU_logo.jpg", width = "70%", alt = "Logo of UU", align = "left")
+      )
     )
   ),
   #### Panel: Carbonate Stratigraphy ####
   tabPanel(
-    
     title = "Carbonate Stratigraphy",
     "Intro to Strat Pal goes here",
     column(
       width = 4,
       sliderInput(
         inputId = "distFromShore_carb_strat",
-        label = "Distance from Shore [km]",
+        label = "Distance from Shore",
         min = 0.1,
         max = max_dist_from_shore_km,
         value = 1,
         step = 0.1,
+        post = " km",
         animate = TRUE
       ),
       checkboxInput(
@@ -219,49 +291,35 @@ ui <- navbarPage(
     #### Funding
     hr(),
     fluidRow(
-      column(3,
-             img(src='logos/UW_logo.svg',alt="Logo of UW", width="30%",align = "left")),
-      column(3,
-             img(src='logos/IDUB_logo.jpeg',alt="Logo of IDUB", width="30%",align = "left")),
-      column(3,
-             img(src='logos/mind_the_gap_logo.png',alt="Logo of MindTheGap", width="70%",align = "left")),
-      column(3,
-             img(src='logos/UU_logo.jpg', width="70%",alt="Logo of UU",align = "left"))
+      column(
+        3,
+        img(src = "logos/UW_logo.svg", alt = "Logo of UW", width = "30%", align = "left")
+      ),
+      column(
+        3,
+        img(src = "logos/IDUB_logo.jpeg", alt = "Logo of IDUB", width = "30%", align = "left")
+      ),
+      column(
+        3,
+        img(src = "logos/mind_the_gap_logo.png", alt = "Logo of MindTheGap", width = "70%", align = "left")
+      ),
+      column(
+        3,
+        img(src = "logos/UU_logo.jpg", width = "70%", alt = "Logo of UU", align = "left")
+      )
     )
   ),
   #### Panel: Stratigraphuic Paleobiology ####
   tabPanel(
     title = "Stratigraphic Paleobiology",
+    fluidRow(
     column(
       2,
-      sliderInput(
-        inputId = "distFromShore",
-        label = "Distance from Shore [km]",
-        min = 0.1,
-        max = max_dist_from_shore_km,
-        value = 1,
-        step = 0.1,
-        animate = TRUE
-      ),
-      checkboxInput(
-        inputId = "plotSeaLevel",
-        label = "Show Sea Level",
-        value = FALSE
-      ),
-      checkboxInput(
-        inputId = "plot_time_gaps",
-        label = "Display Gaps in Time",
-        value = FALSE
-      ),
-      checkboxInput(
-        inputId = "plot_hiatuses",
-        label = "Display Hiatuses in Stratigraphy",
-        value = FALSE
-      ),
+
       wellPanel(
         tags$h3("Evolutionary Simulations"),
         actionButton(
-          inputId = "refreshSimulations", 
+          inputId = "refreshSimulations",
           label = "refresh simulations"
         ),
         selectInput(
@@ -277,21 +335,24 @@ ui <- navbarPage(
         conditionalPanel(
           condition = "input.modeOfEvolution == 'Random Walk'",
           sliderInput(
-            inputId = "parameter1", "Variability sigma",
+            inputId = "parameter1",
+            label = "Variability sigma",
             min = 0,
             max = 4,
             value = 1,
             step = 0.1
           ),
           sliderInput(
-            inputId = "parameter2", "Drift my",
+            inputId = "parameter2",
+            label = "Drift my",
             min = -2,
             max = 2,
             value = 0,
             step = 0.1
           ),
           sliderInput(
-            inputId = "parameter3", "initial  value",
+            inputId = "parameter3",
+            label = "initial  value",
             min = -1,
             max = 1,
             value = 0,
@@ -301,13 +362,16 @@ ui <- navbarPage(
         conditionalPanel(
           condition = "input.modeOfEvolution == 'Stasis'",
           sliderInput(
-            inputId = "parameter4", "mean value",
+            inputId = "parameter4",
+            label = "mean value",
             min = -1,
             max = 1,
             value = 0,
             step = 0.1
           ),
-          sliderInput("parameter5", "Variance",
+          sliderInput(
+            inputId = "parameter5",
+            label = "Variance",
             min = 0,
             max = 2,
             value = 1,
@@ -317,64 +381,36 @@ ui <- navbarPage(
         conditionalPanel(
           condition = "input.modeOfEvolution == 'Ornstein-Uhlenbeck'",
           sliderInput(
-            inputId = "parameter6", "long term mean value mu",
+            inputId = "parameter6",
+            label = "long term mean value mu",
             min = -2,
             max = 2,
             value = 0,
             step = 0.1
           ),
-          sliderInput("parameter7", "pressure of selection theta",
+          sliderInput(
+            inputId = "parameter7",
+            label = "pressure of selection theta",
             min = 0,
             max = 10,
             value = 1,
             step = 0.1
           ),
           sliderInput(
-            inputId = "parameter8", "volatility/variability sigma",
+            inputId = "parameter8",
+            label = "volatility/variability sigma",
             min = 0,
             max = 2,
             value = 1,
             step = 0.1
           ),
           sliderInput(
-            inputId = "parameter9", "initial value",
+            inputId = "parameter9",
+            label = "initial value",
             min = -4,
             max = 4,
             value = 2,
             step = 0.1
-          )
-        )
-      ),
-      wellPanel(
-        "SamplingStrategy",
-        selectInput(
-          inputId = "sampling_strategy",
-          label = "Sampling Strategy",
-          choices = list("Constant Number", "Constant Distance"), 
-          selected = "Constant Distance"
-        ),
-        conditionalPanel(
-          condition = "input.sampling_strategy == 'Constant Number'",
-          sliderInput(
-            inputId = "no_of_samples",
-            label = "Number of Samples",
-            min = 5,
-            max = 150,
-            value = 20,
-            step = 1,
-            animate = TRUE
-          )
-        ),
-        conditionalPanel(
-          condition = "input.sampling_strategy == 'Constant Distance'",
-          sliderInput(
-            inputId = "dist_between_samples",
-            label = "Distance between Samples [m]",
-            min = 0.1,
-            max = 2,
-            value = 1,
-            step = 0.1,
-            animate = TRUE
           )
         )
       ),
@@ -385,7 +421,7 @@ ui <- navbarPage(
           label = "y axis limits",
           min = -8,
           max = 8,
-          value = c(-3,3),
+          value = c(-3, 3),
           step = 0.1,
           animate = FALSE
         ),
@@ -414,21 +450,91 @@ ui <- navbarPage(
         offset = 4
       )
     ),
+    column(
+      width = 2,
+      wellPanel(
+        sliderInput(
+          inputId = "distFromShore",
+          label = "Distance from Shore",
+          min = 0.1,
+          max = max_dist_from_shore_km,
+          value = 1,
+          step = 0.1,
+          post = " km",
+          animate = TRUE
+        ),
+        checkboxInput(
+          inputId = "plotSeaLevel",
+          label = "Show Sea Level",
+          value = FALSE
+        ),
+        checkboxInput(
+          inputId = "plot_time_gaps",
+          label = "Display Gaps in Time",
+          value = FALSE
+        ),
+        checkboxInput(
+          inputId = "plot_hiatuses",
+          label = "Display Hiatuses in Stratigraphy",
+          value = FALSE
+        )
+      ),
+      wellPanel(
+        selectInput(
+          inputId = "sampling_strategy",
+          label = "Sampling Strategy",
+          choices = list("Constant Number", "Constant Distance"),
+          selected = "Constant Distance"
+        ),
+        conditionalPanel(
+          condition = "input.sampling_strategy == 'Constant Number'",
+          sliderInput(
+            inputId = "no_of_samples",
+            label = "Number of Samples",
+            min = 5,
+            max = 150,
+            value = 20,
+            step = 1,
+            animate = TRUE
+          )
+        ),
+        conditionalPanel(
+          condition = "input.sampling_strategy == 'Constant Distance'",
+          sliderInput(
+            inputId = "dist_between_samples",
+            label = "Distance between Samples",
+            min = 0.1,
+            max = 2,
+            value = 1,
+            step = 0.1,
+            post = " m",
+            animate = TRUE
+          )
+        )
+      )
+    )
+    ),
     #### Funding
     hr(),
     fluidRow(
-      column(3,
-             img(src='logos/UW_logo.svg',alt="Logo of UW", width="30%",align = "left")),
-      column(3,
-             img(src='logos/IDUB_logo.jpeg',alt="Logo of IDUB", width="30%",align = "left")),
-      column(3,
-             img(src='logos/mind_the_gap_logo.png',alt="Logo of MindTheGap", width="70%",align = "left")),
-      column(3,
-             img(src='logos/UU_logo.jpg', width="70%",alt="Logo of UU",align = "left"))
+      column(
+        3,
+        img(src = "logos/UW_logo.svg", alt = "Logo of UW", width = "30%", align = "left")
+      ),
+      column(
+        3,
+        img(src = "logos/IDUB_logo.jpeg", alt = "Logo of IDUB", width = "30%", align = "left")
+      ),
+      column(
+        3,
+        img(src = "logos/mind_the_gap_logo.png", alt = "Logo of MindTheGap", width = "70%", align = "left")
+      ),
+      column(
+        3,
+        img(src = "logos/UU_logo.jpg", width = "70%", alt = "Logo of UU", align = "left")
+      )
     )
-    
   )
-  
 )
 
 
@@ -438,7 +544,7 @@ server <- function(input, output) {
   eventReactive(eventExpr = input$refreshSimulations_trait_evo, {
     evolutionarySimulations_trait_evo()
   })
-  
+
   evolutionarySimulations_trait_evo <- reactive({
     input$refreshSimulations_trait_evo
     getEvolutionarySimulations(
@@ -455,9 +561,9 @@ server <- function(input, output) {
       input$parameter9_trait_evo
     )
   })
-  
+
   #### Trait Evolution: Outputs ####
-  
+
   output$timeDomainPlot_trait_evo <- renderPlot({
     makeTimeDomainPlot_no_gap(
       evolutionarySimulations = evolutionarySimulations_trait_evo(),
@@ -465,25 +571,27 @@ server <- function(input, output) {
       axis_limits = input$axis_limits_trait_evo
     )
   })
-  
+
   #### Carbonate Stratigraphy: Reactive Variables ####
   ageDepthModel_carb_strat <- reactive({
     getAgeDepthModel(
       distanceFromShore = input$distFromShore_carb_strat
     )
   })
-  
+
   #### Carbonate Stratigraphy: Outputs ####
-  output$wheelerDiagram = renderPlot({
+  output$wheelerDiagram <- renderPlot({
     makeWheelerDiagram(
-      distanceFromShore = input$distFromShore_carb_strat)
+      distanceFromShore = input$distFromShore_carb_strat
+    )
   })
-  
-  output$basinTransect = renderPlot({
+
+  output$basinTransect <- renderPlot({
     makeBasinTransectPlot(
-      distanceFromShore = input$distFromShore_carb_strat)
+      distanceFromShore = input$distFromShore_carb_strat
+    )
   })
-  
+
   output$ageDepthModelPlot_carb_strat <- renderPlot({
     makeAgeDepthModelPlot(
       ageDepthModel = ageDepthModel_carb_strat(),
@@ -491,7 +599,7 @@ server <- function(input, output) {
       plot_hiatuses = input$plot_hiatuses_carb_strat
     )
   })
-  
+
   #### Stratigraphic Paleobiology: Reactive Variables ####
   eventReactive(eventExpr = input$refreshSimulations, {
     evolutionarySimulations()
@@ -513,7 +621,7 @@ server <- function(input, output) {
       input$parameter9
     )
   })
-  
+
   ageDepthModel <- reactive({
     getAgeDepthModel(
       distanceFromShore = input$distFromShore
@@ -552,7 +660,6 @@ server <- function(input, output) {
       no_of_samples = input$no_of_samples
     )
   })
-
 }
 
 shinyApp(ui = ui, server = server)
