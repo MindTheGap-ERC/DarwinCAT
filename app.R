@@ -1,7 +1,7 @@
 library(shiny)
 library(png)
 
-# load data into workspace
+# load data & global variables
 source("src/global.R")
 
 # load functions into workspace
@@ -17,11 +17,12 @@ source("src/makeWheelerDiagram.R")
 source("src/makeTimeDOmainPlot_no_gap.R")
 
 
-# Generate user interface
+#### Iser interface ####
 ui <- navbarPage(
   title = "DarwinCAT",
   id = "DarwinCAT_app",
   windowTitle = "DarwinCAT",
+  #### Panel: Introduction ####
   tabPanel(
     title = "Introduction",
     "Sneak peek of DarwinCAT, not an official release! To view model outputs, navigate to the Panel \"Stratigraphic Paleobiology\"",
@@ -42,8 +43,8 @@ ui <- navbarPage(
              img(src='logos/UU_logo.jpg', width="70%",alt="Logo of UU",align = "left"))
     )
   ),
+  #### Panel: Modes of Evolution ####
   tabPanel(
-    #### Panel: Modes of Evolution ####
     title = "Modes of Evolution",
     "Intro to Evo Modes goes here",
     plotOutput(
@@ -62,7 +63,7 @@ ui <- navbarPage(
       ),
       selectInput(
         inputId = "modeOfEvolution_trait_evo",
-        label = "mode of evolution",
+        label = "Mode of Evolution",
         choices = list("Random Walk", "Stasis", "Ornstein-Uhlenbeck")
       ),
       conditionalPanel(
@@ -149,7 +150,7 @@ ui <- navbarPage(
       ),
       textInput(
         inputId = "trait_name_trait_evo",
-        label = "Trait",
+        label = "Name of Trait",
         value = "log10(Body Size)"
       )
     ),
@@ -168,13 +169,14 @@ ui <- navbarPage(
              img(src='logos/UU_logo.jpg', width="70%",alt="Logo of UU",align = "left"))
     )
   ),
+  #### Panel: Carbonate Stratigraphy ####
   tabPanel(
-    #### Panel: Carbonate Stratigraphy ####
+    
     title = "Carbonate Stratigraphy",
     "Intro to Strat Pal goes here",
     sliderInput(
       inputId = "distFromShore_carb_strat",
-      label = "Distance from Shore",
+      label = "Distance from Shore [km]",
       min = 0.1,
       max = max_dist_from_shore_km,
       value = 1,
@@ -188,7 +190,7 @@ ui <- navbarPage(
     ),
     checkboxInput(
       inputId = "plot_hiatuses_carb_strat",
-      label = "Display Hiatuses in Rock",
+      label = "Display Hiatuses in Strat. Column",
       value = FALSE
     ),
     plotOutput(
@@ -213,13 +215,14 @@ ui <- navbarPage(
              img(src='logos/UU_logo.jpg', width="70%",alt="Logo of UU",align = "left"))
     )
   ),
+  #### Panel: Stratigraphuic Paleobiology ####
   tabPanel(
     title = "Stratigraphic Paleobiology",
     column(
       2,
       sliderInput(
         inputId = "distFromShore",
-        label = "Distance from Shore",
+        label = "Distance from Shore [km]",
         min = 0.1,
         max = max_dist_from_shore_km,
         value = 1,
@@ -228,7 +231,7 @@ ui <- navbarPage(
       ),
       checkboxInput(
         inputId = "plotSeaLevel",
-        label = "Show sea level",
+        label = "Show Sea Level",
         value = FALSE
       ),
       checkboxInput(
@@ -238,12 +241,15 @@ ui <- navbarPage(
       ),
       checkboxInput(
         inputId = "plot_hiatuses",
-        label = "Display Hiatuses in Rock",
+        label = "Display Hiatuses in Stratigraphy",
         value = FALSE
       ),
       wellPanel(
         tags$h3("Evolutionary Simulations"),
-        actionButton("refreshSimulations", label = "refresh simulations"),
+        actionButton(
+          inputId = "refreshSimulations", 
+          label = "refresh simulations"
+        ),
         selectInput(
           inputId = "noOfSims",
           label = "Number of Simulations",
@@ -251,7 +257,7 @@ ui <- navbarPage(
         ),
         selectInput(
           inputId = "modeOfEvolution",
-          label = "mode of evolution",
+          label = "Mode of Evolution",
           choices = list("Random Walk", "Stasis", "Ornstein-Uhlenbeck")
         ),
         conditionalPanel(
@@ -371,7 +377,7 @@ ui <- navbarPage(
         ),
         textInput(
           inputId = "trait_name",
-          label = "Trait",
+          label = "Name of Trait",
           value = "log10(Body Size)"
         )
       )
@@ -412,7 +418,7 @@ ui <- navbarPage(
 )
 
 
-
+#### Server ####
 server <- function(input, output) {
   #### Trait Evolution: Reactive Variables ####
   eventReactive(eventExpr = input$refreshSimulations_trait_evo, {
