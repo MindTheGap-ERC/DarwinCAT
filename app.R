@@ -47,9 +47,8 @@ ui <- navbarPage(
   tabPanel(
     title = "Modes of Evolution",
     "Intro to Evo Modes goes here",
-    plotOutput(
-      outputId = "timeDomainPlot_trait_evo"
-    ),
+    column(
+      width = 4,
     wellPanel(
       tags$h3("Evolutionary Simulations"),
       actionButton(
@@ -153,6 +152,13 @@ ui <- navbarPage(
         label = "Name of Trait",
         value = "log10(Body Size)"
       )
+    )
+    
+    ),
+    column(width = 8,
+           plotOutput(
+             outputId = "timeDomainPlot_trait_evo"
+           )
     ),
     
     
@@ -174,34 +180,42 @@ ui <- navbarPage(
     
     title = "Carbonate Stratigraphy",
     "Intro to Strat Pal goes here",
-    sliderInput(
-      inputId = "distFromShore_carb_strat",
-      label = "Distance from Shore [km]",
-      min = 0.1,
-      max = max_dist_from_shore_km,
-      value = 1,
-      step = 0.1,
-      animate = TRUE
+    column(
+      width = 4,
+      sliderInput(
+        inputId = "distFromShore_carb_strat",
+        label = "Distance from Shore [km]",
+        min = 0.1,
+        max = max_dist_from_shore_km,
+        value = 1,
+        step = 0.1,
+        animate = TRUE
+      ),
+      checkboxInput(
+        inputId = "plot_time_gaps_carb_strat",
+        label = "Display Gaps in Time",
+        value = FALSE
+      ),
+      checkboxInput(
+        inputId = "plot_hiatuses_carb_strat",
+        label = "Display Hiatuses in Strat. Column",
+        value = FALSE
+      )
     ),
-    checkboxInput(
-      inputId = "plot_time_gaps_carb_strat",
-      label = "Display Gaps in Time",
-      value = FALSE
+    column(
+      width = 8,
+      plotOutput(
+        outputId = "wheelerDiagram"
+      ),
+      plotOutput(
+        outputId = "basinTransect"
+      ),
+      plotOutput(
+        outputId = "ageDepthModelPlot_carb_strat"
+      )
     ),
-    checkboxInput(
-      inputId = "plot_hiatuses_carb_strat",
-      label = "Display Hiatuses in Strat. Column",
-      value = FALSE
-    ),
-    plotOutput(
-      outputId = "wheelerDiagram"
-    ),
-    plotOutput(
-      outputId = "basinTransect"
-    ),
-    plotOutput(
-      outputId = "ageDepthModelPlot_carb_strat"
-    ),
+
+
     #### Funding
     hr(),
     fluidRow(
