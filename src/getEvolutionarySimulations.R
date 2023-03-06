@@ -45,7 +45,7 @@ getEvolutionarySimulations <- function(noOfSims, mode, ...) {
       noiseIncrements <- rnorm(
         n = length(time_myr) - 1,
         mean = 0,
-        sd = sqrt(diff(t))
+        sd = sqrt(diff(time_myr))
       )
       ouval <- rep(NA, length(time_myr))
       ouval[1] <- x0
