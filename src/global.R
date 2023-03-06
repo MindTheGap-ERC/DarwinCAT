@@ -1,42 +1,46 @@
 load(file = "data/age_depth_models_for_shiny_app.Rdata")
 
+# cut off for sliders & adms
 max_dist_from_shore_km = 12
 
+# load background images
 wheeler_diagram = readPNG("www/geology/wheeler_diagram.png")
 basin_transect = readPNG("www/geology/basin_transect.png")
 
+# plot options: wheeler diagram
 wheeler_diagram_lty = 1
 wheeler_diagram_lwd = 1
 wheeler_diagram_col = "black"
-  
+
+# plot options: basin transect  
 basin_transect_lty = 1
 basin_transect_lwd = 1
 basin_transect_col = "black"
 
-# Age-depth model plot options
+# plot options: adm
 col_adm <- "black"
 lwd_adm <- 3
 lty_adm <- 1
 
-# removed time interval plot options
+# plot options: removed time interval
 removed_time_col <- grey(0.7)
 
-# hiatus strat plot options
+# plot options: hiatus in strat domain
 hiatus_strat_col <- grey(0.9)
 hiatus_strat_lwd <- 3
 hiatus_strat_lty <- 1
 
-# sea level plot options
+# plot options: sea level
 sl_col <- "blue"
 sl_lty <- 1
 sl_lwd <- 3
 
-# trait simulation plotting options
+# plot options: trait values
 trait_cols <- c("seagreen", "sienna", "lightblue4")
 trait_lwds <- rep(2, 3)
 trait_ltys <- rep(1, 3)
 
-# plot option zero axis
+# zero axis: plot options
 zero_axis_col <- grey(0.2)
 zero_axis_lty <- 3
 zero_axis_lwd <- 1
