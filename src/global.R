@@ -1,4 +1,4 @@
-load(file = "data/age_depth_models_for_shiny_app.Rdata")
+load(file = "data/age_depth_models_for_shiny_app.RData")
 
 # max depth for basin transect plot
 max_depth_basin_transect <- -max(sapply(
