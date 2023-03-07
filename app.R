@@ -14,7 +14,7 @@ source("src/makeTimeDomainPlot.R")
 source("src/makeStratDomainPlot.R")
 source("src/makeBasinTransectPlot.R")
 source("src/makeWheelerDiagram.R")
-source("src/makeTimeDOmainPlot_no_gap.R")
+source("src/makeTimeDomainPlot_no_gap.R")
 
 
 #### Iser interface ####
@@ -26,47 +26,47 @@ ui <- navbarPage(
   tabPanel(
     title = "Introduction",
     "Sneak peek of DarwinCAT, not an official release! To view model outputs, navigate to the Panel \"Stratigraphic Paleobiology\"",
-    fluidRow(
-      div(style = "margin-left: 1em; margin-bottom: -0.5em", tags$h4(" Creators")),
-      column(
-        6,
-        tags$h5(tags$b("Niklas Hohmann")),
-        fluidRow(
-          column(5, img(src = "people/niklas_hohmann.jpg", alt = "Picture of Niklas Hohmann", align = "left", width = "100%")),
-          column(
-            7,
-            div(style = "margin-left: -4em", tags$ul(
-              "PhD candidate", br(),
-              "Utrecht University, The Netherlands", br(),
-              "Email: N.Hohmann (at) uu.nl", br(),
-              HTML("Twitter: <a href=https://twitter.com/HohmannNiklas target=\"_blank\" > @HohmannNiklas </a>"), br(),
-              HTML("Mastodon: <a href=https://ecoevo.social/@Niklas_Hohmann target=\"_blank\" > @Niklas_Hohmann@ecoevo.social </a>"), br(),
-              HTML("<a href=https://scholar.google.com/citations?hl=de&user=2CB_ktEAAAAJ target=\"_blank\" > Google Scholar profile </a>"), br(),
-              HTML("Profile on the <a href=https://www.uu.nl/staff/NHohmann target=\"_blank\" > university webpage </a>"), br(),
-              HTML("<a href=https://github.com/NiklasHohmann target=\"_blank\" > GitHub page </a>")
-            )),
-          )
-        )
-      ),
-      column(
-        6,
-        tags$h5(tags$b("Dr. Emilia Jarochowska")),
-        fluidRow(
-          column(5, img(src = "people/emilia_jarochowska.jpg", alt = "Picture of Emilia Jarochowska", align = "left", width = "100%")),
-          column(7, div(style = "margin-left: -4em", tags$ul(
-            "Utrecht University, The Netherlands", br(),
-            "Email: e.b.jarochowska (at) uu.nl", br(),
-            HTML("Mastodon: <a href=https://circumstances.run/@Emiliagnathus target=\"_blank\" > @Emiliagnathus@circumstances.run </a>"), br(),
-            HTML("<a href=https://scholar.google.de/citations?user=Zrldp2MAAAAJ&hl=en target=\"_blank\" > Google Scholar profile </a>"), br(),
-            HTML("Profile on the <a href=https://www.uu.nl/staff/EBJarochowska target=\"_blank\" > university webpage </a>")
-          )), )
-        )
-      )
-    ),
+    # fluidRow(
+    #   div(style = "margin-left: 1em; margin-bottom: -0.5em", tags$h4(" Creators")),
+    #   column(
+    #     6,
+    #     tags$h5(tags$b("Niklas Hohmann")),
+    #     fluidRow(
+    #       column(5, img(src = "people/niklas_hohmann.jpg", alt = "Picture of Niklas Hohmann", align = "left", width = "100%")),
+    #       column(
+    #         7,
+    #         div(style = "margin-left: -4em", tags$ul(
+    #           "PhD candidate", br(),
+    #           "Utrecht University, The Netherlands", br(),
+    #           "Email: N.Hohmann (at) uu.nl", br(),
+    #           HTML("Twitter: <a href=https://twitter.com/HohmannNiklas target=\"_blank\" > @HohmannNiklas </a>"), br(),
+    #           HTML("Mastodon: <a href=https://ecoevo.social/@Niklas_Hohmann target=\"_blank\" > @Niklas_Hohmann@ecoevo.social </a>"), br(),
+    #           HTML("<a href=https://scholar.google.com/citations?hl=de&user=2CB_ktEAAAAJ target=\"_blank\" > Google Scholar profile </a>"), br(),
+    #           HTML("Profile on the <a href=https://www.uu.nl/staff/NHohmann target=\"_blank\" > university webpage </a>"), br(),
+    #           HTML("<a href=https://github.com/NiklasHohmann target=\"_blank\" > GitHub page </a>")
+    #         )),
+    #       )
+    #     )
+    #   ),
+    #   column(
+    #     6,
+    #     tags$h5(tags$b("Dr. Emilia Jarochowska")),
+    #     fluidRow(
+    #       column(5, img(src = "people/emilia_jarochowska.jpg", alt = "Picture of Emilia Jarochowska", align = "left", width = "100%")),
+    #       column(7, div(style = "margin-left: -4em", tags$ul(
+    #         "Utrecht University, The Netherlands", br(),
+    #         "Email: e.b.jarochowska (at) uu.nl", br(),
+    #         HTML("Mastodon: <a href=https://circumstances.run/@Emiliagnathus target=\"_blank\" > @Emiliagnathus@circumstances.run </a>"), br(),
+    #         HTML("<a href=https://scholar.google.de/citations?user=Zrldp2MAAAAJ&hl=en target=\"_blank\" > Google Scholar profile </a>"), br(),
+    #         HTML("Profile on the <a href=https://www.uu.nl/staff/EBJarochowska target=\"_blank\" > university webpage </a>")
+    #       )), )
+    #     )
+    #   )
+    # ),
     hr(),
     fluidRow(
-      tags$h4("Code Acailability"),
-      tags$p("The code for this app is available under <a href=https://github.com/NiklasHohmann/DarinCAT target=\"_blank\" > github.com/NiklasHohmann/DarwinCAT </a>"),
+      # tags$h4("Code Availability"),
+      # tags$p("The code for this app is available under <a href=https://github.com/NiklasHohmann/DarinCAT target=\"_blank\" > github.com/NiklasHohmann/DarwinCAT </a>"),
       tags$h4("Funding"),
       tags$p("Online access to the App is made possible by the IDUB programme of the University of Warsaw (Grant BOB-IDUB-622-18/2022). Co-funded by the European Union (ERC, MindTheGap, StG project no 101041077). Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Research Council. Neither the European Union nor the granting authority can be held responsible for them.")
     ),
@@ -250,7 +250,6 @@ ui <- navbarPage(
   #### Panel: Carbonate Stratigraphy ####
   tabPanel(
     title = "Carbonate Stratigraphy",
-    "Intro to Strat Pal goes here",
     column(
       width = 4,
       sliderInput(
