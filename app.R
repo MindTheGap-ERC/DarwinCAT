@@ -65,8 +65,13 @@ ui <- navbarPage(
     # ),
     hr(),
     fluidRow(
-      # tags$h4("Code Availability"),
-      # tags$p("The code for this app is available under <a href=https://github.com/NiklasHohmann/DarinCAT target=\"_blank\" > github.com/NiklasHohmann/DarwinCAT </a>"),
+      tags$h4("Code Availability"),
+      tags$p(HTML('The code for this app is available under <a href="https://github.com/NiklasHohmann/DarwinCAT" target="_blank">github.com/NiklasHohmann/DarwinCAT </a>')),
+      
+      tags$h4("License"),
+      tags$p(HTML('<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. The code used is licensed under a <a rel="license" href="http://www.apache.org/licenses/LICENSE-2.0"> Apache 2.0 License</a>.')),
+      
+      
       tags$h4("Funding"),
       tags$p("Online access to the App is made possible by the IDUB programme of the University of Warsaw (Grant BOB-IDUB-622-18/2022). Co-funded by the European Union (ERC, MindTheGap, StG project no 101041077). Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Research Council. Neither the European Union nor the granting authority can be held responsible for them.")
     ),
