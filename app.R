@@ -42,7 +42,7 @@ ui <- navbarPage(
     #           HTML("Twitter: <a href=https://twitter.com/HohmannNiklas target=\"_blank\" > @HohmannNiklas </a>"), br(),
     #           HTML("Mastodon: <a href=https://ecoevo.social/@Niklas_Hohmann target=\"_blank\" > @Niklas_Hohmann@ecoevo.social </a>"), br(),
     #           HTML("<a href=https://scholar.google.com/citations?hl=de&user=2CB_ktEAAAAJ target=\"_blank\" > Google Scholar profile </a>"), br(),
-    #           HTML("Profile on the <a href=https://www.uu.nl/staff/NHohmann target=\"_blank\" > university webpage </a>"), br(),
+    #           HTML("Profile on the <a rel='author' href=https://www.uu.nl/staff/NHohmann target=\"_blank\" > university webpage </a>"), br(),
     #           HTML("<a href=https://github.com/NiklasHohmann target=\"_blank\" > GitHub page </a>")
     #         )),
     #       )
@@ -58,7 +58,7 @@ ui <- navbarPage(
     #         "Email: e.b.jarochowska (at) uu.nl", br(),
     #         HTML("Mastodon: <a href=https://circumstances.run/@Emiliagnathus target=\"_blank\" > @Emiliagnathus@circumstances.run </a>"), br(),
     #         HTML("<a href=https://scholar.google.de/citations?user=Zrldp2MAAAAJ&hl=en target=\"_blank\" > Google Scholar profile </a>"), br(),
-    #         HTML("Profile on the <a href=https://www.uu.nl/staff/EBJarochowska target=\"_blank\" > university webpage </a>")
+    #         HTML("Profile on the <a rel='author' href=https://www.uu.nl/staff/EBJarochowska target=\"_blank\" > university webpage </a>")
     #       )), )
     #     )
     #   )
