@@ -15,7 +15,8 @@ makeAgeDepthModelPlot <- function(ageDepthModel,
     ylab = "Height [m]",
     xlim = range(time_myr),
     ylim = range(ageDepthModel$heightRaw),
-    type = "l"
+    type = "l",
+    main = "Age-Depth Model"
   )
   
   # Plot time intervals that are not preserved
@@ -52,5 +53,6 @@ makeAgeDepthModelPlot <- function(ageDepthModel,
         lty = hiatus_strat_lty)
     }
   }
+  
   
 }

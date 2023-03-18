@@ -16,7 +16,8 @@ makeTimeDomainPlot_no_gap <- function(evolutionarySimulations,
     ylim = c(ymin, ymax),
     xlab = "Time [Ma]",
     ylab = "",
-    type = "l"
+    type = "l",
+    main = "Trait Evolution"
   )
 
   # plot 0 line
@@ -31,7 +32,8 @@ makeTimeDomainPlot_no_gap <- function(evolutionarySimulations,
   # plot trait name
   mtext(
     text = trait_name,
-    side = 2
+    side = 2,
+    line = 2.5
   )
 
   # plot traits

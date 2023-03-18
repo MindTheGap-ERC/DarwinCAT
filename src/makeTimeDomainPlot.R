@@ -18,7 +18,8 @@ makeTimeDomainPlot <- function(evolutionarySimulations,
     ylim = c(ymin, ymax),
     xlab = "Time [Ma]",
     ylab = "",
-    type = "l"
+    type = "l",
+    main = "Trait Evolution in Time Domain"
   )
   
   # plot 0 axis
@@ -47,7 +48,8 @@ makeTimeDomainPlot <- function(evolutionarySimulations,
   
   mtext(
     text = trait_name,
-    side = 2
+    side = 2,
+    line = 2.5
   )
   
   for (i in seq_along(evolutionarySimulations)) {
@@ -71,12 +73,15 @@ makeTimeDomainPlot <- function(evolutionarySimulations,
     mtext(
       text = "Sea Level",
       side = 4,
-      col = sl_col
+      col = sl_col,
+      line = 1
     )
     axis(
       side = 4,
       at = c(ymin, 0.5 * (ymax + ymin), ymax),
-      labels = c("Low", "", "High")
+      labels = c("Low", "", "High"),
+      col.ticks = sl_col,
+      col.axis = sl_col
     )
   }
 }

@@ -4,16 +4,16 @@ makeStratDomainPlot <- function(ageDepthModel,
                                 trait_name = "",
                                 plotSeaLevel = TRUE,
                                 plot_hiatuses = TRUE,
-                                sampling_strategy = "Constant Distance",
+                                sampling_strategy = "Fixed Distance",
                                 no_of_samples = 10,
                                 dist_between_samples = 1) {
-  if (sampling_strategy == "Constant Distance") {
+  if (sampling_strategy == "Fixed Distance") {
     sampling_locations <- seq(
       from = min(ageDepthModel$heightRaw) + dist_between_samples,
       to = max(ageDepthModel$heightRaw),
       by = dist_between_samples
     )
-  } else if (sampling_strategy == "Constant Number") {
+  } else if (sampling_strategy == "Fixed Number") {
     sampling_locations <- seq(
       from = min(ageDepthModel$heightRaw),
       to = max(ageDepthModel$heightRaw),
@@ -39,12 +39,14 @@ makeStratDomainPlot <- function(ageDepthModel,
     xlim = c(ymin, ymax),
     ylab = "Height [m]",
     xlab = "",
-    type = "l"
+    type = "l",
+    main = "Trait Evolution Observed\nin Stratigraphic Column"
   )
 
   mtext(
     text = trait_name,
-    side = 1
+    side = 1,
+    line = 2.5
   )
 
   # zero line
@@ -101,13 +103,16 @@ makeStratDomainPlot <- function(ageDepthModel,
     mtext(
       text = "Sea Level",
       side = 3,
-      col = sl_col
+      col = sl_col,
+      line =  0
     )
 
     axis(
       side = 3,
-      at = c(ymin, 0.5 * (ymax + ymin), ymax),
-      labels = c("Low", "", "High")
+      at = c(ymin, ymax),
+      labels = c("Low", "High"),
+      col.ticks = sl_col,
+      col.axis = sl_col
     )
   }
 }

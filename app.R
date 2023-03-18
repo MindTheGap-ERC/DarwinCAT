@@ -25,6 +25,7 @@ ui <- navbarPage(
   #### Panel: Introduction ####
   tabPanel(
     title = "Introduction",
+
     "Sneak peek of DarwinCAT, not an official release! To view model outputs, navigate to the Panel \"Stratigraphic Paleobiology\"",
     # fluidRow(
     #   div(style = "margin-left: 1em; margin-bottom: -0.5em", tags$h4(" Creators")),
@@ -81,19 +82,19 @@ ui <- navbarPage(
     hr(),
     fluidRow(
       column(
-        3,
+        width = 3,
         img(src = "logos/UW_logo.svg", alt = "Logo of UW", width = "30%", align = "left")
       ),
       column(
-        3,
+        width = 3,
         img(src = "logos/IDUB_logo.jpeg", alt = "Logo of IDUB", width = "30%", align = "left")
       ),
       column(
-        3,
+        width = 3,
         img(src = "logos/mind_the_gap_logo.png", alt = "Logo of MindTheGap", width = "70%", align = "left")
       ),
       column(
-        3,
+        width = 3,
         img(src = "logos/UU_logo.jpg", width = "70%", alt = "Logo of UU", align = "left")
       )
     )
@@ -124,7 +125,7 @@ ui <- navbarPage(
             condition = "input.modeOfEvolution_trait_evo == 'Random Walk'",
             sliderInput(
               inputId = "parameter1_trait_evo",
-              label = "Variability (sigma)",
+              label = "Variability",
               min = 0,
               max = 4,
               value = 1,
@@ -132,7 +133,7 @@ ui <- navbarPage(
             ),
             sliderInput(
               inputId = "parameter2_trait_evo",
-              label = "Drift (my)",
+              label = "Drift",
               min = -2,
               max = 2,
               value = 0,
@@ -205,9 +206,14 @@ ui <- navbarPage(
       ),
       column(
         width = 8,
+        fluidRow(
         plotOutput(
           outputId = "timeDomainPlot_trait_evo"
+        )
         ),
+        fluidRow(
+          tags$h4("Text Goes Here")
+        )
       ),
       column(
         width = 2,
@@ -215,7 +221,7 @@ ui <- navbarPage(
           tags$h3("Plot Options"),
           sliderInput(
             inputId = "axis_limits_trait_evo",
-            label = "y axis limits",
+            label = "Axis Limits",
             min = -8,
             max = 8,
             value = c(-3, 3),
@@ -224,7 +230,7 @@ ui <- navbarPage(
           ),
           textInput(
             inputId = "trait_name_trait_evo",
-            label = "Name of Trait",
+            label = "Trait Name",
             value = "log10(Body Size)"
           )
         )
@@ -235,19 +241,19 @@ ui <- navbarPage(
     hr(),
     fluidRow(
       column(
-        3,
+        width = 3,
         img(src = "logos/UW_logo.svg", alt = "Logo of UW", width = "30%", align = "left")
       ),
       column(
-        3,
+        width = 3,
         img(src = "logos/IDUB_logo.jpeg", alt = "Logo of IDUB", width = "30%", align = "left")
       ),
       column(
-        3,
+        width = 3,
         img(src = "logos/mind_the_gap_logo.png", alt = "Logo of MindTheGap", width = "70%", align = "left")
       ),
       column(
-        3,
+        width = 3,
         img(src = "logos/UU_logo.jpg", width = "70%", alt = "Logo of UU", align = "left")
       )
     )
@@ -256,38 +262,67 @@ ui <- navbarPage(
   tabPanel(
     title = "Carbonate Stratigraphy",
     column(
-      width = 4,
-      sliderInput(
-        inputId = "distFromShore_carb_strat",
-        label = "Distance from Shore",
-        min = 0.1,
-        max = max_dist_from_shore_km,
-        value = 1,
-        step = 0.1,
-        post = " km",
-        animate = TRUE
-      ),
-      checkboxInput(
-        inputId = "plot_time_gaps_carb_strat",
-        label = "Display Gaps in Time",
-        value = FALSE
-      ),
-      checkboxInput(
-        inputId = "plot_hiatuses_carb_strat",
-        label = "Display Hiatuses in Strat. Column",
-        value = FALSE
+      width = 3,
+      wellPanel(
+        sliderInput(
+          inputId = "distFromShore_carb_strat",
+          label = "Distance from Shore",
+          min = 0.1,
+          max = max_dist_from_shore_km,
+          value = 1,
+          step = 0.1,
+          post = " km",
+          animate = TRUE
+        ),
+        checkboxInput(
+          inputId = "plot_time_gaps_carb_strat",
+          label = "Display Gaps in Time",
+          value = FALSE
+        ),
+        checkboxInput(
+          inputId = "plot_hiatuses_carb_strat",
+          label = "Display Hiatuses in Stratigraphic Column",
+          value = FALSE
+        )
       )
     ),
     column(
-      width = 8,
-      plotOutput(
-        outputId = "wheelerDiagram"
+      width = 9,
+      fluidRow(
+        column(
+          width = 5,
+          "Text"
+        ),
+        column(
+          width = 7,
+          plotOutput(
+            outputId = "basinTransect"
+          )
+        )
       ),
-      plotOutput(
-        outputId = "basinTransect"
+      fluidRow(
+        column(
+          width = 5,
+          "Text"
+        ),
+        column(
+          width = 7,
+          plotOutput(
+            outputId = "wheelerDiagram"
+          )
+        ),
       ),
-      plotOutput(
-        outputId = "ageDepthModelPlot_carb_strat"
+      fluidRow(
+        column(
+          width = 5,
+          "Text"
+        ),
+        column(
+          width = 7,
+          plotOutput(
+            outputId = "ageDepthModelPlot_carb_strat"
+          )
+        )
       )
     ),
 
@@ -296,19 +331,19 @@ ui <- navbarPage(
     hr(),
     fluidRow(
       column(
-        3,
+        width = 3,
         img(src = "logos/UW_logo.svg", alt = "Logo of UW", width = "30%", align = "left")
       ),
       column(
-        3,
+        width = 3,
         img(src = "logos/IDUB_logo.jpeg", alt = "Logo of IDUB", width = "30%", align = "left")
       ),
       column(
-        3,
+        width = 3,
         img(src = "logos/mind_the_gap_logo.png", alt = "Logo of MindTheGap", width = "70%", align = "left")
       ),
       column(
-        3,
+        width = 3,
         img(src = "logos/UU_logo.jpg", width = "70%", alt = "Logo of UU", align = "left")
       )
     )
@@ -318,17 +353,17 @@ ui <- navbarPage(
     title = "Stratigraphic Paleobiology",
     fluidRow(
     column(
-      2,
+      width = 2,
 
       wellPanel(
         tags$h3("Evolutionary Simulations"),
         actionButton(
           inputId = "refreshSimulations",
-          label = "refresh simulations"
+          label = "Refresh"
         ),
         selectInput(
           inputId = "noOfSims",
-          label = "Number of Simulations",
+          label = "Number of Lineages",
           choices = list("1", "2", "3")
         ),
         selectInput(
@@ -340,7 +375,7 @@ ui <- navbarPage(
           condition = "input.modeOfEvolution == 'Random Walk'",
           sliderInput(
             inputId = "parameter1",
-            label = "Variability sigma",
+            label = "Variability",
             min = 0,
             max = 4,
             value = 1,
@@ -348,7 +383,7 @@ ui <- navbarPage(
           ),
           sliderInput(
             inputId = "parameter2",
-            label = "Drift my",
+            label = "Drift",
             min = -2,
             max = 2,
             value = 0,
@@ -356,7 +391,7 @@ ui <- navbarPage(
           ),
           sliderInput(
             inputId = "parameter3",
-            label = "initial  value",
+            label = "Initial Trait Value",
             min = -1,
             max = 1,
             value = 0,
@@ -367,7 +402,7 @@ ui <- navbarPage(
           condition = "input.modeOfEvolution == 'Stasis'",
           sliderInput(
             inputId = "parameter4",
-            label = "mean value",
+            label = "Mean Trait Value",
             min = -1,
             max = 1,
             value = 0,
@@ -386,7 +421,7 @@ ui <- navbarPage(
           condition = "input.modeOfEvolution == 'Ornstein-Uhlenbeck'",
           sliderInput(
             inputId = "parameter6",
-            label = "long term mean value mu",
+            label = "Long Term Mean",
             min = -2,
             max = 2,
             value = 0,
@@ -394,7 +429,7 @@ ui <- navbarPage(
           ),
           sliderInput(
             inputId = "parameter7",
-            label = "pressure of selection theta",
+            label = "Pressure of Selection",
             min = 0,
             max = 10,
             value = 1,
@@ -402,7 +437,7 @@ ui <- navbarPage(
           ),
           sliderInput(
             inputId = "parameter8",
-            label = "volatility/variability sigma",
+            label = "Volatility",
             min = 0,
             max = 2,
             value = 1,
@@ -410,7 +445,7 @@ ui <- navbarPage(
           ),
           sliderInput(
             inputId = "parameter9",
-            label = "initial value",
+            label = "Initial Trait Value",
             min = -4,
             max = 4,
             value = 2,
@@ -422,7 +457,7 @@ ui <- navbarPage(
         tags$h3("Plot Options"),
         sliderInput(
           inputId = "axis_limits",
-          label = "y axis limits",
+          label = "Axis Limits",
           min = -8,
           max = 8,
           value = c(-3, 3),
@@ -431,13 +466,14 @@ ui <- navbarPage(
         ),
         textInput(
           inputId = "trait_name",
-          label = "Name of Trait",
+          label = "Trait Name",
           value = "log10(Body Size)"
         )
       )
     ),
     column(
       width = 8,
+      fluidRow(
       fluidRow(
         column(
           width = 4,
@@ -452,6 +488,10 @@ ui <- navbarPage(
         width = 8,
         plotOutput("timeDomainPlot"),
         offset = 4
+      )
+      ),
+      fluidRow(
+        "texty"
       )
     ),
     column(
@@ -479,7 +519,7 @@ ui <- navbarPage(
         ),
         checkboxInput(
           inputId = "plot_hiatuses",
-          label = "Display Hiatuses in Stratigraphy",
+          label = "Display Hiatuses in Stratigraphic Column",
           value = FALSE
         )
       ),
@@ -487,11 +527,11 @@ ui <- navbarPage(
         selectInput(
           inputId = "sampling_strategy",
           label = "Sampling Strategy",
-          choices = list("Constant Number", "Constant Distance"),
-          selected = "Constant Distance"
+          choices = list("Fixed Number", "Fixed Distance"),
+          selected = "Fixed Distance"
         ),
         conditionalPanel(
-          condition = "input.sampling_strategy == 'Constant Number'",
+          condition = "input.sampling_strategy == 'Fixed Number'",
           sliderInput(
             inputId = "no_of_samples",
             label = "Number of Samples",
@@ -503,7 +543,7 @@ ui <- navbarPage(
           )
         ),
         conditionalPanel(
-          condition = "input.sampling_strategy == 'Constant Distance'",
+          condition = "input.sampling_strategy == 'Fixed Distance'",
           sliderInput(
             inputId = "dist_between_samples",
             label = "Distance between Samples",
