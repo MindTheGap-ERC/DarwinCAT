@@ -2,3 +2,4 @@
 deployApp.R
 
 rsconnect/
+.Rproj.user
