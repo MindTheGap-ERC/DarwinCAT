@@ -8,7 +8,8 @@ makeWheelerDiagram <- function(distanceFromShore) {
     ylim = range(time_myr),
     xlim = c(0, max_dist_from_shore_km),
     xlab = "Distance from Shore [km]",
-    ylab = "Time [Myr]"
+    ylab = "Time [Myr]",
+    main = "Wheeler Diagram"
   )
 
   # insert wheeler diagram as background
