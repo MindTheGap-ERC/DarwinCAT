@@ -62,8 +62,8 @@ ui <- navbarPage(
     #     )
     #   )
     # ),
-
-      HTML('    <h1> Text for Intro Page </h1>
+    div(style = "margin-left: 2em; margin-right: 2em", 
+      HTML('    <h1> Preservation of Evolution in the Fossil Record</h1>
     <!-- The text below will go on the intro page-->
     <h4> Motivation </h4>
     <p>In the fossil record, we can observe gradual changes in lineages of organisms over timescales of thousands to millions of years. The changes can be in any aspect 
@@ -71,14 +71,14 @@ ui <- navbarPage(
     morphology, such as tooth size of a primate, the body weight of a squirrel (Gingerich, 1979) or the number of denticles of a conodont (Dzik, 1991). If we follow
     these gradual changes through a geological succession, we should be able - in theory - to catch evolution "red handed" and even spot moments of speciation and find out <b>how</b> it happens:
     do species gradually turn into other species (<i>anagenesis</i>) or do new species split out from the old ones (<i>branching speciation</i>)?</p>
-    <h4> What could go wrong? </h4>
+    <h4> What Could go Wrong? </h4>
     <p>If the geological record was a faithful record of the evolutionary time, this would be true. First, a geological section is only a small part of the space in which
     the organism lived. And most organisms do not occur in <i>everything everywhere all at once</i> (check if not bacteria or tardigrade). So if gigantic squirrels appear in 
     a section we study, it could be because their ancestors evolved towards larger body sizes or larger squirrels lived somewhere else and, owing to some deterministic or
     accidental factors, migrated into the part of squirrel habitat preserved in our geological section at a particular time. Many morhological traits vary systematically
     with environmental gradients, e.g. in the familiar Bergmann\'s rule, mamalian individuals and species living in colder areas tend to be larger than their counterparts in warmer climes. 
            So a morphological change in a geological section could be an evolutionary change or an environmental change to which the organisms responded phenotypically.</p>
-             <h4>The geological record is incomplete</h4>
+             <h4>The Geological Record is Incomplete</h4>
              <p>A geological section not only represents a small fragment of the space in which it was formed, but typically also a small part of time in which it was deposited.
            If omission (lack of deposition) or erosion took place, the corresponding time - with its fossils - will be missing. Instead of a gradual change in morphology, we might see a jump.
            Nonetheless, some palaeontologists proposed that exceptionally complete geological records record evolution faithfully. This approach is known under the name of <i>stratophenetics</i>.
@@ -104,12 +104,14 @@ ui <- navbarPage(
 
       HTML('<h4>References</h4>
              <ul>
-             <li>Aze, T., Ezard, T.H.G., Purvis, A., Coxall, H.K., Stewart, D.R.M., Wade, B.S., and Pearson, P.M. (2011). A phylogeny of Cenozoic macroperforate planktonic foraminifera from fossil data. Biological Reviews, 86, p. 900–927. [doi.org/10.1111/j.1469-185X.2011.00178.x](https://doi.org/10.1111/j.1469-185X.2011.00178.x).</li>
+             <li>Aze, T., Ezard, T.H.G., Purvis, A., Coxall, H.K., Stewart, D.R.M., Wade, B.S., and Pearson, P.M. (2011). A phylogeny of Cenozoic macroperforate planktonic foraminifera from fossil data. Biological Reviews, 86, p. 900–927. <a href="https://doi.org/10.1111/j.1469-185X.2011.00178.x">doi.org/10.1111/j.1469-185X.2011.00178.x</a></li>
              <li>Dzik, J. (1991). <a title="Go to Publication" href="https://bibliotekanauki.pl/articles/20386.pdf">Features of the fossil record of evolution</a>. Acta Palaeontologica Polonica, 36, p. 91-113.</li>
-             <li>Gingerich, P.D. (1979). The stratophenetic approach to phylogeny reconstruction in vertebrate paleontology. In: Cracraft, J. and Eldredge, N. <i>Phylogenetic analysis and palaeontology.</i> Columbia University Press, New York. pp. 41-77. https://doi.org/10.7312/crac92306-004</li>
-             <li>Smith, A.B. (2000). Stratigraphy in phylogeny reconstruction. Journal of Paleontology, 74, p. 763-766.</li>
+             <li>Gingerich, P.D. (1979). The stratophenetic approach to phylogeny reconstruction in vertebrate paleontology. In: Cracraft, J. and Eldredge, N. <i>Phylogenetic analysis and palaeontology.</i> Columbia University Press, New York. pp. 41-77. <a href="https://doi.org/10.7312/crac92306-004">doi.org/10.7312/crac92306-004</a></li>
+             <li>Smith, A.B. (2000). Stratigraphy in phylogeny reconstruction. Journal of Paleontology, 74, p. 763-766. <a href="https://doi.org/10.1666/0022-3360(2000)074%3C0763:SIPR%3E2.0.CO;2">doi.org/10.1666/0022-3360(2000)074%3C0763:SIPR%3E2.0.CO;2</a></li>
              
-             </ul>'),
+             </ul>')
+    )
+      ,
     #### Funding
     hr(),
     fluidRow(
@@ -254,7 +256,7 @@ ui <- navbarPage(
         ),
         fluidRow(
           HTML('<h4> Modes of Evolution </h4> <p> In evolutionary biology, models of <a title="Wikipedia article on phenotypic traits" href="https://en.wikipedia.org/w/index.php?title=Phenotypic_trait&oldid=1143667283">trait</a> evolution are subdivided into distinct <i>modes of evolution</i>. 
-               Here, we focus on three modes of evolution: Random walk, Stasis, and Ornstein-Uhlenbeck (Hunt, 2008; Hunt et al. 2008).
+               Here, we focus on three modes of evolution: Random walk, Stasis, and Ornstein-Uhlenbeck (Hunt, 2008; Hunt et al. 2008; Hopkins and Lidgard, 2012).
                The evolution of a trait within a <a title="Wikipedia article on Lineage" href="https://en.wikipedia.org/w/index.php?title=Lineage_(evolution)&oldid=1113106063">lineage</a> is specified by the mode of evolution and a set of model parameters.
                </p> <p>To specify the simulated mode of evolution and the number of lineages, use the drop-down menu.
         You can adjust the model parameters using the sliders.
@@ -263,9 +265,9 @@ ui <- navbarPage(
     </p> <h4> References </h4>
     <!-- References for the tab "Modes of Evolution"-->
     <ul>
-        <li> Hunt, G. (2008). The relative importance of directional change, random walks, and stasis in the evolution of fossil lineages. Proceedings of the National Academy of Sciences, 104, p. 18404-18408. [doi.org/10.1073/pnas.0704088104](https://doi.org/10.1073/pnas.0704088104) </li>
-        <li> Hopkins, M.J. and Lidgard, S. (2012). Evolutionary mode routinely varies among morphological traits within fossil species lineages. Proceedings of the National Academy of Sciences, 109, p. 20520-20525. [10.1073/pnas.1209901109](https://doi.org/10.1073/pnas.1209901109) </li>
-        <li> Hunt, G., Bell, M., and Travis, M.P. (2008). Evolution toward a new adaptive optimum: phenotypic evolution in a fossil stickleback lineage. Evolution, 62, p. 700-710. [doi.org/10.1111/j.1558-5646.2007.00310.x](https://doi.org/10.1111/j.1558-5646.2007.00310.x) </li>
+        <li> Hunt, G. (2008). The relative importance of directional change, random walks, and stasis in the evolution of fossil lineages. Proceedings of the National Academy of Sciences, 104, p. 18404-18408.  <a href="https://doi.org/10.1073/pnas.0704088104">doi.org/10.1073/pnas.0704088104</a></li>
+        <li> Hopkins, M.J. and Lidgard, S. (2012). Evolutionary mode routinely varies among morphological traits within fossil species lineages. Proceedings of the National Academy of Sciences, 109, p. 20520-20525. <a href="https://doi.org/10.1073/pnas.1209901109">doi.org/10.1073/pnas.1209901109</a></li>
+        <li> Hunt, G., Bell, M., and Travis, M.P. (2008). Evolution toward a new adaptive optimum: phenotypic evolution in a fossil stickleback lineage. Evolution, 62, p. 700-710. <a href="https://doi.org/10.1111/j.1558-5646.2007.00310.x">doi.org/10.1111/j.1558-5646.2007.00310.x</a></li>
     </ul>
 ')
         )
@@ -371,7 +373,7 @@ ui <- navbarPage(
     <p> On the right you see the Wheeler diagram of the simulated platform.
         A Wheeler diagram (<a title="Go to Publication" href="https://doi.org/10.1130/0016-7606(1964)75[599:BLSAT]2.0.CO;2">Wheeler 1964</a>), also known as a chronostratigraphic chart, shows when and where sediment in the basin is deposited.
         White areas indicate the abscence of preserved rocks.
-        The diagram demonstrates that gaps in the rock record vary systematically with time and as a function of distance from the shore.
+        The diagram demonstrates that gaps in the rock record vary systematically with time and as a function of distance from the shore. The proportion of time preserved in rocks is called stratigraphic completeness.
     </p>')
         ),
         column(
@@ -403,9 +405,9 @@ ui <- navbarPage(
         HTML('<h4> References </h4>
     <!-- References for the tab "Carbonate Stratigraphy"-->
     <ul>
-        <li> Burgess, P.M. (2013). CarboCAT: A cellular automata model of heterogeneous carbonate strata: Computers & Geosciences, 53, p. 129–140, [doi: 10.1016/j.cageo.2011.08.026](https://www.sciencedirect.com/science/article/pii/S0098300411002949). </li>
-        <li> Wheeler, H.E. (1964). Baselevel, lithosphere surface, and time-stratigraphy. Geological Society of America Bulletin, 75, p. 599-610. [doi: 10.1130/0016-7606(1964)75[599:BLSAT2.0.CO;2](https://doi.org/10.1130/0016-7606(1964)75[599:BLSAT]2.0.CO;2).</li>
-        <li> Hohmann, N. (2021). Incorporating Information on Varying Sedimentation Rates in Paleontological Analyses. PALAIOS, 36, p. 53–67. [doi: 10.2110/palo.2020.038](https://doi.org/10.2110/palo.2020.038)</li>
+        <li> Burgess, P.M. (2013). CarboCAT: A cellular automata model of heterogeneous carbonate strata: Computers & Geosciences, 53, p. 129–140, <a href="https://doi.org/10.1016/j.cageo.2011.08.026">doi.org/10.1016/j.cageo.2011.08.026</a> </li>
+        <li> Wheeler, H.E. (1964). Baselevel, lithosphere surface, and time-stratigraphy. Geological Society of America Bulletin, 75, p. 599-610. <a href="https://doi.org/10.1130/0016-7606(1964)75[599:BLSAT]2.0.CO;2">doi: 10.1130/0016-7606(1964)75[599:BLSAT2.0.CO;2</a></li>
+        <li> Hohmann, N. (2021). Incorporating Information on Varying Sedimentation Rates in Paleontological Analyses. PALAIOS, 36, p. 53–67. <a href = "https://doi.org/10.2110/palo.2020.038">doi: 10.2110/palo.2020.038</a></li>
     </ul>')
       )
     ),
@@ -584,7 +586,21 @@ ui <- navbarPage(
       )
       ),
       fluidRow(
-        HTML('<h4> Text </h4>')
+        HTML('<h4> Where Geology and Biology Meet </h4>
+             <p>The geological record has gaps, but these gaps are not random, but change systematically. As a result, it systematically changes how we perceive evolution and ecology in the fossil record (Patzkowsky and Holland, 2012; Danise et al., 2019).</p>
+             <p>Select a mode of evolution and a number of lineages in the drop down menu. You can modify the model parameters via the sliders.
+             The figures show how the evolutionary history of the lineages originally looked (bottom right), how the age-depth model looks (top right), and what change of traits is observed in the section.
+             Use the slider on the right side to change the position in the basin you examine. In addition to displaying the time intervals and position of hiatuses, you can also show the sea level curve, an important control on the growth of the carbonate platform.
+             Do you see any connection between sea level and the timing of the gaps?
+             </p>
+             <p>You can adjust your sampling strategy in the panel on the right.</p>
+             <h4>References</h4>
+             <ul>
+        <li> Danise, S., Clémence, M. E., Price, G. D., Murphy, D. P., Gómez, J. J., & Twitchett, R. J. (2019). Stratigraphic and environmental control on marine benthic community change through the early Toarcian extinction event (Iberian Range, Spain). Palaeogeography, Palaeoclimatology, Palaeoecology, 524, 183-200. <a href="https://doi.org/10.1016/j.palaeo.2019.03.039">doi.org/10.1016/j.palaeo.2019.03.039</a></li>
+        <li> Patzkowsky, M. E., & Holland, S. M. (2012). Stratigraphic paleobiology. In Stratigraphic Paleobiology. University of Chicago Press</li>
+
+    </ul>
+             ')
       )
     ),
     column(

@@ -39,8 +39,12 @@ makeStratDomainPlot <- function(ageDepthModel,
     xlim = c(ymin, ymax),
     ylab = "Height [m]",
     xlab = "",
-    type = "l",
-    main = "Trait Evolution Observed\nin Stratigraphic Column"
+    type = "l"
+  )
+  
+  title(
+    main = "Trait Evolution Observed in\nthe Stratigraphic Column",
+    line = 2
   )
 
   mtext(
