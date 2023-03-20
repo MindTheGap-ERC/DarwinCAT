@@ -74,43 +74,87 @@ ui <- navbarPage(
         Motivation
         </h4>
         <p>
-        In the fossil record, we can observe gradual changes in lineages of organisms over timescales of thousands to millions of years. The changes can be in any aspect
-        of the organism, even behaviour, but we will only be able to track those which fossilize (i.e. have a preservation potential). This usually refers to skeletal
-        morphology, such as tooth size of a primate, the body weight of a squirrel (Gingerich, 1979) or the number of denticles of a conodont (Dzik, 1991). If we follow
-        these gradual changes through a geological succession, we should be able - in theory - to catch evolution "red handed" and even spot moments of speciation and find out <b>how</b> it happens:
-        do species gradually turn into other species (<i>anagenesis</i>) or do new species split out from the old ones (<i>branching speciation</i>)?
+        In the fossil record, we can observe gradual changes in lineages of 
+        organisms over timescales of thousands to millions of years. 
+        The changes can be in any aspect of the organism, even behaviour, but 
+        we will only be able to track those which fossilize 
+        (i.e. have a preservation potential). 
+        This usually refers to skeletal morphology, such as tooth size
+        of a primate, the body weight of a squirrel (Gingerich, 1979)
+        or the number of denticles of a conodont (Dzik, 1991). 
+        If we follow
+        these gradual changes through a geological succession, we should 
+        be able - in theory - to catch evolution "red handed" and even 
+        spot moments of speciation and find out <b>how</b> it happens:
+        do species gradually turn into other species (<i>anagenesis</i>) or do 
+        new species split out from the old ones (<i>branching speciation</i>)?
         </p>
         <h4>
         What Could go Wrong?
         </h4>
         <p>
-        If the geological record was a faithful record of the evolutionary time, this would be true. First, a geological section is only a small part of the space in which
-        the organism lived. And most organisms do not occur in <i>everything everywhere all at once</i> (check if not bacteria or tardigrade). So if gigantic squirrels appear in
-        a section we study, it could be because their ancestors evolved towards larger body sizes or larger squirrels lived somewhere else and, owing to some deterministic or
-        accidental factors, migrated into the part of squirrel habitat preserved in our geological section at a particular time. Many morhological traits vary systematically
-        with environmental gradients, e.g. in the familiar Bergmann\'s rule, mamalian individuals and species living in colder areas tend to be larger than their counterparts in warmer climes.
-        So a morphological change in a geological section could be an evolutionary change or an environmental change to which the organisms responded phenotypically.
+        If the geological record was a faithful record of the evolutionary time,
+        this would be true.
+        First, a geological section is only a small part of the space in which
+        the organism lived.
+        And most organisms do not occur in <i>everything everywhere all at 
+        once</i> (check if not bacteria or tardigrade).
+        So if gigantic squirrels appear in a section we study, it could be 
+        because their ancestors evolved towards larger body sizes or 
+        larger squirrels lived somewhere else and, owing to some 
+        deterministic or
+        accidental factors, migrated into the part of squirrel habitat preserved
+        in our geological section at a particular time. 
+        Many morhological traits vary systematically
+        with environmental gradients, e.g. in the familiar Bergmann\'s rule, 
+        mamalian individuals and species living in colder areas tend to be 
+        larger than their counterparts in warmer climes.
+        So a morphological change in a geological section could be an 
+        evolutionary change or an environmental change to which 
+        the organisms responded phenotypically.
         </p>
         <h4>
         The Geological Record is Incomplete
         </h4>
         <p>
-        A geological section not only represents a small fragment of the space in which it was formed, but typically also a small part of time in which it was deposited.
-        If omission (lack of deposition) or erosion took place, the corresponding time - with its fossils - will be missing. Instead of a gradual change in morphology, we might see a jump.
-        Nonetheless, some palaeontologists proposed that exceptionally complete geological records record evolution faithfully. This approach is known under the name of <i>stratophenetics</i>.
-        Very successful applications of stratophenetics exist e.g. to planktonic foraminifera (Aze et al., 2011).
-        Yet, phylogenies typically do not use stratophenetic data, assuming that the geological record is too incomplete - or its structure is too complex to account for - and focus on morphological data (e.g. Smith, 2000),
-        optionally aided by fossil calibrations. But what if we <i>knew</i> the structure of the geological record and where the gaps are? We could distinguish gradual evolution towards a certain
-        morphology from a gradual change in the environment in which such morphology is manifested phenotypically. In this app, you can simulate the geological record by taking a
-        model of a carbonate platform and examining how continuous evolution would be represented at any point in it.
+        A geological section not only represents a small fragment of the space
+        in which it was formed, but typically also a small part of 
+        time in which it was deposited.
+        If omission (lack of deposition) or erosion took place, 
+        the corresponding time - with its fossils - will be missing.
+        Instead of a gradual change in morphology, we might see a jump.
+        Nonetheless, some palaeontologists proposed that exceptionally complete
+        geological records record evolution faithfully.
+        This approach is known under the name of <i>stratophenetics</i>.
+        Very successful applications of stratophenetics exist e.g. to 
+        planktonic foraminifera (Aze et al., 2011).
+        Yet, phylogenies typically do not use stratophenetic data, assuming
+        that the geological record is too incomplete - or its structure is too
+        complex to account for - and focus on 
+        morphological data (e.g. Smith, 2000),
+        optionally aided by fossil calibrations. 
+        But what if we <i>knew</i> the structure of the geological record
+        and where the gaps are? We could distinguish gradual 
+        evolution towards a certain
+        morphology from a gradual change in the environment in 
+        which such morphology is manifested phenotypically.
+        In this app, you can simulate the geological record by taking a
+        model of a carbonate platform and examining 
+        how continuous evolution would be represented at any point in it.
         </p>
         <h4>
         How to Use This App
         </h4>
         <p>
-        Use the taps at the top to navigate between the different sections of the App. The second and third tab provide an introduction to evolutionary biology and carbonate stratigraphy.
-        The fourth tab, labeled "Stratigraphic Paleobiology" combines both to explore how trait evolution is preserved in the rock record.
-        In each tab, you will find a brief explanation of key concepts and explanations on how to use the interactive elements in the tab.
+        Use the taps at the top to navigate between the different sections of
+        the App.
+        The second and third tab provide an introduction to 
+        evolutionary biology and carbonate stratigraphy.
+        The fourth tab, labeled "Stratigraphic Paleobiology" 
+        combines both to explore how trait evolution
+        is preserved in the rock record.
+        In each tab, you will find a brief explanation of key concepts
+        and explanations on how to use the interactive elements in the tab.
         </p>
         <h4>
         Authors
@@ -123,16 +167,24 @@ ui <- navbarPage(
           <li>
           The app uses output (figures and datasets) from the CarboCAT model by Peter Burgess (Burgess, 2013), pmb42 [at] liverpool.ac.uk, University of Liverpool</li>
         </ul>
-        '
-      ),
-      tags$h4("Code Availability"),
-      tags$p(HTML('The code for this app is available under <a href="https://github.com/MindTheGap-ERC/DarwinCAT" target="_blank">github.com/MindTheGap-ERC/DarwinCAT</a>')),
-      tags$h4("License"),
-      tags$p(HTML('<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. The code used is licensed under a <a rel="license" href="http://www.apache.org/licenses/LICENSE-2.0"> Apache 2.0 License</a>.')),
-      tags$h4("Funding"),
-      tags$p("Online access to the App is made possible by the IDUB programme of the University of Warsaw (Grant BOB-IDUB-622-18/2022). Co-funded by the European Union (ERC, MindTheGap, StG project no 101041077). Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Research Council. Neither the European Union nor the granting authority can be held responsible for them."),
-      HTML(
-        '
+        <h4>
+        Code Availability
+        </h4>
+        <p>
+        The code for this app is available under <a href="https://github.com/MindTheGap-ERC/DarwinCAT" target="_blank">github.com/MindTheGap-ERC/DarwinCAT</a>
+        <p/>
+        <h4>
+        License
+        </h4>
+        <p>
+        <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. The code used is licensed under a <a rel="license" href="http://www.apache.org/licenses/LICENSE-2.0"> Apache 2.0 License</a>.
+        </p>
+        <h4>
+        Funding
+        </h4>
+        <p>
+        Online access to the App is made possible by the IDUB programme of the University of Warsaw (Grant BOB-IDUB-622-18/2022). Co-funded by the European Union (ERC, MindTheGap, StG project no 101041077). Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Research Council. Neither the European Union nor the granting authority can be held responsible for them.
+        </p>
         <h4>
         References
         </h4>
@@ -328,15 +380,22 @@ ui <- navbarPage(
             Modes of Evolution
             </h4>
             <p>
-            In evolutionary biology, models of <a title="Wikipedia article on phenotypic traits" href="https://en.wikipedia.org/w/index.php?title=Phenotypic_trait&oldid=1143667283">trait</a> evolution are subdivided into distinct <i>modes of evolution</i>.
-            Here, we focus on three modes of evolution: Random walk, Stasis, and Ornstein-Uhlenbeck (Hunt, 2008; Hunt et al. 2008; Hopkins and Lidgard, 2012).
-            The evolution of a trait within a <a title="Wikipedia article on Lineage" href="https://en.wikipedia.org/w/index.php?title=Lineage_(evolution)&oldid=1113106063">lineage</a> is specified by the mode of evolution and a set of model parameters.
+            In evolutionary biology, models of <a title="Wikipedia article on 
+            phenotypic traits" href="https://en.wikipedia.org/w/index.php?title=Phenotypic_trait&oldid=1143667283">trait</a> evolution are subdivided into distinct <i>modes of evolution</i>.
+            Here, we focus on three modes of evolution: Random walk, Stasis, 
+            and Ornstein-Uhlenbeck (Hunt, 2008; Hunt et al. 2008;
+            Hopkins and Lidgard, 2012).
+            The evolution of a trait within a <a title="Wikipedia article on Lineage" 
+            href="https://en.wikipedia.org/w/index.php?title=Lineage_(evolution)&oldid=1113106063">lineage</a> is specified by the mode of evolution and a set of model parameters.
             </p>
             <p>
-            To specify the simulated mode of evolution and the number of lineages, use the drop-down menu.
+            To specify the simulated mode of evolution and the number of 
+            lineages, use the drop-down menu.
             You can adjust the model parameters using the sliders.
-            Click the "play" button located beneath the sliders to generate an animation.
-            You can use the refresh button to generate new simulations based on the specified mode and parameters.
+            Click the "play" button located beneath the sliders to generate
+            an animation.
+            You can use the refresh button to generate new simulations based
+            on the specified mode and parameters.
             </p>
             <h4>
             References
@@ -453,8 +512,10 @@ ui <- navbarPage(
         ),
         HTML(
           "
-          Use the slider to view age-depth models from various locations on the platform.
-          Additionally, you can use the checkboxes to highlight the timing and stratigraphic position of hiatuses.
+          Use the slider to view age-depth models from various locations 
+          on the platform.
+          Additionally, you can use the checkboxes to highlight the
+          timing and stratigraphic position of hiatuses.
           "
         )
       ),
@@ -470,10 +531,19 @@ ui <- navbarPage(
               </h4>
               <!-- The text below will appear beside the Basin Transect in the tab "Carbonate Stratigraphy"-->
               <p>
-              The image depicts a transect of a carbonate platform that has been simulated using the CarboCAT model (<a title="Go to Publication" href="https://doi.org/10.1016/j.cageo.2011.08.026">Burgess 2013</a>).
-              The colors correspond to carbonate factories: groups of organisms responsible for carbonate production in different ecological niches (e.g. the photozoan factory composed of corals and algae in the shallowest water).
-              The growth of the platform is influenced by three key factors: the relative sea level, the environmental preferences of the carbonate-producing organisms, and the dispersal abilities of biota, which is simulated
-              here using <a title="cellular automata" href="https://plato.stanford.edu/entries/cellular-automata/ ">cellular automata</a>.
+              The image depicts a transect of a carbonate platform that has 
+              been simulated using the CarboCAT model (<a title="Go to Publication" 
+              href="https://doi.org/10.1016/j.cageo.2011.08.026">Burgess 2013</a>).
+              The colors correspond to carbonate factories: groups of organism
+              s responsible for carbonate production in different ecological 
+              niches (e.g. the photozoan factory composed of corals and algae
+              in the shallowest water).
+              The growth of the platform is influenced by three key factors: 
+              the relative sea level, the environmental preferences of 
+              the carbonate-producing organisms, and the dispersal abilities
+              of biota, which is simulated
+              here using <a title="cellular automata" 
+              href="https://plato.stanford.edu/entries/cellular-automata/ ">cellular automata</a>.
               </p>
               '
             )
@@ -498,7 +568,10 @@ ui <- navbarPage(
               On the right you see the Wheeler diagram of the simulated platform.
               A Wheeler diagram (<a title="Go to Publication" href="https://doi.org/10.1130/0016-7606(1964)75[599:BLSAT]2.0.CO;2">Wheeler 1964</a>), also known as a chronostratigraphic chart, shows when and where sediment in the basin is deposited.
               White areas indicate the abscence of preserved rocks.
-              The diagram demonstrates that gaps in the rock record vary systematically with time and as a function of distance from the shore. The proportion of time preserved in rocks is called stratigraphic completeness.
+              The diagram demonstrates that gaps in the rock record vary 
+              systematically with time and as a function of distance from the 
+              shore. The proportion of time preserved in rocks is called 
+              stratigraphic completeness.
               </p>
               '
             )
