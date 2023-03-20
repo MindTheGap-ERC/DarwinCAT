@@ -27,35 +27,14 @@ makeBasinTransectPlot <- function(distanceFromShore) {
     ytop = 0
   )
   
-  text(
-    x = 1,
-    y = 20,
-    label = "Lagoonal Environments"
-  )
-  
-  text(
-    x = 6,
-    y = 20,
-    label = "Backreef"
-  )
-  
-  text(
-    x = 8,
-    y = 20,
-    label = "Frontreef"
-  )
-  
-  text(
-    x = 10,
-    y = 20,
-    label = "Slope"
-  )
-  
-  text(
-    x = 11.5,
-    y = 20,
-    label = "Open\nWater"
-  )
+  # plot labels
+  for (env_ind in seq_along(env_labels)){
+    text(
+      x = env_dist_from_shore_km[env_ind],
+      y = env_label_y_pos_basin_transect,
+      label = env_labels[env_ind]
+    )
+  }
   
 
   # mark position in basin

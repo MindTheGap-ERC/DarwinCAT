@@ -50,3 +50,11 @@ trait_ltys <- rep(1, 3)
 zero_axis_col <- grey(0.2)
 zero_axis_lty <- 3
 zero_axis_lwd <- 1
+
+env_label_y_pos_wheeler = 2.1
+env_label_y_pos_basin_transect = 20
+
+env_labels = c("Lagoonal Environments", "Backreef", "Forereef", "Slope",
+                       "Open\nWater")
+
+env_dist_from_shore_km = c(1, 6, 8.5, 10, 11.5)
