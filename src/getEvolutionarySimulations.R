@@ -17,8 +17,8 @@ getEvolutionarySimulations <- function(noOfSims, mode, ...) {
         mean = 0,
         sd = standardDeviations
       )
-      brownianMotionPath <- cumsum(c(x0, increments))
-      brownianDriftPath <- sigma * brownianMotionPath + mu * time_myr
+      brownianMotionPath <- cumsum(c(0, increments))
+      brownianDriftPath <- sigma * brownianMotionPath + mu * time_myr + x0
       evolutionarySimulationList[[i]] <- brownianDriftPath
     }
     return(evolutionarySimulationList)
