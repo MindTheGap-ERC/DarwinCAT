@@ -10,6 +10,8 @@ makeAgeDepthModelPlot <- function(ageDepthModel,
   #' 
   #
   # Make plot
+  
+  title_env = env_labels[which.min(abs(dist_from_shore_km-env_dist_from_shore_km))]
   plot(
     NULL,
     xlab = "Time [Ma]",
@@ -17,7 +19,7 @@ makeAgeDepthModelPlot <- function(ageDepthModel,
     xlim = range(time_myr),
     ylim = range(ageDepthModel$heightRaw),
     type = "l",
-    main = paste("Age-Depth Model ", dist_from_shore_km, " km Offshore", sep = "")
+    main = paste("Age-Depth Model ", dist_from_shore_km, " km Offshore (",title_env,")", sep = "")
   )
   
   # Plot time intervals that are not preserved
