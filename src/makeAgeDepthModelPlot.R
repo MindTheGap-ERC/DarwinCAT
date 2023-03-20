@@ -1,6 +1,7 @@
 makeAgeDepthModelPlot <- function(ageDepthModel, 
                                   plot_time_gaps = TRUE, 
-                                  plot_hiatuses = TRUE) {
+                                  plot_hiatuses = TRUE,
+                                  dist_from_shore_km = NULL) {
   #' Generate Age-Depth- model plot
   #' 
   #' @description Takes an age-depth model and plots it
@@ -16,7 +17,7 @@ makeAgeDepthModelPlot <- function(ageDepthModel,
     xlim = range(time_myr),
     ylim = range(ageDepthModel$heightRaw),
     type = "l",
-    main = "Age-Depth Model"
+    main = paste("Age-Depth Model ", dist_from_shore_km, " km Offshore", sep = "")
   )
   
   # Plot time intervals that are not preserved

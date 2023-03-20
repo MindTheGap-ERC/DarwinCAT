@@ -25,43 +25,6 @@ ui <- navbarPage(
   #### Panel: Introduction ####
   tabPanel(
     title = "Introduction",
-    # fluidRow(
-    #   div(style = "margin-left: 1em; margin-bottom: -0.5em", tags$h4(" Creators")),
-    #   column(
-    #     6,
-    #     tags$h5(tags$b("Niklas Hohmann")),
-    #     fluidRow(
-    #       column(5, img(src = "people/niklas_hohmann.jpg", alt = "Picture of Niklas Hohmann", align = "left", width = "100%")),
-    #       column(
-    #         7,
-    #         div(style = "margin-left: -4em", tags$ul(
-    #           "PhD candidate", br(),
-    #           "Utrecht University, The Netherlands", br(),
-    #           "Email: N.Hohmann (at) uu.nl", br(),
-    #           HTML("Twitter: <a href=https://twitter.com/HohmannNiklas target=\"_blank\" > @HohmannNiklas </a>"), br(),
-    #           HTML("Mastodon: <a href=https://ecoevo.social/@Niklas_Hohmann target=\"_blank\" > @Niklas_Hohmann@ecoevo.social </a>"), br(),
-    #           HTML("<a href=https://scholar.google.com/citations?hl=de&user=2CB_ktEAAAAJ target=\"_blank\" > Google Scholar profile </a>"), br(),
-    #           HTML("Profile on the <a rel='author' href=https://www.uu.nl/staff/NHohmann target=\"_blank\" > university webpage </a>"), br(),
-    #           HTML("<a href=https://github.com/NiklasHohmann target=\"_blank\" > GitHub page </a>")
-    #         )),
-    #       )
-    #     )
-    #   ),
-    #   column(
-    #     6,
-    #     tags$h5(tags$b("Dr. Emilia Jarochowska")),
-    #     fluidRow(
-    #       column(5, img(src = "people/emilia_jarochowska.jpg", alt = "Picture of Emilia Jarochowska", align = "left", width = "100%")),
-    #       column(7, div(style = "margin-left: -4em", tags$ul(
-    #         "Utrecht University, The Netherlands", br(),
-    #         "Email: e.b.jarochowska (at) uu.nl", br(),
-    #         HTML("Mastodon: <a href=https://circumstances.run/@Emiliagnathus target=\"_blank\" > @Emiliagnathus@circumstances.run </a>"), br(),
-    #         HTML("<a href=https://scholar.google.de/citations?user=Zrldp2MAAAAJ&hl=en target=\"_blank\" > Google Scholar profile </a>"), br(),
-    #         HTML("Profile on the <a rel='author' href=https://www.uu.nl/staff/EBJarochowska target=\"_blank\" > university webpage </a>")
-    #       )), )
-    #     )
-    #   )
-    # ),
     div(
       style = "margin-left: 4em; margin-right: 4em",
       HTML(
@@ -190,19 +153,37 @@ ui <- navbarPage(
         </h4>
         <ul>
          <li>
-         Aze, T., Ezard, T.H.G., Purvis, A., Coxall, H.K., Stewart, D.R.M., Wade, B.S., and Pearson, P.M. (2011). A phylogeny of Cenozoic macroperforate planktonic foraminifera from fossil data. Biological Reviews, 86, p. 900–927. <a href="https://doi.org/10.1111/j.1469-185X.2011.00178.x">doi.org/10.1111/j.1469-185X.2011.00178.x</a>
-         </li>
-         <li
-         >Burgess, P.M. (2013). CarboCAT: A cellular automata model of heterogeneous carbonate strata: Computers & Geosciences, 53, p. 129–140, <a href="https://doi.org/10.1016/j.cageo.2011.08.026">doi.org/10.1016/j.cageo.2011.08.026</a>
-         </li>
-         <li>
-         Dzik, J. (1991). <a title="Go to Publication" href="https://bibliotekanauki.pl/articles/20386.pdf">Features of the fossil record of evolution</a>. Acta Palaeontologica Polonica, 36, p. 91-113.
+         Aze, T., Ezard, T.H.G., Purvis, A., Coxall, H.K., Stewart, D.R.M., 
+         Wade, B.S., and Pearson, P.M. (2011). A phylogeny of Cenozoic 
+         macroperforate planktonic foraminifera from fossil data. Biological 
+         Reviews, 86, p. 900–927. <a href="https://doi.org/10.1111/j.1469-185X.2011.00178.x">
+         doi.org/10.1111/j.1469-185X.2011.00178.x</a>
          </li>
          <li>
-         Gingerich, P.D. (1979). The stratophenetic approach to phylogeny reconstruction in vertebrate paleontology. In: Cracraft, J. and Eldredge, N. <i>Phylogenetic analysis and palaeontology.</i> Columbia University Press, New York. pp. 41-77. <a href="https://doi.org/10.7312/crac92306-004">doi.org/10.7312/crac92306-004</a>
+         Burgess, P.M. (2013). CarboCAT: A cellular automata model of
+         heterogeneous carbonate strata: Computers & Geosciences, 53, p. 
+         129–140. <a href="https://doi.org/10.1016/j.cageo.2011.08.026">
+         doi.org/10.1016/j.cageo.2011.08.026</a>
          </li>
          <li>
-         Smith, A.B. (2000). Stratigraphy in phylogeny reconstruction. Journal of Paleontology, 74, p. 763-766. <a href="https://doi.org/10.1666/0022-3360(2000)074%3C0763:SIPR%3E2.0.CO;2">doi.org/10.1666/0022-3360(2000)074%3C0763:SIPR%3E2.0.CO;2</a>
+         Dzik, J. (1991). <a title="Go to Publication" 
+         href="https://bibliotekanauki.pl/articles/20386.pdf">Features of the 
+         fossil record of evolution</a>. Acta Palaeontologica 
+         Polonica, 36, p. 91-113.
+         </li>
+         <li>
+         Gingerich, P.D. (1979). The stratophenetic approach to phylogeny
+         reconstruction in vertebrate paleontology. In: Cracraft, J. and 
+         Eldredge, N. <i>Phylogenetic analysis and palaeontology.
+         </i> Columbia University Press, New York. pp. 41-77. 
+         <a href="https://doi.org/10.7312/crac92306-004">
+         doi.org/10.7312/crac92306-004</a>
+         </li>
+         <li>
+         Smith, A.B. (2000). Stratigraphy in phylogeny reconstruction. Journal
+         of Paleontology, 74, p. 763-766. 
+         <a href="https://doi.org/10.1666/0022-3360(2000)074%3C0763:SIPR%3E2.0.CO;2">
+         doi.org/10.1666/0022-3360(2000)074%3C0763:SIPR%3E2.0.CO;2</a>
          </li>
         </ul>
         '
@@ -381,12 +362,16 @@ ui <- navbarPage(
             </h4>
             <p>
             In evolutionary biology, models of <a title="Wikipedia article on 
-            phenotypic traits" href="https://en.wikipedia.org/w/index.php?title=Phenotypic_trait&oldid=1143667283">trait</a> evolution are subdivided into distinct <i>modes of evolution</i>.
+            phenotypic traits" 
+            href="https://en.wikipedia.org/w/index.php?title=Phenotypic_trait&oldid=1143667283">trait</a>
+            evolution are subdivided into distinct <i>modes of evolution</i>.
             Here, we focus on three modes of evolution: Random walk, Stasis, 
             and Ornstein-Uhlenbeck (Hunt, 2008; Hunt et al. 2008;
             Hopkins and Lidgard, 2012).
             The evolution of a trait within a <a title="Wikipedia article on Lineage" 
-            href="https://en.wikipedia.org/w/index.php?title=Lineage_(evolution)&oldid=1113106063">lineage</a> is specified by the mode of evolution and a set of model parameters.
+            href="https://en.wikipedia.org/w/index.php?title=Lineage_(evolution)&oldid=1113106063">
+            lineage</a> is specified by the mode of evolution and a set of 
+            model parameters.
             </p>
             <p>
             To specify the simulated mode of evolution and the number of 
@@ -403,13 +388,25 @@ ui <- navbarPage(
             <!-- References for the tab "Modes of Evolution"-->
             <ul>
               <li>
-              Hunt, G. (2008). The relative importance of directional change, random walks, and stasis in the evolution of fossil lineages. Proceedings of the National Academy of Sciences, 104, p. 18404-18408.  <a href="https://doi.org/10.1073/pnas.0704088104">doi.org/10.1073/pnas.0704088104</a>
+              Hunt, G. (2008). The relative importance of directional change, 
+              random walks, and stasis in the evolution of fossil lineages. 
+              Proceedings of the National Academy of Sciences, 104, p. 
+              18404-18408.  <a 
+              href="https://doi.org/10.1073/pnas.0704088104">doi.org/10.1073/pnas.0704088104</a>
               </li>
               <li>
-              Hopkins, M.J. and Lidgard, S. (2012). Evolutionary mode routinely varies among morphological traits within fossil species lineages. Proceedings of the National Academy of Sciences, 109, p. 20520-20525. <a href="https://doi.org/10.1073/pnas.1209901109">doi.org/10.1073/pnas.1209901109</a>
+              Hopkins, M.J. and Lidgard, S. (2012). Evolutionary mode routinely
+              varies among morphological traits within fossil species lineages.
+              Proceedings of the National Academy of Sciences, 109,
+              p. 20520-20525. <a href="https://doi.org/10.1073/pnas.1209901109">
+              doi.org/10.1073/pnas.1209901109</a>
               </li>
               <li>
-              Hunt, G., Bell, M., and Travis, M.P. (2008). Evolution toward a new adaptive optimum: phenotypic evolution in a fossil stickleback lineage. Evolution, 62, p. 700-710. <a href="https://doi.org/10.1111/j.1558-5646.2007.00310.x">doi.org/10.1111/j.1558-5646.2007.00310.x</a>
+              Hunt, G., Bell, M., and Travis, M.P. (2008). Evolution toward a 
+              new adaptive optimum: phenotypic evolution in a fossil stickleback
+              lineage. Evolution, 62, p. 700-710. 
+              <a href="https://doi.org/10.1111/j.1558-5646.2007.00310.x">
+              doi.org/10.1111/j.1558-5646.2007.00310.x</a>
               </li>
             </ul>
             '
@@ -566,7 +563,10 @@ ui <- navbarPage(
               <!-- The text below will appear beside the Wheeler Diagram in the tab "Carbonate Stratigraphy"-->
               <p>
               On the right you see the Wheeler diagram of the simulated platform.
-              A Wheeler diagram (<a title="Go to Publication" href="https://doi.org/10.1130/0016-7606(1964)75[599:BLSAT]2.0.CO;2">Wheeler 1964</a>), also known as a chronostratigraphic chart, shows when and where sediment in the basin is deposited.
+              A Wheeler diagram (<a title="Go to Publication"
+              href="https://doi.org/10.1130/0016-7606(1964)75[599:BLSAT]2.0.CO;2">
+              Wheeler 1964</a>), also known as a chronostratigraphic chart, shows
+              when and where sediment in the basin is deposited.
               White areas indicate the abscence of preserved rocks.
               The diagram demonstrates that gaps in the rock record vary 
               systematically with time and as a function of distance from the 
@@ -621,13 +621,22 @@ ui <- navbarPage(
             <!-- References for the tab "Carbonate Stratigraphy"-->
             <ul>
               <li>
-              Burgess, P.M. (2013). CarboCAT: A cellular automata model of heterogeneous carbonate strata: Computers & Geosciences, 53, p. 129–140, <a href="https://doi.org/10.1016/j.cageo.2011.08.026">doi.org/10.1016/j.cageo.2011.08.026</a>
+              Burgess, P.M. (2013). CarboCAT: A cellular automata model of 
+              heterogeneous carbonate strata: Computers & Geosciences, 53, p. 
+              129–140. <a href="https://doi.org/10.1016/j.cageo.2011.08.026">
+              doi.org/10.1016/j.cageo.2011.08.026</a>
               </li>
               <li>
-              Wheeler, H.E. (1964). Baselevel, lithosphere surface, and time-stratigraphy. Geological Society of America Bulletin, 75, p. 599-610. <a href="https://doi.org/10.1130/0016-7606(1964)75[599:BLSAT]2.0.CO;2">doi: 10.1130/0016-7606(1964)75[599:BLSAT2.0.CO;2</a>
+              Wheeler, H.E. (1964). Baselevel, lithosphere surface, and 
+              time-stratigraphy. Geological Society of America Bulletin, 75, p.
+              599-610. <a href="https://doi.org/10.1130/0016-7606(1964)75[599:BLSAT]2.0.CO;2">
+              doi: 10.1130/0016-7606(1964)75[599:BLSAT2.0.CO;2</a>
               </li>
               <li>
-              Hohmann, N. (2021). Incorporating Information on Varying Sedimentation Rates in Paleontological Analyses. PALAIOS, 36, p. 53–67. <a href = "https://doi.org/10.2110/palo.2020.038">doi: 10.2110/palo.2020.038</a>
+              Hohmann, N. (2021). Incorporating Information on Varying 
+              Sedimentation Rates in Paleontological Analyses. PALAIOS, 36, 
+              p. 53–67. <a href = "https://doi.org/10.2110/palo.2020.038">
+              doi: 10.2110/palo.2020.038</a>
               </li>
             </ul>
             '
@@ -865,10 +874,19 @@ ui <- navbarPage(
             </h4>
               <ul>
                 <li>
-                Danise, S., Clémence, M. E., Price, G. D., Murphy, D. P., Gómez, J. J., & Twitchett, R. J. (2019). Stratigraphic and environmental control on marine benthic community change through the early Toarcian extinction event (Iberian Range, Spain). Palaeogeography, Palaeoclimatology, Palaeoecology, 524, 183-200. <a href="https://doi.org/10.1016/j.palaeo.2019.03.039">doi.org/10.1016/j.palaeo.2019.03.039</a>
+                Danise, S., Clémence, M. E., Price, G. D., Murphy, D. P., 
+                Gómez, J. J., & Twitchett, R. J. (2019). Stratigraphic and 
+                environmental control on marine benthic community change 
+                through the early Toarcian extinction event 
+                (Iberian Range, Spain). Palaeogeography, Palaeoclimatology, 
+                Palaeoecology, 524, 183-200. 
+                <a href="https://doi.org/10.1016/j.palaeo.2019.03.039">
+                doi.org/10.1016/j.palaeo.2019.03.039</a>
                 </li>
                 <li>
-                Patzkowsky, M. E., & Holland, S. M. (2012). Stratigraphic paleobiology. In Stratigraphic Paleobiology. University of Chicago Press
+                Patzkowsky, M. E., & Holland, S. M. (2012). Stratigraphic 
+                paleobiology. In Stratigraphic Paleobiology. 
+                University of Chicago Press
                 </li>
               </ul>
             '
@@ -1044,7 +1062,8 @@ server <- function(input, output) {
     makeAgeDepthModelPlot(
       ageDepthModel = ageDepthModel_carb_strat(),
       plot_time_gaps = input$plot_time_gaps_carb_strat,
-      plot_hiatuses = input$plot_hiatuses_carb_strat
+      plot_hiatuses = input$plot_hiatuses_carb_strat,
+      dist_from_shore_km = input$distFromShore_carb_strat
     )
   })
 
@@ -1080,7 +1099,8 @@ server <- function(input, output) {
     makeAgeDepthModelPlot(
       ageDepthModel = ageDepthModel(),
       plot_time_gaps = input$plot_time_gaps,
-      plot_hiatuses = input$plot_hiatuses
+      plot_hiatuses = input$plot_hiatuses,
+      dist_from_shore_km = input$distFromShore
     )
   })
 
