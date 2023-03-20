@@ -91,6 +91,12 @@ ui <- navbarPage(
            <p> Use the taps at the top to navigate between the different sections of the App. The second and third tab provide an introduction to evolutionary biology and carbonate stratigraphy. 
            The fourth tab, labeled "Stratigraphic Paleobiology" combines both to explore how trait evolution is preserved in the rock record.
            In each tab, you will find a brief explanation of key concepts and explanations on how to use the interactive elements in the tab.</p>
+           <h4>Authors</h4>
+           <ul>
+           <li>Niklas Hohmann, n.hohmann [at] uu.nl, Utrecht University and (formerly) University of Warsaw </li>
+           <li>Emilia Jarochowska, e.b.jarochowska [at] uu.nl, Utrecht University</li>
+           <li>The app uses output (figures and datasets) from the CarboCAT model by Peter Burgess (Burgess, 2013), pmb42 [at] liverpool.ac.uk, University of Liverpool</li>
+           </ul>
              '),
       tags$h4("Code Availability"),
       tags$p(HTML('The code for this app is available under <a href="https://github.com/MindTheGap-ERC/DarwinCAT" target="_blank">github.com/MindTheGap-ERC/DarwinCAT</a>')),
@@ -105,6 +111,7 @@ ui <- navbarPage(
       HTML('<h4>References</h4>
              <ul>
              <li>Aze, T., Ezard, T.H.G., Purvis, A., Coxall, H.K., Stewart, D.R.M., Wade, B.S., and Pearson, P.M. (2011). A phylogeny of Cenozoic macroperforate planktonic foraminifera from fossil data. Biological Reviews, 86, p. 900–927. <a href="https://doi.org/10.1111/j.1469-185X.2011.00178.x">doi.org/10.1111/j.1469-185X.2011.00178.x</a></li>
+             <li>Burgess, P.M. (2013). CarboCAT: A cellular automata model of heterogeneous carbonate strata: Computers & Geosciences, 53, p. 129–140, <a href="https://doi.org/10.1016/j.cageo.2011.08.026">doi.org/10.1016/j.cageo.2011.08.026</a> </li>
              <li>Dzik, J. (1991). <a title="Go to Publication" href="https://bibliotekanauki.pl/articles/20386.pdf">Features of the fossil record of evolution</a>. Acta Palaeontologica Polonica, 36, p. 91-113.</li>
              <li>Gingerich, P.D. (1979). The stratophenetic approach to phylogeny reconstruction in vertebrate paleontology. In: Cracraft, J. and Eldredge, N. <i>Phylogenetic analysis and palaeontology.</i> Columbia University Press, New York. pp. 41-77. <a href="https://doi.org/10.7312/crac92306-004">doi.org/10.7312/crac92306-004</a></li>
              <li>Smith, A.B. (2000). Stratigraphy in phylogeny reconstruction. Journal of Paleontology, 74, p. 763-766. <a href="https://doi.org/10.1666/0022-3360(2000)074%3C0763:SIPR%3E2.0.CO;2">doi.org/10.1666/0022-3360(2000)074%3C0763:SIPR%3E2.0.CO;2</a></li>
