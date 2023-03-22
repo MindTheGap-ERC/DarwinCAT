@@ -388,7 +388,7 @@ ui <- navbarPage(
             <!-- References for the tab "Modes of Evolution"-->
             <ul>
               <li>
-              Hunt, G. (2008). The relative importance of directional change, 
+              Hunt, G. (2007). The relative importance of directional change, 
               random walks, and stasis in the evolution of fossil lineages. 
               Proceedings of the National Academy of Sciences, 104, p. 
               18404-18408.  <a 
@@ -886,7 +886,7 @@ ui <- navbarPage(
                 <li>
                 Patzkowsky, M. E., & Holland, S. M. (2012). Stratigraphic 
                 paleobiology. In Stratigraphic Paleobiology. 
-                University of Chicago Press
+                University of Chicago Press.
                 </li>
               </ul>
             '
