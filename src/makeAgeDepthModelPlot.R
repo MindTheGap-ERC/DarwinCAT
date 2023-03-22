@@ -19,7 +19,7 @@ makeAgeDepthModelPlot <- function(ageDepthModel,
     xlim = range(time_myr),
     ylim = range(ageDepthModel$heightRaw),
     type = "l",
-    main = paste("Age-Depth Model ", dist_from_shore_km, " km Offshore (",title_env,")", sep = "")
+    main = paste("Age-Depth Model ", dist_from_shore_km, " km from Shore (",title_env,")", sep = "")
   )
   
   # Plot time intervals that are not preserved
