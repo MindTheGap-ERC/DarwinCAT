@@ -10,8 +10,8 @@ max_depth_basin_transect <- -max(sapply(
 max_dist_from_shore_km <- 12 # maximum: 13 km
 
 # load background images
-wheeler_diagram <- readPNG("www/geology/wheeler_diagram.png")
-basin_transect <- readPNG("www/geology/basin_transect.png")
+wheeler_diagram <- png::readPNG("www/geology/wheeler_diagram.png")
+basin_transect <- png::readPNG("www/geology/basin_transect.png")
 
 # plot options: wheeler diagram
 wheeler_diagram_lty <- 1

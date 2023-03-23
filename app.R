@@ -1,5 +1,4 @@
 library(shiny)
-library(png)
 
 # load data & global variables
 source("src/global.R")
