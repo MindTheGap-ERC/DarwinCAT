@@ -1,7 +1,7 @@
 library(shiny)
 
 # load data & global variables
-source("src/global.R")
+source("src/global_variables.R")
 
 # load functions into workspace
 source("src/getAgeDepthModel.R") # determines age-depth models
