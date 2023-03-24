@@ -116,18 +116,132 @@ ui <- navbarPage(
         is preserved in the rock record.
         In each tab, you will find a brief explanation of key concepts
         and explanations on how to use the interactive elements in the tab.
-        </p>
-        <h4>
-        Authors
-        </h4>
-        <ul>
-          <li>
-          Niklas Hohmann, n.hohmann [at] uu.nl, Utrecht University and (formerly) University of Warsaw </li>
-          <li>
-          Emilia Jarochowska, e.b.jarochowska [at] uu.nl, Utrecht University</li>
-          <li>
-          The app uses output (figures and datasets) from the CarboCAT model by Peter Burgess (Burgess, 2013), pmb42 [at] liverpool.ac.uk, University of Liverpool</li>
-        </ul>
+        </p>'
+        ),
+      
+      fluidRow(
+        HTML(
+          '
+            <div style="margin-left: 1em; margin-bottom: -0.5em;">
+            <h4>Creators</h4>
+            </div>
+            '
+        ),
+        column(
+          width = 4,
+          HTML(
+            '
+              <h5><b> Niklas Hohmann</b> </h5>
+              '
+          ),
+          fluidRow(
+            column(
+              width = 5,
+              HTML(
+                '
+                  <img src="people/niklas_hohmann.jpg" alt="Picture of Niklas Hohmann" align="left" width="100%">
+
+                  '
+              )
+            ),
+            column(
+              width = 7,
+              HTML(
+                '
+                  <div style="margin-left: 0em">
+                    PhD candidate<br/>
+                    Utrecht University, The Netherlands (formerly University of Warsaw)<br/>
+                    Email: N.Hohmann [at] uu.nl<br/>
+                    Twitter: <a href="https://twitter.com/HohmannNiklas" target="_blank">@HohmannNiklas</a><br/>
+                    Mastodon: <a href="https://ecoevo.social/@Niklas_Hohmann" target="_blank">@Niklas_Hohmann@ecoevo.social</a><br/>
+                    <a href="https://scholar.google.com/citations?hl=de&user=2CB_ktEAAAAJ" target="_blank">Google Scholar profile</a><br/>
+                    Profile on the <a rel="author" href="https://www.uu.nl/staff/NHohmann" target="_blank">university webpage</a><br/>
+                    <a href="https://github.com/NiklasHohmann" target="_blank">GitHub page</a>
+                  </div>
+
+                  '
+              ),
+            )
+          )
+        ),
+        column(
+          width = 4,
+          HTML(
+            '
+              <h5><b> Dr. Emilia Jarochowska</b> </h5>
+              '
+          ),
+          fluidRow(
+            column(
+              width = 5,
+              HTML(
+                '
+                  <img src="people/emilia_jarochowska.jpg" alt="Picture of Emilia Jarochowska" align="left" width="100%">
+
+                  '
+              )
+            ),
+            column(
+              width = 7,
+              HTML(
+                '
+                  <div style="margin-left: 0em">
+                  Utrecht University, The Netherlands<br>
+                  Email: e.b.jarochowska [at] uu.nl<br>
+                  Mastodon: <a href="https://circumstances.run/@Emiliagnathus" target="_blank">@Emiliagnathus@circumstances.run</a><br>
+                  <a href="https://scholar.google.de/citations?user=Zrldp2MAAAAJ&hl=en" target="_blank">Google Scholar profile</a><br>
+                  Profile on the <a rel="author" href="https://www.uu.nl/staff/EBJarochowska" target="_blank">university webpage</a>
+
+                  </div>
+                  '
+              ),
+            )
+          )
+        ),
+        column(
+          width = 4,
+          HTML(
+            '
+              <h5><b> Prof. Peter Burgess</b> </h5>
+              '
+          ),
+          fluidRow(
+            column(
+              width = 5,
+              HTML(
+                '
+                <figure>
+                  <img src="people/peter_burgess.png" alt="Picture of Peter 
+                  Burgess" align="left" width="100%">
+                  <figcaption>Figure from <a href="https://xkcd.com/">xkcd.com</a>
+                  licensed under the Creative Commons Attribution-NonCommercial 
+                  2.5 license, see <a href="xkcd.com/license.html">www.xkcd.com/license.html</a>
+                  for details.</figcaption>
+                  </figure>
+
+                  '
+              )
+            ),
+            column(
+              width = 7,
+              HTML(
+                '
+                  <div style="margin-left: 0em">
+                  University of Liverpool, United Kingdom<br>
+                  Email: pmb42 [at] liverpool.ac.uk<br>
+                  <a href="https://scholar.google.co.uk/citations?user=C2fIqOoAAAAJ&hl=en" target="_blank">Google Scholar profile</a><br>
+                  Profile on the <a rel="author" href="https://www.liverpool.ac.uk/environmental-sciences/staff/peter-burgess/" target="_blank">university webpage</a>
+
+                  </div>
+                  '
+              ),
+            )
+          )
+        )
+      ),
+
+        HTML(
+        '
         <h4>
         Code Availability
         </h4>
