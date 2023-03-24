@@ -1,13 +1,17 @@
 getAgeDepthModel <- function(distanceFromShore) {
-  #' Load age-depth models from data
+  #' @title get age-depth models
   #' 
-  #' @description  This function loads the age-depth models from the work space
+  #' @description loads the age-depth models from the work space
   #' 
   #' @param distanceFromShore numeric, km. location of the age-depth model
   #' 
-  #' @return A list with fields "heightMod" and "time"
+  #' @return A list containing age depth model data
   #' 
+  
+  # convert distance from shore to list indices
   indexInList <- 10 * distanceFromShore
+  
   ageDepthModel <- ageDepthModelList[[indexInList]]
+  
   return(ageDepthModel)
 }
