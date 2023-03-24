@@ -213,10 +213,10 @@ ui <- navbarPage(
                 <figure>
                   <img src="people/peter_burgess.png" alt="Picture of Peter 
                   Burgess" align="left" width="100%">
-                  <figcaption>Figure from <a href="https://xkcd.com/">xkcd.com</a>
+                  <figcaption> <font size="-2"> Figure from <a href="https://xkcd.com/">xkcd.com</a>
                   licensed under the Creative Commons Attribution-NonCommercial 
                   2.5 license, see <a href="xkcd.com/license.html">www.xkcd.com/license.html</a>
-                  for details.</figcaption>
+                  for details. </font></figcaption>
                   </figure>
 
                   '
