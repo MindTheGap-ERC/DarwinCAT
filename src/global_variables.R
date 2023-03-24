@@ -1,3 +1,7 @@
+# Loads data and global variables needed to run 
+# the DarwinCAT app into the workspace
+
+# load age-depth models
 load(file = "data/age_depth_models_for_shiny_app.RData")
 
 # max depth for basin transect plot
@@ -51,6 +55,8 @@ zero_axis_col <- grey(0.2)
 zero_axis_lty <- 3
 zero_axis_lwd <- 1
 
+# specifications where to plot environment labels in wheeler diagram and 
+# basin transect
 env_label_y_pos_wheeler = 2.1
 env_label_y_pos_basin_transect = 20
 
