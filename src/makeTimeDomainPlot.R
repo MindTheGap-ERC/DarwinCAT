@@ -3,7 +3,8 @@ makeTimeDomainPlot <- function(evolutionarySimulations,
                                axis_limits = c(-1,1),
                                trait_name = "", 
                                plotSeaLevel = FALSE, 
-                               plot_time_gaps = FALSE) {
+                               plot_time_gaps = FALSE,
+                               plot_strat_info = FALSE) {
   ymin = min(axis_limits)
   ymax = max(axis_limits)
   if (ymin == ymax){
@@ -32,7 +33,8 @@ makeTimeDomainPlot <- function(evolutionarySimulations,
   )
   
   # plot removed time intervals
-  if (plot_time_gaps) {
+
+  if (plot_time_gaps & plot_strat_info) {
     for (i in seq_along(ageDepthModel$hiatusTimeList)) {
       rect(
         xleft = ageDepthModel$hiatusTimeList[[i]]$hiatusStart,
@@ -61,8 +63,8 @@ makeTimeDomainPlot <- function(evolutionarySimulations,
       lty = trait_ltys[i]
     )
   }
-
-  if (plotSeaLevel) {
+  
+  if (plotSeaLevel & plot_strat_info) {
     lines(
       x = time_myr, 
       y = seaLevel / max(seaLevel) * 0.5 * (ymax - ymin) + 0.5 * (ymax + ymin),

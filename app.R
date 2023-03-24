@@ -13,7 +13,6 @@ source("src/makeTimeDomainPlot.R")
 source("src/makeStratDomainPlot.R")
 source("src/makeBasinTransectPlot.R")
 source("src/makeWheelerDiagram.R")
-source("src/makeTimeDomainPlot_no_gap.R")
 
 
 #### Iser interface ####
@@ -1030,10 +1029,11 @@ server <- function(input, output) {
   #### Trait Evolution: Outputs ####
 
   output$timeDomainPlot_trait_evo <- renderPlot({
-    makeTimeDomainPlot_no_gap(
+    makeTimeDomainPlot(
       evolutionarySimulations = evolutionarySimulations_trait_evo(),
       trait_name = input$trait_name_trait_evo,
-      axis_limits = input$axis_limits_trait_evo
+      axis_limits = input$axis_limits_trait_evo,
+      plot_strat_info = FALSE
     )
   })
 
@@ -1110,7 +1110,8 @@ server <- function(input, output) {
       trait_name = input$trait_name,
       axis_limits = input$axis_limits,
       plotSeaLevel = input$plotSeaLevel,
-      plot_time_gaps = input$plot_time_gaps
+      plot_time_gaps = input$plot_time_gaps,
+      plot_strat_info = TRUE
     )
   })
 
