@@ -8,17 +8,20 @@ App to visualize the effect of carbonate stratigraphy on trait evolution
 
 __Niklas Hohmann__ (Maintainer)  
 Utrecht University  
-email: n.hohmann@uu.nl  
+Email: n.hohmann@uu.nl  
 Web page: [uu.nl/staff/NHohmann](uu.nl/staff/NHohmann)  
 Orcid: [0000-0003-1559-1838](https://orcid.org/0000-0003-1559-1838)
 
 __Emilia Jarochowska__  
 Utrecht University  
-email: e.b.jarochowska [at] uu.nl  
+Email: e.b.jarochowska [at] uu.nl  
 Web page: [uu.nl/staff/EBJarochowska](https://www.uu.nl/staff/EBJarochowska)  
 Orcid: [0000-0001-8937-9405](https://orcid.org/0000-0001-8937-9405)
 
-__Peter Burgess__, University of Liverpool  
+__Peter Burgess__  
+University of Liverpool  
+Email: pmb42 [at] liverpool.ac.uk  
+Web page: [liverpool.ac.uk/environmental-sciences/staff/peter-burgess](https://www.liverpool.ac.uk/environmental-sciences/staff/peter-burgess/)
 
 ## License
 
