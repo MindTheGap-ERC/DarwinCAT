@@ -1112,6 +1112,317 @@ ui <- navbarPage(
         )
       )
     )
+  ),
+  #### Panel: Stratigraphuic Paleobiology ####
+  tabPanel(
+    title = "Upload Your Data",
+    fluidRow(
+      column(
+        width = 2,
+        wellPanel(
+          tags$h3("Evolutionary Simulations"),
+          actionButton(
+            inputId = "refreshSimulations_upload_data",
+            label = "Refresh"
+          ),
+          selectInput(
+            inputId = "noOfSims_upload_data",
+            label = "Number of Lineages",
+            choices = list("1", "2", "3")
+          ),
+          selectInput(
+            inputId = "modeOfEvolution_upload_data",
+            label = "Mode of Evolution",
+            choices = list("Random Walk", "Stasis", "Ornstein-Uhlenbeck")
+          ),
+          conditionalPanel(
+            condition = "input.modeOfEvolution_upload_data == 'Random Walk'",
+            sliderInput(
+              inputId = "parameter1_upload_data",
+              label = "Variability",
+              min = 0,
+              max = 4,
+              value = 1,
+              step = 0.1,
+              animate = TRUE
+            ),
+            sliderInput(
+              inputId = "parameter2_upload_data",
+              label = "Drift",
+              min = -2,
+              max = 2,
+              value = 0,
+              step = 0.1,
+              animate = TRUE
+            ),
+            sliderInput(
+              inputId = "parameter3_upload_data",
+              label = "Initial Trait Value",
+              min = -1,
+              max = 1,
+              value = 0,
+              step = 0.1,
+              animate = TRUE
+            )
+          ),
+          conditionalPanel(
+            condition = "input.modeOfEvolution_upload_data == 'Stasis'",
+            sliderInput(
+              inputId = "parameter4_upload_data",
+              label = "Mean Trait Value",
+              min = -1,
+              max = 1,
+              value = 0,
+              step = 0.1,
+              animate = TRUE
+            ),
+            sliderInput(
+              inputId = "parameter5_upload_data",
+              label = "Variance",
+              min = 0,
+              max = 2,
+              value = 1,
+              step = 0.1,
+              animate = TRUE
+            )
+          ),
+          conditionalPanel(
+            condition = "input.modeOfEvolution_upload_data == 'Ornstein-Uhlenbeck'",
+            sliderInput(
+              inputId = "parameter6_upload_data",
+              label = "Long Term Mean",
+              min = -2,
+              max = 2,
+              value = 0,
+              step = 0.1,
+              animate = TRUE
+            ),
+            sliderInput(
+              inputId = "parameter7_upload_data",
+              label = "Pressure of Selection",
+              min = 0,
+              max = 10,
+              value = 1,
+              step = 0.1,
+              animate = TRUE
+            ),
+            sliderInput(
+              inputId = "parameter8_upload_data",
+              label = "Volatility",
+              min = 0,
+              max = 2,
+              value = 1,
+              step = 0.1,
+              animate = TRUE
+            ),
+            sliderInput(
+              inputId = "parameter9_upload_data",
+              label = "Initial Trait Value",
+              min = -4,
+              max = 4,
+              value = 2,
+              step = 0.1,
+              animate = TRUE
+            )
+          )
+        ),
+        wellPanel(
+          tags$h3("Plot Options"),
+          sliderInput(
+            inputId = "axis_limits_upload_data",
+            label = "Axis Limits",
+            min = -8,
+            max = 8,
+            value = c(-3, 3),
+            step = 0.1,
+            animate = FALSE
+          ),
+          textInput(
+            inputId = "trait_name_upload_data",
+            label = "Trait Name",
+            value = "log10(Body Size)"
+          )
+        )
+      ),
+      column(
+        width = 8,
+        fluidRow(
+          fluidRow(
+            column(
+              width = 4,
+              plotOutput("stratDomainPlot_upload_data")
+            ),
+            column(
+              width = 8,
+              plotOutput("ageDepthModelPlot_upload_data")
+            )
+          ),
+          column(
+            width = 8,
+            plotOutput("timeDomainPlot_upload_data"),
+            offset = 4
+          )
+        ),
+        fluidRow(
+          HTML(
+            '
+            <h4>
+            Where Geology and Biology Meet
+            </h4>
+            <p>
+            The geological record has gaps, but these gaps are not random, but
+            change systematically. As a result, it systematically changes how we
+            perceive evolution and ecology in the fossil record
+            (Patzkowsky and Holland, 2012; Danise et al., 2019).
+            </p>
+            <p>
+            Select a mode of evolution and a number of lineages in the drop down
+            menu. You can modify the model parameters via the sliders.
+            The figures show how the evolutionary history of the lineages
+            originally looked (bottom right), how the age-depth model looks
+            (top right), and what change of traits is observed in the section.
+            Use the slider on the right side to change the position in the basin
+            you examine.
+            In addition to displaying the time intervals and position
+            of hiatuses, you can also show the sea level curve, an important
+            control on the growth of the carbonate platform.
+            Do you see any connection between sea level and the timing
+            of the gaps?
+            </p>
+            <p>
+            You can adjust your sampling strategy in the panel on the right.
+            </p>
+            <h4>
+            References
+            </h4>
+              <ul>
+                <li>
+                Danise, S., Clémence, M. E., Price, G. D., Murphy, D. P., 
+                Gómez, J. J., & Twitchett, R. J. (2019). Stratigraphic and 
+                environmental control on marine benthic community change 
+                through the early Toarcian extinction event 
+                (Iberian Range, Spain). Palaeogeography, Palaeoclimatology, 
+                Palaeoecology, 524, 183-200. 
+                <a href="https://doi.org/10.1016/j.palaeo.2019.03.039">
+                doi.org/10.1016/j.palaeo.2019.03.039</a>
+                </li>
+                <li>
+                Patzkowsky, M. E., & Holland, S. M. (2012). Stratigraphic 
+                paleobiology. In Stratigraphic Paleobiology. 
+                University of Chicago Press.
+                </li>
+              </ul>
+            '
+          )
+        )
+      ),
+      column(
+        width = 2,
+        wellPanel(
+          sliderInput(
+            inputId = "distFromShore_upload_data",
+            label = "Distance from Shore",
+            min = 0.1,
+            max = max_dist_from_shore_km,
+            value = 1,
+            step = 0.1,
+            post = " km",
+            animate = TRUE
+          ),
+          checkboxInput(
+            inputId = "plotSeaLevel_upload_data",
+            label = "Show Sea Level",
+            value = FALSE
+          ),
+          checkboxInput(
+            inputId = "plot_time_gaps_upload_data",
+            label = "Display Gaps in Time",
+            value = FALSE
+          ),
+          checkboxInput(
+            inputId = "plot_hiatuses_upload_data",
+            label = "Display Hiatuses in Stratigraphic Column",
+            value = FALSE
+          )
+        ),
+        wellPanel(
+          selectInput(
+            inputId = "sampling_strategy_upload_data",
+            label = "Sampling Strategy",
+            choices = list("Fixed Number", "Fixed Distance"),
+            selected = "Fixed Distance"
+          ),
+          conditionalPanel(
+            condition = "input.sampling_strategy_upload_data == 'Fixed Number'",
+            sliderInput(
+              inputId = "no_of_samples_upload_data",
+              label = "Number of Samples",
+              min = 5,
+              max = 150,
+              value = 20,
+              step = 1,
+              animate = TRUE
+            )
+          ),
+          conditionalPanel(
+            condition = "input.sampling_strategy_upload_data == 'Fixed Distance'",
+            sliderInput(
+              inputId = "dist_between_samples_upload_data",
+              label = "Distance between Samples",
+              min = 0.1,
+              max = 2,
+              value = 1,
+              step = 0.1,
+              post = " m",
+              animate = TRUE
+            )
+          )
+        )
+      )
+    ),
+    #### Funding
+    hr(),
+    div(
+      style = "margin-left: 4em; margin-right: 4em; margin-bottom: 2em",
+      fluidRow(
+        column(
+          width = 3,
+          img(
+            src = "logos/UW_logo.svg",
+            alt = "Logo of UW",
+            width = "30%",
+            align = "left"
+          )
+        ),
+        column(
+          width = 3,
+          img(
+            src = "logos/IDUB_logo.jpeg",
+            alt = "Logo of IDUB",
+            width = "30%",
+            align = "left"
+          )
+        ),
+        column(
+          width = 3,
+          img(
+            src = "logos/mind_the_gap_logo.png",
+            alt = "Logo of MindTheGap",
+            width = "70%",
+            align = "left"
+          )
+        ),
+        column(
+          width = 3,
+          img(
+            src = "logos/UU_logo.jpg",
+            width = "70%",
+            alt = "Logo of UU",
+            align = "right"
+          )
+        )
+      )
+    )
   )
 )
 
@@ -1242,6 +1553,70 @@ server <- function(input, output) {
       no_of_samples = input$no_of_samples_strat_pal
     )
   })
+  
+  #### Upload Data: Reactive Variables ####
+  eventReactive(eventExpr = input$refreshSimulations_upload_data, {
+    evolutionarySimulations_upload_data()
+  })
+  
+  evolutionarySimulations_upload_data <- reactive({
+    input$refreshSimulations
+    getEvolutionarySimulations(
+      noOfSims = input$noOfSims_upload_data,
+      mode = input$modeOfEvolution_upload_data,
+      input$parameter1_upload_data,
+      input$parameter2_upload_data,
+      input$parameter3_upload_data,
+      input$parameter4_upload_data,
+      input$parameter5_upload_data,
+      input$parameter6_upload_data,
+      input$parameter7_upload_data,
+      input$parameter8_upload_data,
+      input$parameter9_upload_data
+    )
+  })
+  
+  ageDepthModel_upload_data <- reactive({
+    getAgeDepthModel(
+      distanceFromShore = input$distFromShore_upload_data
+    )
+  })
+  #### Upload Data: Outputs ####
+  output$ageDepthModelPlot_upload_data <- renderPlot({
+    makeAgeDepthModelPlot(
+      ageDepthModel = ageDepthModel_upload_data(),
+      plot_time_gaps = input$plot_time_gaps_upload_data,
+      plot_hiatuses = input$plot_hiatuses_upload_data,
+      dist_from_shore_km = input$distFromShore_upload_data
+    )
+  })
+  
+  output$timeDomainPlot_upload_data <- renderPlot({
+    makeTimeDomainPlot(
+      ts_list = evolutionarySimulations_upload_data(),
+      ageDepthModel = ageDepthModel_upload_data(),
+      trait_name = input$trait_name_upload_data,
+      axis_limits = input$axis_limits_upload_data,
+      plotSeaLevel = input$plotSeaLevel_upload_data,
+      plot_time_gaps = input$plot_time_gaps_upload_data,
+      plot_strat_info = TRUE
+    )
+  })
+  
+  output$stratDomainPlot_upload_data <- renderPlot({
+    makeStratDomainPlot(
+      ageDepthModel = ageDepthModel_upload_data(),
+      ts_list = evolutionarySimulations_upload_data(),
+      axis_limits = input$axis_limits_upload_data,
+      trait_name = input$trait_name_upload_data,
+      plotSeaLevel = input$plotSeaLevel_upload_data,
+      plot_hiatuses = input$plot_hiatuses_upload_data,
+      sampling_strategy = input$sampling_strategy_upload_data,
+      dist_between_samples = input$dist_between_samples_upload_data,
+      no_of_samples = input$no_of_samples_upload_data
+    )
+  })
+  
 }
 
 shinyApp(ui = ui, server = server)
