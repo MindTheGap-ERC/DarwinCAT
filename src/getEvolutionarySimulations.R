@@ -45,7 +45,8 @@ getEvolutionarySimulations <- function(noOfSims, mode, ...) {
       )
       brownianMotionPath <- cumsum(c(0, increments))
       brownianDriftPath <- sigma * brownianMotionPath + mu * time_myr + x0
-      evolutionarySimulationList[[i]] <- brownianDriftPath
+      evolutionarySimulationList[[i]]$val <- brownianDriftPath
+      evolutionarySimulationList[[i]]$time <- time_myr
     }
     return(evolutionarySimulationList)
   }
@@ -62,7 +63,8 @@ getEvolutionarySimulations <- function(noOfSims, mode, ...) {
         mean = mean,
         sd = sqrt(variance)
       )
-      evolutionarySimulationList[[i]] <- stasisValues
+      evolutionarySimulationList[[i]]$val <- stasisValues
+      evolutionarySimulationList[[i]]$time <- time_myr
     }
     return(evolutionarySimulationList)
   }
@@ -87,7 +89,8 @@ getEvolutionarySimulations <- function(noOfSims, mode, ...) {
         ouval[j] <- ouval[j - 1] + 0.001 * (theta * (mu - ouval[j - 1])) +
           sigma * noiseIncrements[j - 1]
       }
-      evolutionarySimulationList[[i]] <- ouval
+      evolutionarySimulationList[[i]]$val <- ouval
+      evolutionarySimulationList[[i]]$time <- time_myr
     }
     return(evolutionarySimulationList)
   }
