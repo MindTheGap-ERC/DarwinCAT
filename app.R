@@ -13,6 +13,7 @@ source("src/makeTimeDomainPlot.R")
 source("src/makeStratDomainPlot.R")
 source("src/makeBasinTransectPlot.R")
 source("src/makeWheelerDiagram.R")
+source("src/convert_input_data.R")
 
 
 #### Iser interface ####
@@ -1113,118 +1114,59 @@ ui <- navbarPage(
       )
     )
   ),
-  #### Panel: Stratigraphuic Paleobiology ####
+  #### Panel: Upload Data ####
   tabPanel(
     title = "Upload Your Data",
     fluidRow(
       column(
         width = 2,
-        wellPanel(
-          tags$h3("Evolutionary Simulations"),
-          actionButton(
-            inputId = "refreshSimulations_upload_data",
-            label = "Refresh"
+        fileInput(
+          inputId = "import_data_upload",
+          label = "Choose .csv File",
+          multiple = FALSE,
+          accept = ".csv",
+          buttonLabel = "Browse...",
+          placeholder = "No File Selected"
+        ),
+        checkboxInput(
+          inputId = "header_data_upload", 
+          label = "Header", 
+          value = TRUE),
+        
+        radioButtons(
+          inputId = "sep_data_upload", 
+          label = "Separator",
+                     choices = c(Comma = ",",
+                                 Semicolon = ";",
+                                 Tab = "\t"),
+                     selected = ","
           ),
-          selectInput(
-            inputId = "noOfSims_upload_data",
-            label = "Number of Lineages",
-            choices = list("1", "2", "3")
+        
+
+        
+        radioButtons(
+          inputId = "quote_data_upload", 
+          label = "Quote",
+                     choices = c(None = "",
+                                 "Double Quote" = '"',
+                                 "Single Quote" = "'"),
+                     selected = '"'
           ),
-          selectInput(
-            inputId = "modeOfEvolution_upload_data",
-            label = "Mode of Evolution",
-            choices = list("Random Walk", "Stasis", "Ornstein-Uhlenbeck")
-          ),
-          conditionalPanel(
-            condition = "input.modeOfEvolution_upload_data == 'Random Walk'",
-            sliderInput(
-              inputId = "parameter1_upload_data",
-              label = "Variability",
-              min = 0,
-              max = 4,
-              value = 1,
-              step = 0.1,
-              animate = TRUE
-            ),
-            sliderInput(
-              inputId = "parameter2_upload_data",
-              label = "Drift",
-              min = -2,
-              max = 2,
-              value = 0,
-              step = 0.1,
-              animate = TRUE
-            ),
-            sliderInput(
-              inputId = "parameter3_upload_data",
-              label = "Initial Trait Value",
-              min = -1,
-              max = 1,
-              value = 0,
-              step = 0.1,
-              animate = TRUE
-            )
-          ),
-          conditionalPanel(
-            condition = "input.modeOfEvolution_upload_data == 'Stasis'",
-            sliderInput(
-              inputId = "parameter4_upload_data",
-              label = "Mean Trait Value",
-              min = -1,
-              max = 1,
-              value = 0,
-              step = 0.1,
-              animate = TRUE
-            ),
-            sliderInput(
-              inputId = "parameter5_upload_data",
-              label = "Variance",
-              min = 0,
-              max = 2,
-              value = 1,
-              step = 0.1,
-              animate = TRUE
-            )
-          ),
-          conditionalPanel(
-            condition = "input.modeOfEvolution_upload_data == 'Ornstein-Uhlenbeck'",
-            sliderInput(
-              inputId = "parameter6_upload_data",
-              label = "Long Term Mean",
-              min = -2,
-              max = 2,
-              value = 0,
-              step = 0.1,
-              animate = TRUE
-            ),
-            sliderInput(
-              inputId = "parameter7_upload_data",
-              label = "Pressure of Selection",
-              min = 0,
-              max = 10,
-              value = 1,
-              step = 0.1,
-              animate = TRUE
-            ),
-            sliderInput(
-              inputId = "parameter8_upload_data",
-              label = "Volatility",
-              min = 0,
-              max = 2,
-              value = 1,
-              step = 0.1,
-              animate = TRUE
-            ),
-            sliderInput(
-              inputId = "parameter9_upload_data",
-              label = "Initial Trait Value",
-              min = -4,
-              max = 4,
-              value = 2,
-              step = 0.1,
-              animate = TRUE
-            )
-          )
+        
+        textInput(
+          inputId = "col_name_time_data_upload", 
+          label = "Column name with time data", 
+          value = "t", 
+          width = NULL, 
+          placeholder = "time"
+        ),
+        
+        textInput(
+          inputId = "col_name_traits_data_upload", 
+          label = "Column name with trait data", 
+          value = "val", 
+          width = NULL, 
+          placeholder = "val"
         ),
         wellPanel(
           tags$h3("Plot Options"),
@@ -1555,24 +1497,19 @@ server <- function(input, output) {
   })
   
   #### Upload Data: Reactive Variables ####
-  eventReactive(eventExpr = input$refreshSimulations_upload_data, {
-    evolutionarySimulations_upload_data()
+  data_path_upload_data <- reactive({
+    req(input$import_data_upload)
+    input$import_data_upload["datapath"]
   })
   
-  evolutionarySimulations_upload_data <- reactive({
-    input$refreshSimulations
-    getEvolutionarySimulations(
-      noOfSims = input$noOfSims_upload_data,
-      mode = input$modeOfEvolution_upload_data,
-      input$parameter1_upload_data,
-      input$parameter2_upload_data,
-      input$parameter3_upload_data,
-      input$parameter4_upload_data,
-      input$parameter5_upload_data,
-      input$parameter6_upload_data,
-      input$parameter7_upload_data,
-      input$parameter8_upload_data,
-      input$parameter9_upload_data
+  trait_val_upload_data <- reactive({
+    convert_input_data(
+      data = data_path_upload_data(), 
+      header = input$header_upload_data,
+      separator = input$sep_upload_data,
+      quote = input$quote_upload_data,
+      col_name_time = input$col_name_time_upload_data,
+      col_name_trait = input$col_name_time_upload_data
     )
   })
   
@@ -1581,6 +1518,8 @@ server <- function(input, output) {
       distanceFromShore = input$distFromShore_upload_data
     )
   })
+  
+  
   #### Upload Data: Outputs ####
   output$ageDepthModelPlot_upload_data <- renderPlot({
     makeAgeDepthModelPlot(
@@ -1593,7 +1532,7 @@ server <- function(input, output) {
   
   output$timeDomainPlot_upload_data <- renderPlot({
     makeTimeDomainPlot(
-      ts_list = evolutionarySimulations_upload_data(),
+      ts_list = trait_val_upload_data(),
       ageDepthModel = ageDepthModel_upload_data(),
       trait_name = input$trait_name_upload_data,
       axis_limits = input$axis_limits_upload_data,
@@ -1606,7 +1545,7 @@ server <- function(input, output) {
   output$stratDomainPlot_upload_data <- renderPlot({
     makeStratDomainPlot(
       ageDepthModel = ageDepthModel_upload_data(),
-      ts_list = evolutionarySimulations_upload_data(),
+      ts_list = trait_val_upload_data(),
       axis_limits = input$axis_limits_upload_data,
       trait_name = input$trait_name_upload_data,
       plotSeaLevel = input$plotSeaLevel_upload_data,

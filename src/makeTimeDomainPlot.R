@@ -1,5 +1,5 @@
-makeTimeDomainPlot <- function(ts_list, 
-                               ageDepthModel, 
+makeTimeDomainPlot <- function(ts_list = NULL, 
+                               ageDepthModel = NULL, 
                                axis_limits = c(-1,1),
                                trait_name = "", 
                                plotSeaLevel = FALSE, 

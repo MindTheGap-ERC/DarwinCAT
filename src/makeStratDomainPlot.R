@@ -1,5 +1,5 @@
-makeStratDomainPlot <- function(ageDepthModel,
-                                ts_list,
+makeStratDomainPlot <- function(ageDepthModel = NULL,
+                                ts_list = NULL,
                                 axis_limits = c(-1, 1),
                                 trait_name = "",
                                 plotSeaLevel = TRUE,
