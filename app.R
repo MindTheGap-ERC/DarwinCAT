@@ -660,7 +660,7 @@ ui <- navbarPage(
           column(
             width = 9,
             plotOutput(
-              outputId = "basinTransect"
+              outputId = "basinTransect_carb_strat"
             )
           )
         ),
@@ -691,7 +691,7 @@ ui <- navbarPage(
           column(
             width = 9,
             plotOutput(
-              outputId = "wheelerDiagram"
+              outputId = "wheelerDiagram_carb_strat"
             )
           ),
         ),
@@ -811,23 +811,23 @@ ui <- navbarPage(
         wellPanel(
           tags$h3("Evolutionary Simulations"),
           actionButton(
-            inputId = "refreshSimulations",
+            inputId = "refreshSimulations_strat_pal",
             label = "Refresh"
           ),
           selectInput(
-            inputId = "noOfSims",
+            inputId = "noOfSims_strat_pal",
             label = "Number of Lineages",
             choices = list("1", "2", "3")
           ),
           selectInput(
-            inputId = "modeOfEvolution",
+            inputId = "modeOfEvolution_strat_pal",
             label = "Mode of Evolution",
             choices = list("Random Walk", "Stasis", "Ornstein-Uhlenbeck")
           ),
           conditionalPanel(
-            condition = "input.modeOfEvolution == 'Random Walk'",
+            condition = "input.modeOfEvolution_strat_pal == 'Random Walk'",
             sliderInput(
-              inputId = "parameter1",
+              inputId = "parameter1_strat_pal",
               label = "Variability",
               min = 0,
               max = 4,
@@ -836,7 +836,7 @@ ui <- navbarPage(
               animate = TRUE
             ),
             sliderInput(
-              inputId = "parameter2",
+              inputId = "parameter2_strat_pal",
               label = "Drift",
               min = -2,
               max = 2,
@@ -845,7 +845,7 @@ ui <- navbarPage(
               animate = TRUE
             ),
             sliderInput(
-              inputId = "parameter3",
+              inputId = "parameter3_strat_pal",
               label = "Initial Trait Value",
               min = -1,
               max = 1,
@@ -855,9 +855,9 @@ ui <- navbarPage(
             )
           ),
           conditionalPanel(
-            condition = "input.modeOfEvolution == 'Stasis'",
+            condition = "input.modeOfEvolution_strat_pal == 'Stasis'",
             sliderInput(
-              inputId = "parameter4",
+              inputId = "parameter4_strat_pal",
               label = "Mean Trait Value",
               min = -1,
               max = 1,
@@ -866,7 +866,7 @@ ui <- navbarPage(
               animate = TRUE
             ),
             sliderInput(
-              inputId = "parameter5",
+              inputId = "parameter5_strat_pal",
               label = "Variance",
               min = 0,
               max = 2,
@@ -876,9 +876,9 @@ ui <- navbarPage(
             )
           ),
           conditionalPanel(
-            condition = "input.modeOfEvolution == 'Ornstein-Uhlenbeck'",
+            condition = "input.modeOfEvolution_strat_pal == 'Ornstein-Uhlenbeck'",
             sliderInput(
-              inputId = "parameter6",
+              inputId = "parameter6_strat_pal",
               label = "Long Term Mean",
               min = -2,
               max = 2,
@@ -887,7 +887,7 @@ ui <- navbarPage(
               animate = TRUE
             ),
             sliderInput(
-              inputId = "parameter7",
+              inputId = "parameter7_strat_pal",
               label = "Pressure of Selection",
               min = 0,
               max = 10,
@@ -896,7 +896,7 @@ ui <- navbarPage(
               animate = TRUE
             ),
             sliderInput(
-              inputId = "parameter8",
+              inputId = "parameter8_strat_pal",
               label = "Volatility",
               min = 0,
               max = 2,
@@ -905,7 +905,7 @@ ui <- navbarPage(
               animate = TRUE
             ),
             sliderInput(
-              inputId = "parameter9",
+              inputId = "parameter9_strat_pal",
               label = "Initial Trait Value",
               min = -4,
               max = 4,
@@ -918,7 +918,7 @@ ui <- navbarPage(
         wellPanel(
           tags$h3("Plot Options"),
           sliderInput(
-            inputId = "axis_limits",
+            inputId = "axis_limits_strat_pal",
             label = "Axis Limits",
             min = -8,
             max = 8,
@@ -927,7 +927,7 @@ ui <- navbarPage(
             animate = FALSE
           ),
           textInput(
-            inputId = "trait_name",
+            inputId = "trait_name_strat_pal",
             label = "Trait Name",
             value = "log10(Body Size)"
           )
@@ -939,7 +939,7 @@ ui <- navbarPage(
           fluidRow(
             column(
               width = 4,
-              plotOutput("stratDomainPlot")
+              plotOutput("stratDomainPlot_strat_pal")
             ),
             column(
               width = 8,
@@ -948,7 +948,7 @@ ui <- navbarPage(
           ),
           column(
             width = 8,
-            plotOutput("timeDomainPlot"),
+            plotOutput("timeDomainPlot_strat_pal"),
             offset = 4
           )
         ),
@@ -1009,7 +1009,7 @@ ui <- navbarPage(
         width = 2,
         wellPanel(
           sliderInput(
-            inputId = "distFromShore",
+            inputId = "distFromShore_strat_pal",
             label = "Distance from Shore",
             min = 0.1,
             max = max_dist_from_shore_km,
@@ -1019,32 +1019,32 @@ ui <- navbarPage(
             animate = TRUE
           ),
           checkboxInput(
-            inputId = "plotSeaLevel",
+            inputId = "plotSeaLevel_strat_pal",
             label = "Show Sea Level",
             value = FALSE
           ),
           checkboxInput(
-            inputId = "plot_time_gaps",
+            inputId = "plot_time_gaps_strat_pal",
             label = "Display Gaps in Time",
             value = FALSE
           ),
           checkboxInput(
-            inputId = "plot_hiatuses",
+            inputId = "plot_hiatuses_strat_pal",
             label = "Display Hiatuses in Stratigraphic Column",
             value = FALSE
           )
         ),
         wellPanel(
           selectInput(
-            inputId = "sampling_strategy",
+            inputId = "sampling_strategy_strat_pal",
             label = "Sampling Strategy",
             choices = list("Fixed Number", "Fixed Distance"),
             selected = "Fixed Distance"
           ),
           conditionalPanel(
-            condition = "input.sampling_strategy == 'Fixed Number'",
+            condition = "input.sampling_strategy_strat_pal == 'Fixed Number'",
             sliderInput(
-              inputId = "no_of_samples",
+              inputId = "no_of_samples_strat_pal",
               label = "Number of Samples",
               min = 5,
               max = 150,
@@ -1054,9 +1054,9 @@ ui <- navbarPage(
             )
           ),
           conditionalPanel(
-            condition = "input.sampling_strategy == 'Fixed Distance'",
+            condition = "input.sampling_strategy_strat_pal == 'Fixed Distance'",
             sliderInput(
-              inputId = "dist_between_samples",
+              inputId = "dist_between_samples_strat_pal",
               label = "Distance between Samples",
               min = 0.1,
               max = 2,
@@ -1144,7 +1144,7 @@ server <- function(input, output) {
 
   output$timeDomainPlot_trait_evo <- renderPlot({
     makeTimeDomainPlot(
-      evolutionarySimulations = evolutionarySimulations_trait_evo(),
+      ts_list = evolutionarySimulations_trait_evo(),
       trait_name = input$trait_name_trait_evo,
       axis_limits = input$axis_limits_trait_evo,
       plot_strat_info = FALSE
@@ -1159,13 +1159,13 @@ server <- function(input, output) {
   })
 
   #### Carbonate Stratigraphy: Outputs ####
-  output$wheelerDiagram <- renderPlot({
+  output$wheelerDiagram_carb_strat <- renderPlot({
     makeWheelerDiagram(
       distanceFromShore = input$distFromShore_carb_strat
     )
   })
 
-  output$basinTransect <- renderPlot({
+  output$basinTransect_carb_strat <- renderPlot({
     makeBasinTransectPlot(
       distanceFromShore = input$distFromShore_carb_strat
     )
@@ -1181,65 +1181,65 @@ server <- function(input, output) {
   })
 
   #### Stratigraphic Paleobiology: Reactive Variables ####
-  eventReactive(eventExpr = input$refreshSimulations, {
-    evolutionarySimulations()
+  eventReactive(eventExpr = input$refreshSimulations_strat_pal, {
+    evolutionarySimulations_strat_pal()
   })
 
-  evolutionarySimulations <- reactive({
+  evolutionarySimulations_strat_pal <- reactive({
     input$refreshSimulations
     getEvolutionarySimulations(
-      noOfSims = input$noOfSims,
-      mode = input$modeOfEvolution,
-      input$parameter1,
-      input$parameter2,
-      input$parameter3,
-      input$parameter4,
-      input$parameter5,
-      input$parameter6,
-      input$parameter7,
-      input$parameter8,
-      input$parameter9
+      noOfSims = input$noOfSims_strat_pal,
+      mode = input$modeOfEvolution_strat_pal,
+      input$parameter1_strat_pal,
+      input$parameter2_strat_pal,
+      input$parameter3_strat_pal,
+      input$parameter4_strat_pal,
+      input$parameter5_strat_pal,
+      input$parameter6_strat_pal,
+      input$parameter7_strat_pal,
+      input$parameter8_strat_pal,
+      input$parameter9_strat_pal
     )
   })
 
-  ageDepthModel <- reactive({
+  ageDepthModel_strat_pal <- reactive({
     getAgeDepthModel(
-      distanceFromShore = input$distFromShore
+      distanceFromShore = input$distFromShore_strat_pal
     )
   })
   #### Stratigraphic Paleobiology: Outputs ####
   output$ageDepthModelPlot_strat_pal <- renderPlot({
     makeAgeDepthModelPlot(
-      ageDepthModel = ageDepthModel(),
-      plot_time_gaps = input$plot_time_gaps,
-      plot_hiatuses = input$plot_hiatuses,
-      dist_from_shore_km = input$distFromShore
+      ageDepthModel = ageDepthModel_strat_pal(),
+      plot_time_gaps = input$plot_time_gaps_strat_pal,
+      plot_hiatuses = input$plot_hiatuses_strat_pal,
+      dist_from_shore_km = input$distFromShore_strat_pal
     )
   })
 
-  output$timeDomainPlot <- renderPlot({
+  output$timeDomainPlot_strat_pal <- renderPlot({
     makeTimeDomainPlot(
-      evolutionarySimulations = evolutionarySimulations(),
-      ageDepthModel = ageDepthModel(),
-      trait_name = input$trait_name,
-      axis_limits = input$axis_limits,
-      plotSeaLevel = input$plotSeaLevel,
-      plot_time_gaps = input$plot_time_gaps,
+      ts_list = evolutionarySimulations_strat_pal(),
+      ageDepthModel = ageDepthModel_strat_pal(),
+      trait_name = input$trait_name_strat_pal,
+      axis_limits = input$axis_limits_strat_pal,
+      plotSeaLevel = input$plotSeaLevel_strat_pal,
+      plot_time_gaps = input$plot_time_gaps_strat_pal,
       plot_strat_info = TRUE
     )
   })
 
-  output$stratDomainPlot <- renderPlot({
+  output$stratDomainPlot_strat_pal <- renderPlot({
     makeStratDomainPlot(
-      ageDepthModel = ageDepthModel(),
-      evolutionarySimulations = evolutionarySimulations(),
-      axis_limits = input$axis_limits,
-      trait_name = input$trait_name,
-      plotSeaLevel = input$plotSeaLevel,
-      plot_hiatuses = input$plot_hiatuses,
-      sampling_strategy = input$sampling_strategy,
-      dist_between_samples = input$dist_between_samples,
-      no_of_samples = input$no_of_samples
+      ageDepthModel = ageDepthModel_strat_pal(),
+      ts_list = evolutionarySimulations_strat_pal(),
+      axis_limits = input$axis_limits_strat_pal,
+      trait_name = input$trait_name_strat_pal,
+      plotSeaLevel = input$plotSeaLevel_strat_pal,
+      plot_hiatuses = input$plot_hiatuses_strat_pal,
+      sampling_strategy = input$sampling_strategy_strat_pal,
+      dist_between_samples = input$dist_between_samples_strat_pal,
+      no_of_samples = input$no_of_samples_strat_pal
     )
   })
 }
