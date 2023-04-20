@@ -25,8 +25,11 @@ ui <- navbarPage(
     title = "Introduction",
     div(
       style = "margin-left: 4em; margin-right: 4em",
-      HTML(
-        '
+      fluidRow(
+        column(
+          width = 8,
+          HTML(
+            '
         <h1>
         Preservation of Evolution in the Fossil Record
         </h1>
@@ -35,19 +38,19 @@ ui <- navbarPage(
         Motivation
         </h4>
         <p>
-        In the fossil record, we can observe gradual changes in lineages of 
-        organisms over timescales of thousands to millions of years. 
-        The changes can be in any aspect of the organism, even behaviour, but 
-        we will only be able to track those which fossilize 
-        (i.e. have a preservation potential). 
+        In the fossil record, we can observe gradual changes in lineages of
+        organisms over timescales of thousands to millions of years.
+        The changes can be in any aspect of the organism, even behaviour, but
+        we will only be able to track those which fossilize
+        (i.e. have a preservation potential).
         This usually refers to skeletal morphology, such as tooth size
         of a primate, the body weight of a squirrel (Gingerich, 1979)
-        or the number of denticles of a conodont (Dzik, 1991). 
+        or the number of denticles of a conodont (Dzik, 1991).
         If we follow
-        these gradual changes through a geological succession, we should 
-        be able - in theory - to catch evolution "red handed" and even 
+        these gradual changes through a geological succession, we should
+        be able - in theory - to catch evolution "red handed" and even
         spot moments of speciation and find out <b>how</b> it happens:
-        do species gradually turn into other species (<i>anagenesis</i>) or do 
+        do species gradually turn into other species (<i>anagenesis</i>) or do
         new species split out from the old ones (<i>branching speciation</i>)?
         </p>
         <h4>
@@ -58,20 +61,20 @@ ui <- navbarPage(
         this would be true.
         First, a geological section is only a small part of the space in which
         the organism lived.
-        And most organisms do not occur in <i>everything everywhere all at 
+        And most organisms do not occur in <i>everything everywhere all at
         once</i> (check if not bacteria or tardigrade).
-        So if gigantic squirrels appear in a section we study, it could be 
-        because their ancestors evolved towards larger body sizes or 
-        larger squirrels lived somewhere else and, owing to some 
+        So if gigantic squirrels appear in a section we study, it could be
+        because their ancestors evolved towards larger body sizes or
+        larger squirrels lived somewhere else and, owing to some
         deterministic or
         accidental factors, migrated into the part of squirrel habitat preserved
-        in our geological section at a particular time. 
+        in our geological section at a particular time.
         Many morhological traits vary systematically
-        with environmental gradients, e.g. in the familiar Bergmann\'s rule, 
-        mamalian individuals and species living in colder areas tend to be 
+        with environmental gradients, e.g. in the familiar Bergmann\'s rule,
+        mamalian individuals and species living in colder areas tend to be
         larger than their counterparts in warmer climes.
-        So a morphological change in a geological section could be an 
-        evolutionary change or an environmental change to which 
+        So a morphological change in a geological section could be an
+        evolutionary change or an environmental change to which
         the organisms responded phenotypically.
         </p>
         <h4>
@@ -79,28 +82,28 @@ ui <- navbarPage(
         </h4>
         <p>
         A geological section not only represents a small fragment of the space
-        in which it was formed, but typically also a small part of 
+        in which it was formed, but typically also a small part of
         time in which it was deposited.
-        If omission (lack of deposition) or erosion took place, 
+        If omission (lack of deposition) or erosion took place,
         the corresponding time - with its fossils - will be missing.
         Instead of a gradual change in morphology, we might see a jump.
         Nonetheless, some palaeontologists proposed that exceptionally complete
         geological records record evolution faithfully.
         This approach is known under the name of <i>stratophenetics</i>.
-        Very successful applications of stratophenetics exist e.g. to 
+        Very successful applications of stratophenetics exist e.g. to
         planktonic foraminifera (Aze et al., 2011).
         Yet, phylogenies typically do not use stratophenetic data, assuming
         that the geological record is too incomplete - or its structure is too
-        complex to account for - and focus on 
+        complex to account for - and focus on
         morphological data (e.g. Smith, 2000),
-        optionally aided by fossil calibrations. 
+        optionally aided by fossil calibrations.
         But what if we <i>knew</i> the structure of the geological record
-        and where the gaps are? We could distinguish gradual 
+        and where the gaps are? We could distinguish gradual
         evolution towards a certain
-        morphology from a gradual change in the environment in 
+        morphology from a gradual change in the environment in
         which such morphology is manifested phenotypically.
         In this app, you can simulate the geological record by taking a
-        model of a carbonate platform and examining 
+        model of a carbonate platform and examining
         how continuous evolution would be represented at any point in it.
         </p>
         <h4>
@@ -109,16 +112,41 @@ ui <- navbarPage(
         <p>
         Use the taps at the top to navigate between the different sections of
         the App.
-        The second and third tab provide an introduction to 
+        The second and third tab provide an introduction to
         evolutionary biology and carbonate stratigraphy.
-        The fourth tab, labeled "Stratigraphic Paleobiology" 
+        The fourth tab, labeled "Stratigraphic Paleobiology"
         combines both to explore how trait evolution
         is preserved in the rock record.
         In each tab, you will find a brief explanation of key concepts
         and explanations on how to use the interactive elements in the tab.
         </p>'
+          )
         ),
-      
+        column(
+          width = 4,
+          HTML(
+            '
+          <div style="margin-top: 4em">
+          <figure>
+          <img src="modes_of_speciation.jpg" alt="Modes of Speciation" align="left" width="100%">
+          <figcaption>Fig. 1 - Modes of Speciation. Based on the FossilSim
+          package for R (<a href="https://doi.org/10.1111/2041-210X.13170">
+          Barido-Sottani et al. 2019</a>).
+          </figcaption>
+          </figure>
+          </div>
+
+          <div style="margin-top: 4em">
+          <figure>
+          <img src="geology/angular_unconformity.JPG" alt="angular unconformity" align="left" width="100%">
+          <figcaption>Fig. 2 - Devonian/Permian angular unconformity: a gap of nearly 100 My. Zachełmie Quarry, Poland.</figcaption>
+          </figure>
+          </div>
+
+          '
+          )
+        )
+      ),
       fluidRow(
         HTML(
           '
@@ -130,9 +158,9 @@ ui <- navbarPage(
         column(
           width = 4,
           HTML(
-            '
+            "
               <h5><b> Niklas Hohmann</b> </h5>
-              '
+              "
           ),
           fluidRow(
             column(
@@ -167,9 +195,9 @@ ui <- navbarPage(
         column(
           width = 4,
           HTML(
-            '
+            "
               <h5><b> Dr. Emilia Jarochowska</b> </h5>
-              '
+              "
           ),
           fluidRow(
             column(
@@ -201,9 +229,9 @@ ui <- navbarPage(
         column(
           width = 4,
           HTML(
-            '
+            "
               <h5><b> Prof. Peter Burgess</b> </h5>
-              '
+              "
           ),
           fluidRow(
             column(
@@ -211,10 +239,10 @@ ui <- navbarPage(
               HTML(
                 '
                 <figure>
-                  <img src="people/peter_burgess.png" alt="Picture of Peter 
+                  <img src="people/peter_burgess.png" alt="Picture of Peter
                   Burgess" align="left" width="100%">
                   <figcaption> <font size="-2"> Figure from <a href="https://xkcd.com/">xkcd.com</a>
-                  licensed under the Creative Commons Attribution-NonCommercial 
+                  licensed under the Creative Commons Attribution-NonCommercial
                   2.5 license, see <a href="xkcd.com/license.html">www.xkcd.com/license.html</a>
                   for details. </font></figcaption>
                   </figure>
@@ -239,8 +267,7 @@ ui <- navbarPage(
           )
         )
       ),
-
-        HTML(
+      HTML(
         '
         <h4>
         Code Availability
@@ -265,35 +292,42 @@ ui <- navbarPage(
         </h4>
         <ul>
          <li>
-         Aze, T., Ezard, T.H.G., Purvis, A., Coxall, H.K., Stewart, D.R.M., 
-         Wade, B.S., and Pearson, P.M. (2011). A phylogeny of Cenozoic 
-         macroperforate planktonic foraminifera from fossil data. Biological 
+         Aze, T., Ezard, T.H.G., Purvis, A., Coxall, H.K., Stewart, D.R.M.,
+         Wade, B.S., and Pearson, P.M. (2011). A phylogeny of Cenozoic
+         macroperforate planktonic foraminifera from fossil data. Biological
          Reviews, 86, p. 900–927. <a href="https://doi.org/10.1111/j.1469-185X.2011.00178.x">
          doi.org/10.1111/j.1469-185X.2011.00178.x</a>
          </li>
+          <li>
+          Barido-Sottani, J., Pett, W., O\'Reilly, J.E., Warnock, R.C.M.
+          Fossilsim: An r package for simulating fossil occurrence data under
+          mechanistic models of preservation and recovery. Methods Ecol
+          Evol. 2019; 10: 835– 840. <a href="https://doi.org/10.1111/2041-210X.13170">
+         doi.org/10.1111/2041-210X.13170</a>
+         </li>
          <li>
          Burgess, P.M. (2013). CarboCAT: A cellular automata model of
-         heterogeneous carbonate strata: Computers & Geosciences, 53, p. 
+         heterogeneous carbonate strata: Computers & Geosciences, 53, p.
          129–140. <a href="https://doi.org/10.1016/j.cageo.2011.08.026">
          doi.org/10.1016/j.cageo.2011.08.026</a>
          </li>
          <li>
-         Dzik, J. (1991). <a title="Go to Publication" 
-         href="https://bibliotekanauki.pl/articles/20386.pdf">Features of the 
-         fossil record of evolution</a>. Acta Palaeontologica 
+         Dzik, J. (1991). <a title="Go to Publication"
+         href="https://bibliotekanauki.pl/articles/20386.pdf">Features of the
+         fossil record of evolution</a>. Acta Palaeontologica
          Polonica, 36, p. 91-113.
          </li>
          <li>
          Gingerich, P.D. (1979). The stratophenetic approach to phylogeny
-         reconstruction in vertebrate paleontology. In: Cracraft, J. and 
+         reconstruction in vertebrate paleontology. In: Cracraft, J. and
          Eldredge, N. <i>Phylogenetic analysis and palaeontology.
-         </i> Columbia University Press, New York. pp. 41-77. 
+         </i> Columbia University Press, New York. pp. 41-77.
          <a href="https://doi.org/10.7312/crac92306-004">
          doi.org/10.7312/crac92306-004</a>
          </li>
          <li>
          Smith, A.B. (2000). Stratigraphy in phylogeny reconstruction. Journal
-         of Paleontology, 74, p. 763-766. 
+         of Paleontology, 74, p. 763-766.
          <a href="https://doi.org/10.1666/0022-3360(2000)074%3C0763:SIPR%3E2.0.CO;2">
          doi.org/10.1666/0022-3360(2000)074%3C0763:SIPR%3E2.0.CO;2</a>
          </li>
@@ -473,20 +507,20 @@ ui <- navbarPage(
             Modes of Evolution
             </h4>
             <p>
-            In evolutionary biology, models of <a title="Wikipedia article on 
-            phenotypic traits" 
+            In evolutionary biology, models of <a title="Wikipedia article on
+            phenotypic traits"
             href="https://en.wikipedia.org/w/index.php?title=Phenotypic_trait&oldid=1143667283">trait</a>
             evolution are subdivided into distinct <i>modes of evolution</i>.
-            Here, we focus on three modes of evolution: Random walk, Stasis, 
+            Here, we focus on three modes of evolution: Random walk, Stasis,
             and Ornstein-Uhlenbeck (Hunt, 2008; Hunt et al. 2008;
             Hopkins and Lidgard, 2012).
-            The evolution of a trait within a <a title="Wikipedia article on Lineage" 
+            The evolution of a trait within a <a title="Wikipedia article on Lineage"
             href="https://en.wikipedia.org/w/index.php?title=Lineage_(evolution)&oldid=1113106063">
-            lineage</a> is specified by the mode of evolution and a set of 
+            lineage</a> is specified by the mode of evolution and a set of
             model parameters.
             </p>
             <p>
-            To specify the simulated mode of evolution and the number of 
+            To specify the simulated mode of evolution and the number of
             lineages, use the drop-down menu.
             You can adjust the model parameters using the sliders.
             Click the "play" button located beneath the sliders to generate
@@ -500,10 +534,10 @@ ui <- navbarPage(
             <!-- References for the tab "Modes of Evolution"-->
             <ul>
               <li>
-              Hunt, G. (2007). The relative importance of directional change, 
-              random walks, and stasis in the evolution of fossil lineages. 
-              Proceedings of the National Academy of Sciences, 104, p. 
-              18404-18408.  <a 
+              Hunt, G. (2007). The relative importance of directional change,
+              random walks, and stasis in the evolution of fossil lineages.
+              Proceedings of the National Academy of Sciences, 104, p.
+              18404-18408.  <a
               href="https://doi.org/10.1073/pnas.0704088104">doi.org/10.1073/pnas.0704088104</a>
               </li>
               <li>
@@ -514,9 +548,9 @@ ui <- navbarPage(
               doi.org/10.1073/pnas.1209901109</a>
               </li>
               <li>
-              Hunt, G., Bell, M., and Travis, M.P. (2008). Evolution toward a 
+              Hunt, G., Bell, M., and Travis, M.P. (2008). Evolution toward a
               new adaptive optimum: phenotypic evolution in a fossil stickleback
-              lineage. Evolution, 62, p. 700-710. 
+              lineage. Evolution, 62, p. 700-710.
               <a href="https://doi.org/10.1111/j.1558-5646.2007.00310.x">
               doi.org/10.1111/j.1558-5646.2007.00310.x</a>
               </li>
@@ -621,7 +655,7 @@ ui <- navbarPage(
         ),
         HTML(
           "
-          Use the slider to view age-depth models from various locations 
+          Use the slider to view age-depth models from various locations
           on the platform.
           Additionally, you can use the checkboxes to highlight the
           timing and stratigraphic position of hiatuses.
@@ -640,18 +674,18 @@ ui <- navbarPage(
               </h4>
               <!-- The text below will appear beside the Basin Transect in the tab "Carbonate Stratigraphy"-->
               <p>
-              The image depicts a transect of a carbonate platform that has 
-              been simulated using the CarboCAT model (<a title="Go to Publication" 
+              The image depicts a transect of a carbonate platform that has
+              been simulated using the CarboCAT model (<a title="Go to Publication"
               href="https://doi.org/10.1016/j.cageo.2011.08.026">Burgess 2013</a>).
               The colors correspond to carbonate factories: groups of organism
-              s responsible for carbonate production in different ecological 
+              s responsible for carbonate production in different ecological
               niches (e.g. the photozoan factory composed of corals and algae
               in the shallowest water).
-              The growth of the platform is influenced by three key factors: 
-              the relative sea level, the environmental preferences of 
+              The growth of the platform is influenced by three key factors:
+              the relative sea level, the environmental preferences of
               the carbonate-producing organisms, and the dispersal abilities
               of biota, which is simulated
-              here using <a title="cellular automata" 
+              here using <a title="cellular automata"
               href="https://plato.stanford.edu/entries/cellular-automata/ ">cellular automata</a>.
               </p>
               '
@@ -680,9 +714,9 @@ ui <- navbarPage(
               Wheeler 1964</a>), also known as a chronostratigraphic chart, shows
               when and where sediment in the basin is deposited.
               White areas indicate the abscence of preserved rocks.
-              The diagram demonstrates that gaps in the rock record vary 
-              systematically with time and as a function of distance from the 
-              shore. The proportion of time preserved in rocks is called 
+              The diagram demonstrates that gaps in the rock record vary
+              systematically with time and as a function of distance from the
+              shore. The proportion of time preserved in rocks is called
               stratigraphic completeness.
               </p>
               '
@@ -733,20 +767,20 @@ ui <- navbarPage(
             <!-- References for the tab "Carbonate Stratigraphy"-->
             <ul>
               <li>
-              Burgess, P.M. (2013). CarboCAT: A cellular automata model of 
-              heterogeneous carbonate strata: Computers & Geosciences, 53, p. 
+              Burgess, P.M. (2013). CarboCAT: A cellular automata model of
+              heterogeneous carbonate strata: Computers & Geosciences, 53, p.
               129–140. <a href="https://doi.org/10.1016/j.cageo.2011.08.026">
               doi.org/10.1016/j.cageo.2011.08.026</a>
               </li>
               <li>
-              Wheeler, H.E. (1964). Baselevel, lithosphere surface, and 
+              Wheeler, H.E. (1964). Baselevel, lithosphere surface, and
               time-stratigraphy. Geological Society of America Bulletin, 75, p.
               599-610. <a href="https://doi.org/10.1130/0016-7606(1964)75[599:BLSAT]2.0.CO;2">
               doi: 10.1130/0016-7606(1964)75[599:BLSAT2.0.CO;2</a>
               </li>
               <li>
-              Hohmann, N. (2021). Incorporating Information on Varying 
-              Sedimentation Rates in Paleontological Analyses. PALAIOS, 36, 
+              Hohmann, N. (2021). Incorporating Information on Varying
+              Sedimentation Rates in Paleontological Analyses. PALAIOS, 36,
               p. 53–67. <a href = "https://doi.org/10.2110/palo.2020.038">
               doi: 10.2110/palo.2020.038</a>
               </li>
@@ -986,18 +1020,18 @@ ui <- navbarPage(
             </h4>
               <ul>
                 <li>
-                Danise, S., Clémence, M. E., Price, G. D., Murphy, D. P., 
-                Gómez, J. J., & Twitchett, R. J. (2019). Stratigraphic and 
-                environmental control on marine benthic community change 
-                through the early Toarcian extinction event 
-                (Iberian Range, Spain). Palaeogeography, Palaeoclimatology, 
-                Palaeoecology, 524, 183-200. 
+                Danise, S., Clémence, M. E., Price, G. D., Murphy, D. P.,
+                Gómez, J. J., & Twitchett, R. J. (2019). Stratigraphic and
+                environmental control on marine benthic community change
+                through the early Toarcian extinction event
+                (Iberian Range, Spain). Palaeogeography, Palaeoclimatology,
+                Palaeoecology, 524, 183-200.
                 <a href="https://doi.org/10.1016/j.palaeo.2019.03.039">
                 doi.org/10.1016/j.palaeo.2019.03.039</a>
                 </li>
                 <li>
-                Patzkowsky, M. E., & Holland, S. M. (2012). Stratigraphic 
-                paleobiology. In Stratigraphic Paleobiology. 
+                Patzkowsky, M. E., & Holland, S. M. (2012). Stratigraphic
+                paleobiology. In Stratigraphic Paleobiology.
                 University of Chicago Press.
                 </li>
               </ul>
