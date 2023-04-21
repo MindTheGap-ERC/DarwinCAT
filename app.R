@@ -54,7 +54,7 @@ ui <- navbarPage(
         new species split out from the old ones (<i>branching speciation</i>)?
         </p>
         <h4>
-        What Could go Wrong?
+        What Could Go Wrong?
         </h4>
         <p>
         If the geological record was a faithful record of the evolutionary time,
@@ -63,28 +63,30 @@ ui <- navbarPage(
         the organism lived.
         And most organisms do not occur in <i>everything everywhere all at
         once</i> (check if not bacteria or tardigrade).
-        So if gigantic squirrels appear in a section we study, it could be
+        So if <a href="https://www.smithsonianmag.com/smart-news/yes-giant-technicolor-squirrels-actually-roam-forests-southern-india-180971886/" target="_blank">giant squirrels</a> 
+        appear in a section we study, it could be
         because their ancestors evolved towards larger body sizes or
         larger squirrels lived somewhere else and, owing to some
         deterministic or
-        accidental factors, migrated into the part of squirrel habitat preserved
-        in our geological section at a particular time.
+        accidental factors, migrated into the part of squirrel habitat that happens to be preserved
+        in our geological section that only represents a small fragment of the extent of that habitat
+        in space ant time.
         Many morhological traits vary systematically
-        with environmental gradients, e.g. in the familiar Bergmann\'s rule,
+        with environmental gradients. For example, according to the Bergmann\'s rule,
         mamalian individuals and species living in colder areas tend to be
         larger than their counterparts in warmer climes.
         So a morphological change in a geological section could be an
         evolutionary change or an environmental change to which
-        the organisms responded phenotypically.
+        the organisms responded <a href="https://en.wikipedia.org/wiki/Phenotype" target="_blank">phenotypically</a>.
         </p>
         <h4>
-        The Geological Record is Incomplete
+        The Geological Record Is Incomplete
         </h4>
         <p>
         A geological section not only represents a small fragment of the space
         in which it was formed, but typically also a small part of
         time in which it was deposited.
-        If omission (lack of deposition) or erosion took place,
+        If omission (lack of deposition) or <a href="https://en.wikipedia.org/wiki/Erosion" target="_blank">erosion</a> took place,
         the corresponding time - with its fossils - will be missing.
         Instead of a gradual change in morphology, we might see a jump.
         Nonetheless, some palaeontologists proposed that exceptionally complete
@@ -107,11 +109,11 @@ ui <- navbarPage(
         how continuous evolution would be represented at any point in it.
         </p>
         <h4>
-        How to Use This App
+        How To Use This App
         </h4>
         <p>
         Use the taps at the top to navigate between the different sections of
-        the App.
+        the app.
         The second and third tab provide an introduction to
         evolutionary biology and carbonate stratigraphy.
         The fourth tab, labeled "Stratigraphic Paleobiology"
@@ -130,8 +132,7 @@ ui <- navbarPage(
           <figure>
           <img src="modes_of_speciation.jpg" alt="Modes of Speciation" align="left" width="100%">
           <figcaption>Fig. 1 - Modes of Speciation. Based on the FossilSim
-          package for R (<a href="https://doi.org/10.1111/2041-210X.13170">
-          Barido-Sottani et al. 2019</a>).
+          package for R (<a href="https://doi.org/10.1111/2041-210X.13170">Barido-Sottani et al. 2019</a>).
           </figcaption>
           </figure>
           </div>
@@ -216,7 +217,6 @@ ui <- navbarPage(
                   <div style="margin-left: 0em">
                   Utrecht University, The Netherlands<br>
                   Email: e.b.jarochowska [at] uu.nl<br>
-                  Mastodon: <a href="https://circumstances.run/@Emiliagnathus" target="_blank">@Emiliagnathus@circumstances.run</a><br>
                   <a href="https://scholar.google.de/citations?user=Zrldp2MAAAAJ&hl=en" target="_blank">Google Scholar profile</a><br>
                   Profile on the <a rel="author" href="https://www.uu.nl/staff/EBJarochowska" target="_blank">university webpage</a>
 
@@ -285,7 +285,7 @@ ui <- navbarPage(
         Funding
         </h4>
         <p>
-        Online access to the App is made possible by the IDUB programme of the University of Warsaw (Grant BOB-IDUB-622-18/2022). Co-funded by the European Union (ERC, MindTheGap, StG project no 101041077). Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Research Council. Neither the European Union nor the granting authority can be held responsible for them.
+        Online access to the app is made possible by the IDUB programme of the University of Warsaw (Grant BOB-IDUB-622-18/2022). Co-funded by the European Union (ERC, MindTheGap, StG project no 101041077). Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Research Council. Neither the European Union nor the granting authority can be held responsible for them.
         </p>
         <h4>
         References
@@ -302,7 +302,7 @@ ui <- navbarPage(
           Barido-Sottani, J., Pett, W., O\'Reilly, J.E., Warnock, R.C.M.
           Fossilsim: An r package for simulating fossil occurrence data under
           mechanistic models of preservation and recovery. Methods Ecol
-          Evol. 2019; 10: 835– 840. <a href="https://doi.org/10.1111/2041-210X.13170">
+          Evol. 2019, 10: 835–840. <a href="https://doi.org/10.1111/2041-210X.13170">
          doi.org/10.1111/2041-210X.13170</a>
          </li>
          <li>
@@ -310,6 +310,9 @@ ui <- navbarPage(
          heterogeneous carbonate strata: Computers & Geosciences, 53, p.
          129–140. <a href="https://doi.org/10.1016/j.cageo.2011.08.026">
          doi.org/10.1016/j.cageo.2011.08.026</a>
+         </li>
+         <li>
+         <a href="https://darwinscat.bandcamp.com/album/darwins-cat">Darwin's Cat. A sci-fi rock band.</a> - not affiliated with this project.
          </li>
          <li>
          Dzik, J. (1991). <a title="Go to Publication"
@@ -507,12 +510,19 @@ ui <- navbarPage(
             Modes of Evolution
             </h4>
             <p>
-            In evolutionary biology, models of <a title="Wikipedia article on
+            In evolutionary biology, the process of how organism <a title="Wikipedia article on
             phenotypic traits"
-            href="https://en.wikipedia.org/w/index.php?title=Phenotypic_trait&oldid=1143667283">trait</a>
-            evolution are subdivided into distinct <i>modes of evolution</i>.
-            Here, we focus on three modes of evolution: Random walk, Stasis,
-            and Ornstein-Uhlenbeck (Hunt, 2008; Hunt et al. 2008;
+            href="https://en.wikipedia.org/w/index.php?title=Phenotypic_trait&oldid=1143667283">traits</a>
+            change through time due to <a href="https://evolution.berkeley.edu/evolution-101/mechanisms-the-processes-of-evolution/genetic-variation/">biological 
+            generation of variation</a> and selection by the environment
+            are referred to as <i>modes of evolution</i>.
+            Here, we focus on three mathematical descriptions used to represent modes of evolution: 
+            <ul>
+            <li>Random walk</li>
+            <li>Stasis</li>
+            <li>and Ornstein-Uhlenbeck</li> 
+            </ul>
+            (Hunt, 2008; Hunt et al. 2008;
             Hopkins and Lidgard, 2012).
             The evolution of a trait within a <a title="Wikipedia article on Lineage"
             href="https://en.wikipedia.org/w/index.php?title=Lineage_(evolution)&oldid=1113106063">
@@ -779,8 +789,8 @@ ui <- navbarPage(
               doi: 10.1130/0016-7606(1964)75[599:BLSAT2.0.CO;2</a>
               </li>
               <li>
-              Hohmann, N. (2021). Incorporating Information on Varying
-              Sedimentation Rates in Paleontological Analyses. PALAIOS, 36,
+              Hohmann, N. (2021). Incorporating information on varying
+              sedimentation rates in paleontological analyses. PALAIOS, 36,
               p. 53–67. <a href = "https://doi.org/10.2110/palo.2020.038">
               doi: 10.2110/palo.2020.038</a>
               </li>
@@ -993,16 +1003,17 @@ ui <- navbarPage(
             Where Geology and Biology Meet
             </h4>
             <p>
-            The geological record has gaps, but these gaps are not random, but
-            change systematically. As a result, it systematically changes how we
-            perceive evolution and ecology in the fossil record
+            The geological record has gaps. These gaps are not distributed at random, 
+            but change systematically. These systematic changes eliminate certain environments
+            and types of organisms that live in them and overemphasize the others. Thus, our
+            reconstructions of evolution and ecology from the fossil record may become biased
             (Patzkowsky and Holland, 2012; Danise et al., 2019).
             </p>
             <p>
-            Select a mode of evolution and a number of lineages in the drop down
-            menu. You can modify the model parameters via the sliders.
+            Select the mode of evolution and a number of lineages in the drop-down
+            menu. You can modify the model parameters with the sliders.
             The figures show how the evolutionary history of the lineages
-            originally looked (bottom right), how the age-depth model looks
+            originally looked (bottom right), how the age-depth model looks like
             (top right), and what change of traits is observed in the section.
             Use the slider on the right side to change the position in the basin
             you examine.
