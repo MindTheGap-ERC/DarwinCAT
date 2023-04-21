@@ -1,0 +1,40 @@
+{
+  "creators": [
+    {
+      "affiliation": "Utrecht University",
+      "name": "Hohmann, Niklas",
+      "orcid": "0000-0003-1559-1838"
+    },
+    {
+      "affiliation": "Utrecht University",
+      "name": "Jarochowska, Emilia",
+      "orcid": "0000-0001-8937-9405"
+    },
+    {
+      "affiliation": "University of Liverpool",
+      "name": "Burgess, Peter"
+    }
+  ],
+  "description": "Shiny app visualizing the effects of carbonate stratigraphy on trait evolution",
+  "keywords": [
+    "Paleobiology",
+    "Palaeobiology",
+    "Stratigraphic Paleobiology",
+    "Stratigraphy",
+    "Trait Evolution",
+    "Evolutionary Biology",
+    "Paleontology",
+    "R",
+    "Shiny",
+    "Palaeontology",
+    "Stratigraphic Palaeobiology",
+    "Carbonate Sedimentology",
+    "Sedimentology",
+    "Basin Simulation",
+    "Geology"
+  ],
+  "license": {
+    "id": "Apache-2.0"
+  },
+  "title": "DarwinCAT"
+}
