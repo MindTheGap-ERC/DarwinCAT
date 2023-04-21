@@ -312,7 +312,7 @@ ui <- navbarPage(
          doi.org/10.1016/j.cageo.2011.08.026</a>
          </li>
          <li>
-         <a href="https://darwinscat.bandcamp.com/album/darwins-cat">Darwin's Cat. A sci-fi rock band.</a> - not affiliated with this project.
+         <a href="https://darwinscat.bandcamp.com/album/darwins-cat">Darwin\'s Cat. A sci-fi rock band.</a> - not affiliated with this project.
          </li>
          <li>
          Dzik, J. (1991). <a title="Go to Publication"
