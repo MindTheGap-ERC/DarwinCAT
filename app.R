@@ -1231,7 +1231,7 @@ server <- function(input, output) {
   })
 
   evolutionarySimulations_strat_pal <- reactive({
-    input$refreshSimulations
+    input$refreshSimulations_strat_pal
     getEvolutionarySimulations(
       noOfSims = input$noOfSims_strat_pal,
       mode = input$modeOfEvolution_strat_pal,
