@@ -54,13 +54,13 @@ prepare_download_strat_pal = function(file,
   
   ## write samplling strategy
   if (sampling_strategy == "Fixed Number") {
-    df[["Sampling Strategy"]] = replace(metadata,1,"Fixed Number")
-    df[["Number of Samples"]] = replace(metadata,1,no_of_samples)
+    df[["sampling_strategy"]] = replace(metadata,1,"Fixed Number")
+    df[["number_of_samples"]] = replace(metadata,1,no_of_samples)
     
   }
   if (sampling_strategy == "Fixed Distance") {
-    df[["Sampling Strategy"]] = replace(metadata,1,"Fixed Distance")
-    df[["Distance Between Samples_m"]] = replace(metadata,1,dist_between_samples)
+    df[["sampling_strategy"]] = replace(metadata,1,"Fixed Distance")
+    df[["distance_between_samples_m"]] = replace(metadata,1,dist_between_samples)
   }
   
   ## write distance from shore
@@ -72,11 +72,11 @@ prepare_download_strat_pal = function(file,
     sigma <- parameters[[1]]
     mu <- parameters[[2]]
     x0 <- parameters[[3]]
-    df[["Mode of Evolution"]] = replace(metadata,1,"Random Walk")
+    df[["mode_of_evolution"]] = replace(metadata,1,"Random Walk")
     
-    df[["Variability"]] = replace(metadata,1,sigma)
-    df[["Drift"]] = replace(metadata,1,mu)
-    df[["Initial Trait Value"]] = replace(metadata,1,x0)
+    df[["variability"]] = replace(metadata,1,sigma)
+    df[["drift"]] = replace(metadata,1,mu)
+    df[["initial_trait_value"]] = replace(metadata,1,x0)
     
     
   }
@@ -84,10 +84,10 @@ prepare_download_strat_pal = function(file,
     mean <- parameters[[4]]
     variance <- parameters[[5]]
     
-    df[["Mode of Evolution"]] = replace(metadata,1,"Stasis")
+    df[["mode_of_evolution"]] = replace(metadata,1,"Stasis")
     
-    df[["Mean Trait Value"]] = replace(metadata,1,mean)
-    df[["Variance"]] = replace(metadata,1,variance)
+    df[["mean_trait_value"]] = replace(metadata,1,mean)
+    df[["variance"]] = replace(metadata,1,variance)
     
     
   }
@@ -98,17 +98,17 @@ prepare_download_strat_pal = function(file,
     sigma <- parameters[[8]]
     x0 <- parameters[[9]]
     
-    df[["Mode of Evolution"]] = replace(metadata,1,"Ornstein-Uhlenbeck")
+    df[["mode_of_evolution"]] = replace(metadata,1,"Ornstein-Uhlenbeck")
     
-    df[["Long term mean"]] = replace(metadata,1,mu)
-    df[["Pressure of Selection"]] = replace(metadata,1,theta)
-    df[["Volatility"]] = replace(metadata,1,sigma)
+    df[["long_term_mean"]] = replace(metadata,1,mu)
+    df[["pressure_of_selection"]] = replace(metadata,1,theta)
+    df[["volatility"]] = replace(metadata,1,sigma)
     
-    df[["Initial Trait Value"]] = replace(metadata,1,x0)
+    df[["initial_trait_value"]] = replace(metadata,1,x0)
     
   }
   
-  df[["citation"]]= replace(metadata, 1, "Please use the citation given under https://doi.org/10.5281/zenodo.7851988")
+  df[["citation"]]= replace(metadata, 1, citation_text)
   
   write.csv(df, file = file)
 }
