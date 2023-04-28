@@ -9,11 +9,49 @@ prepare_download_strat_pal = function(file,
                                       mode, 
                                       ...)
 {
-  df = data.frame(time_myr = trait_series[[1]]$time)
-  for (i in seq_along(trait_series)){
-    df[[paste("lineage_",i,"_",trait_name, sep = "")]]=trait_series[[i]]$val
+  if (sampling_strategy == "Fixed Distance") {
+    sampling_locations <- seq(
+      from = min(ageDepthModel$heightRaw) + dist_between_samples,
+      to = max(ageDepthModel$heightRaw),
+      by = dist_between_samples
+    )
+  } else if (sampling_strategy == "Fixed Number") {
+    sampling_locations <- seq(
+      from = min(ageDepthModel$heightRaw),
+      to = max(ageDepthModel$heightRaw),
+      length.out = no_of_samples
+    )
+  } else {
+    stop("Unrecognized input value for parameter \"sampling strategy\".")
   }
-  metadata = rep("",length(trait_series[[1]]$time))
+  # times when the sampling locations are deposited
+  times_of_deposition = approx(
+    x = ageDepthModel$heightRaw,
+    y = time_myr,
+    xout = sampling_locations,
+    yleft = 0,
+    yright = 0,
+    ties = "ordered"
+  )$y
+  
+  df = data.frame(strat_pos_m = sampling_locations, time_myr = times_of_deposition)
+  for (i in seq_along(trait_series)){
+    df[[paste("lineage_",i,"_",trait_name, sep = "")]]=    approx(
+      x = trait_series[[i]]$time,
+      y = trait_series[[i]]$val,
+      xout = times_of_deposition,
+      yleft = 0,
+      yright = 0,
+      na.rm = FALSE,
+      ties = "ordered"
+    )$y
+  }
+  
+  
+  
+  metadata = rep("",length(sampling_locations))
+  
+  
   ## write samplling strategy
   if (sampling_strategy == "Fixed Number") {
     df[["Sampling Strategy"]] = replace(metadata,1,"Fixed Number")
@@ -69,6 +107,8 @@ prepare_download_strat_pal = function(file,
     df[["Initial Trait Value"]] = replace(metadata,1,x0)
     
   }
+  
+  df[["citation"]]= replace(metadata, 1, "Please use the citation given under https://doi.org/10.5281/zenodo.7851988")
   
   write.csv(df, file = file)
 }

@@ -49,6 +49,8 @@ prepare_download_trait_evo = function(file,
     df[["Initial Trait Value"]] = replace(metadata,1,x0)
     
   }
+  
+  df[["citation"]]= replace(metadata, 1, "Please use the citation given under https://doi.org/10.5281/zenodo.7851988")
 
   write.csv(df, file = file)
 }
