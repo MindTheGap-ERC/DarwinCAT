@@ -16,7 +16,7 @@ source("src/makeWheelerDiagram.R")
 
 # functions for data download / upload
 source("src/prepare_download_trait_evo.R")
-
+source("src/prepare_download_strat_pal.R")
 
 #### Iser interface ####
 ui <- navbarPage(
