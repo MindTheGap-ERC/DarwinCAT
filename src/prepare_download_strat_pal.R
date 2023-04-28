@@ -1,6 +1,5 @@
 prepare_download_strat_pal = function(file, 
-                                      trait_series,
-                                      ageDepthModel,
+                                      transformed_ts,
                                       dist_from_shore_km,
                                       sampling_strategy,
                                       no_of_samples,
@@ -9,47 +8,15 @@ prepare_download_strat_pal = function(file,
                                       mode, 
                                       ...)
 {
-  if (sampling_strategy == "Fixed Distance") {
-    sampling_locations <- seq(
-      from = min(ageDepthModel$heightRaw) + dist_between_samples,
-      to = max(ageDepthModel$heightRaw),
-      by = dist_between_samples
-    )
-  } else if (sampling_strategy == "Fixed Number") {
-    sampling_locations <- seq(
-      from = min(ageDepthModel$heightRaw),
-      to = max(ageDepthModel$heightRaw),
-      length.out = no_of_samples
-    )
-  } else {
-    stop("Unrecognized input value for parameter \"sampling strategy\".")
-  }
-  # times when the sampling locations are deposited
-  times_of_deposition = approx(
-    x = ageDepthModel$heightRaw,
-    y = time_myr,
-    xout = sampling_locations,
-    yleft = 0,
-    yright = 0,
-    ties = "ordered"
-  )$y
   
-  df = data.frame(strat_pos_m = sampling_locations, time_myr = times_of_deposition)
-  for (i in seq_along(trait_series)){
-    df[[paste("lineage_",i,"_",trait_name, sep = "")]]=    approx(
-      x = trait_series[[i]]$time,
-      y = trait_series[[i]]$val,
-      xout = times_of_deposition,
-      yleft = 0,
-      yright = 0,
-      na.rm = FALSE,
-      ties = "ordered"
-    )$y
+  df = data.frame(strat_pos_m = transformed_ts[[1]]$pos, time_myr = transformed_ts[[1]]$time)
+  for (i in seq_along(transformed_ts)){
+    df[[paste("lineage_",i,"_",trait_name, sep = "")]]= transformed_ts[[i]]$val
   }
   
   
   
-  metadata = rep("",length(sampling_locations))
+  metadata = rep("",length(transformed_ts[[1]]$pos))
   
   
   ## write samplling strategy

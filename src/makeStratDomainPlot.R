@@ -1,12 +1,9 @@
 makeStratDomainPlot <- function(ageDepthModel,
-                                ts_list,
+                                transformed_ts,
                                 axis_limits = c(-1, 1),
                                 trait_name = "",
                                 plotSeaLevel = TRUE,
-                                plot_hiatuses = TRUE,
-                                sampling_strategy = "Fixed Distance",
-                                no_of_samples = 10,
-                                dist_between_samples = 1) {
+                                plot_hiatuses = TRUE) {
   
   #' @title plot evolution in stratigraphic column
   #' 
@@ -29,32 +26,6 @@ makeStratDomainPlot <- function(ageDepthModel,
   #' 
   #' @return a plot
   #' 
-  
-  #### Determine where the lineages are sampled ####
-  if (sampling_strategy == "Fixed Distance") {
-    sampling_locations <- seq(
-      from = min(ageDepthModel$heightRaw) + dist_between_samples,
-      to = max(ageDepthModel$heightRaw),
-      by = dist_between_samples
-    )
-  } else if (sampling_strategy == "Fixed Number") {
-    sampling_locations <- seq(
-      from = min(ageDepthModel$heightRaw),
-      to = max(ageDepthModel$heightRaw),
-      length.out = no_of_samples
-    )
-  } else {
-    stop("Unrecognized input value for parameter \"sampling strategy\".")
-  }
-  # times when the sampling locations are deposited
-  times_of_deposition = approx(
-    x = ageDepthModel$heightRaw,
-    y = time_myr,
-    xout = sampling_locations,
-    yleft = 0,
-    yright = 0,
-    ties = "ordered"
-  )$y
   
   #### Determine y axis limits ####
   ymin <- min(axis_limits)
@@ -97,21 +68,12 @@ makeStratDomainPlot <- function(ageDepthModel,
   )
 
   #### plot evolutionary  simulations ####
-  for (i in seq_along(ts_list)) {
+  for (i in seq_along(transformed_ts)) {
     # see Hohmann (2021) https://doi.org/10.2110/palo.2020.038 
     # for theoretical background
-    trait_vals <- approx(
-      x = ts_list[[i]]$time,
-      y = ts_list[[i]]$val,
-      xout = times_of_deposition,
-      yleft = 0,
-      yright = 0,
-      na.rm = FALSE,
-      ties = "ordered"
-    )
     lines(
-      x = trait_vals$y,
-      y = sampling_locations,
+      x = transformed_ts[[i]]$val,
+      y = transformed_ts[[i]]$pos,
       col = trait_cols[i],
       lwd = trait_lwds[i],
       lty = trait_ltys[i]
