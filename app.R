@@ -14,6 +14,9 @@ source("src/makeStratDomainPlot.R")
 source("src/makeBasinTransectPlot.R")
 source("src/makeWheelerDiagram.R")
 
+# functions for data download / upload
+source("src/prepare_download_trait_evo.R")
+source("src/prepare_download_strat_pal.R")
 
 #### Iser interface ####
 ui <- navbarPage(
@@ -587,6 +590,12 @@ ui <- navbarPage(
             label = "Trait Name",
             value = "log10(Body Size)"
           )
+        ),
+        wellPanel(
+          tags$h3("Data Download"),
+          downloadButton(
+            outputId = "download_data_trait_evo", 
+            label = "Download")
         )
       )
     ),
@@ -1111,7 +1120,14 @@ ui <- navbarPage(
               animate = TRUE
             )
           )
-        )
+        ),
+        wellPanel(
+          tags$h3("Download Data"),
+          downloadButton(
+            outputId = "download_data_strat_pal", 
+            label = "Download")
+
+        ),
       )
     ),
     #### Funding
@@ -1195,6 +1211,29 @@ server <- function(input, output) {
       plot_strat_info = FALSE
     )
   })
+  
+  output$download_data_trait_evo <- downloadHandler(
+    filename = function() {
+      paste("DarwinCAT_trait_evo", Sys.time(), ".csv", sep="")
+    },
+    content = function(file) {
+      prepare_download_trait_evo(
+        file = file,
+        trait_series = evolutionarySimulations_trait_evo(),
+        trait_name = input$trait_name_trait_evo,
+        mode = input$modeOfEvolution_trait_evo,
+        input$parameter1_trait_evo,
+        input$parameter2_trait_evo,
+        input$parameter3_trait_evo,
+        input$parameter4_trait_evo,
+        input$parameter5_trait_evo,
+        input$parameter6_trait_evo,
+        input$parameter7_trait_evo,
+        input$parameter8_trait_evo,
+        input$parameter9_trait_evo
+        )
+    }
+  )
 
   #### Carbonate Stratigraphy: Reactive Variables ####
   ageDepthModel_carb_strat <- reactive({
@@ -1287,6 +1326,35 @@ server <- function(input, output) {
       no_of_samples = input$no_of_samples_strat_pal
     )
   })
+  
+  output$download_data_strat_pal <- downloadHandler(
+    filename = function() {
+      paste("DarwinCAT_strat_pal", Sys.time(), ".csv", sep="")
+    },
+    content = function(file) {
+      prepare_download_strat_pal(
+        file = file,
+        trait_series = evolutionarySimulations_trait_evo(),
+        ageDepthModel = ageDepthModel_strat_pal(),
+        dist_from_shore_km = input$distFromShore_strat_pal,
+        sampling_strategy = input$sampling_strategy_strat_pal,
+        no_of_samples = input$no_of_samples_strat_pal,
+        dist_between_samples = input$dist_between_samples_strat_pal,
+        trait_name = input$trait_name_strat_pal,
+        mode = input$modeOfEvolution_strat_pal,
+        input$parameter1_strat_pal,
+        input$parameter2_strat_pal,
+        input$parameter3_strat_pal,
+        input$parameter4_strat_pal,
+        input$parameter5_strat_pal,
+        input$parameter6_strat_pal,
+        input$parameter7_strat_pal,
+        input$parameter8_strat_pal,
+        input$parameter9_strat_pal
+      )
+    }
+  )
+  
 }
 
 shinyApp(ui = ui, server = server)
