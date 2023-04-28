@@ -14,6 +14,9 @@ source("src/makeStratDomainPlot.R")
 source("src/makeBasinTransectPlot.R")
 source("src/makeWheelerDiagram.R")
 
+# functions for data download / upload
+source("src/prepare_download_trait_evo.R")
+
 
 #### Iser interface ####
 ui <- navbarPage(
@@ -587,6 +590,12 @@ ui <- navbarPage(
             label = "Trait Name",
             value = "log10(Body Size)"
           )
+        ),
+        wellPanel(
+          tags$h3("Data Download"),
+          downloadButton(
+            outputId = "download_data_trait_evo", 
+            label = "Download")
         )
       )
     ),
@@ -1195,6 +1204,29 @@ server <- function(input, output) {
       plot_strat_info = FALSE
     )
   })
+  
+  output$download_data_trait_evo <- downloadHandler(
+    filename = function() {
+      paste("DarwinCAT_trait_evo", Sys.time(), ".csv", sep="")
+    },
+    content = function(file) {
+      prepare_download_trait_evo(
+        file = file,
+        trait_series = evolutionarySimulations_trait_evo(),
+        trait_name = input$trait_name_trait_evo,
+        mode = input$modeOfEvolution_trait_evo,
+        input$parameter1_trait_evo,
+        input$parameter2_trait_evo,
+        input$parameter3_trait_evo,
+        input$parameter4_trait_evo,
+        input$parameter5_trait_evo,
+        input$parameter6_trait_evo,
+        input$parameter7_trait_evo,
+        input$parameter8_trait_evo,
+        input$parameter9_trait_evo
+        )
+    }
+  )
 
   #### Carbonate Stratigraphy: Reactive Variables ####
   ageDepthModel_carb_strat <- reactive({
