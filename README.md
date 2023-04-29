@@ -88,7 +88,7 @@ Next steps in development of the App are (in no specific order):
   - _makeAgeDepthModelPlot.R_ : plots age depth models
   - _makeStratDomainPlot.R_ : plot evolutionary simulations in stratigraphic domain
   - _transform_ts.R_ : transfroms time series from time to depth domain
-    - _prepare_download_trait_evo.R_ : prepares download of trait evol. data
+  - _prepare_download_trait_evo.R_ : prepares download of trait evol. data
   - _prepare_download_strat_pal.R_ : prepares download of strat pal data
 - _www_ : Folder with pictures used in the app
 
