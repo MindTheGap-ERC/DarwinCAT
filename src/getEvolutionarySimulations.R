@@ -10,14 +10,13 @@ getEvolutionarySimulations <- function(noOfSims, mode, ...) {
   #' simulated
   #' @param mode Character string, either "Random Walk", "Stasis", 
   #' or "Ornstein-Uhlenbeck". Specifies mode of evolution
-  #' @param ... mumeric. parameters handed over to the simulation.
+  #' @param ... numeric. parameters handed over to the simulation.
   #'  Entries 1-3 specify random walk. 
   #'  Entries 4-5 specify stasis
   #'  Entries 6-9 specify Ornstein-Uhlenbeck
   #'  
-  #'  @returns a list with noOfSims entries. Every entry is a numeric vector of 
-  #'  length(time_myr) and contains trait values at the times in the vector 
-  #'  time_myr
+  #'  @returns a list with noOfSims entries. Every entry is a list containing 
+  #'  vectors: val are the trait values, time is the 
   
   #### Transform input types ####
   noOfSims <- as.numeric(noOfSims)

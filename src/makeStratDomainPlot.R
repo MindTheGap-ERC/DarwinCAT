@@ -17,12 +17,7 @@ makeStratDomainPlot <- function(ageDepthModel,
   #' @param trait_name Character string. Y axis label
   #' @param plotSeaLevel Logical. Should sea level be shown?
   #' @param plot_hiatuses Logical. Should hiatuses in strat. column be shown?
-  #' @param sampling_strategy CHaracter string, either "Fixed Distance"
-  #'  or "Fixed Number"
-  #' @param no_of_samples positive integer. Number of samples taken 
-  #' along the strat column
-  #' @param dist_between_samples positive scalar. Distance between 
-  #' samples in strat column (in meter)
+  #' 
   #' 
   #' @return a plot
   #' 
