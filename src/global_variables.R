@@ -65,5 +65,5 @@ env_labels = c("Lagoonal Environment", "Backreef", "Forereef", "Slope",
 
 env_dist_from_shore_km = c(2, 6, 8.5, 10, 11.5)
 
-citation_text = "Please use the citation given under https://doi.org/10.5281/zenodo.7851988"
+citation_text = "Please use citation given under https://doi.org/10.5281/zenodo.7851988"
 

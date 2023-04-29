@@ -18,6 +18,8 @@ source("src/makeWheelerDiagram.R")
 source("src/prepare_download_trait_evo.R")
 source("src/prepare_download_strat_pal.R")
 
+source("src/transform_ts.R")
+
 #### Iser interface ####
 ui <- navbarPage(
   title = "DarwinCAT",
@@ -1291,6 +1293,14 @@ server <- function(input, output) {
       distanceFromShore = input$distFromShore_strat_pal
     )
   })
+  
+  transformed_ts_strat_pal <- reactive({
+    transform_ts(ageDepthModel = ageDepthModel_strat_pal(),
+                 ts_list = evolutionarySimulations_strat_pal(),
+                 sampling_strategy = input$sampling_strategy_strat_pal,
+                 no_of_samples = input$no_of_samples_strat_pal,
+                 dist_between_samples = input$dist_between_samples_strat_pal)
+  })
   #### Stratigraphic Paleobiology: Outputs ####
   output$ageDepthModelPlot_strat_pal <- renderPlot({
     makeAgeDepthModelPlot(
@@ -1316,14 +1326,11 @@ server <- function(input, output) {
   output$stratDomainPlot_strat_pal <- renderPlot({
     makeStratDomainPlot(
       ageDepthModel = ageDepthModel_strat_pal(),
-      ts_list = evolutionarySimulations_strat_pal(),
+      transformed_ts = transformed_ts_strat_pal(),
       axis_limits = input$axis_limits_strat_pal,
       trait_name = input$trait_name_strat_pal,
       plotSeaLevel = input$plotSeaLevel_strat_pal,
-      plot_hiatuses = input$plot_hiatuses_strat_pal,
-      sampling_strategy = input$sampling_strategy_strat_pal,
-      dist_between_samples = input$dist_between_samples_strat_pal,
-      no_of_samples = input$no_of_samples_strat_pal
+      plot_hiatuses = input$plot_hiatuses_strat_pal
     )
   })
   
@@ -1334,8 +1341,7 @@ server <- function(input, output) {
     content = function(file) {
       prepare_download_strat_pal(
         file = file,
-        trait_series = evolutionarySimulations_trait_evo(),
-        ageDepthModel = ageDepthModel_strat_pal(),
+        transformed_ts = transformed_ts_strat_pal(),
         dist_from_shore_km = input$distFromShore_strat_pal,
         sampling_strategy = input$sampling_strategy_strat_pal,
         no_of_samples = input$no_of_samples_strat_pal,
