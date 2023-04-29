@@ -68,7 +68,7 @@ ui <- navbarPage(
         the organism lived.
         And most organisms do not occur in <i>everything everywhere all at
         once</i> (check if not bacteria or tardigrade).
-        So if <a href="https://www.smithsonianmag.com/smart-news/yes-giant-technicolor-squirrels-actually-roam-forests-southern-india-180971886/" target="_blank">giant squirrels</a> 
+        So if <a href="https://www.smithsonianmag.com/smart-news/yes-giant-technicolor-squirrels-actually-roam-forests-southern-india-180971886/" target="_blank">giant squirrels</a>
         appear in a section we study, it could be
         because their ancestors evolved towards larger body sizes or
         larger squirrels lived somewhere else and, owing to some
@@ -518,14 +518,14 @@ ui <- navbarPage(
             In evolutionary biology, the process of how organism <a title="Wikipedia article on
             phenotypic traits"
             href="https://en.wikipedia.org/w/index.php?title=Phenotypic_trait&oldid=1143667283">traits</a>
-            change through time due to <a href="https://evolution.berkeley.edu/evolution-101/mechanisms-the-processes-of-evolution/genetic-variation/">biological 
+            change through time due to <a href="https://evolution.berkeley.edu/evolution-101/mechanisms-the-processes-of-evolution/genetic-variation/">biological
             generation of variation</a> and selection by the environment
             are referred to as <i>modes of evolution</i>.
-            Here, we focus on three mathematical descriptions used to represent modes of evolution: 
+            Here, we focus on three mathematical descriptions used to represent modes of evolution:
             <ul>
             <li>Random walk</li>
             <li>Stasis</li>
-            <li>and Ornstein-Uhlenbeck</li> 
+            <li>and Ornstein-Uhlenbeck</li>
             </ul>
             (Hunt, 2008; Hunt et al. 2008;
             Hopkins and Lidgard, 2012).
@@ -596,8 +596,9 @@ ui <- navbarPage(
         wellPanel(
           tags$h3("Data Download"),
           downloadButton(
-            outputId = "download_data_trait_evo", 
-            label = "Download")
+            outputId = "download_data_trait_evo",
+            label = "Download"
+          )
         )
       )
     ),
@@ -1014,7 +1015,7 @@ ui <- navbarPage(
             Where Geology and Biology Meet
             </h4>
             <p>
-            The geological record has gaps. These gaps are not distributed at random, 
+            The geological record has gaps. These gaps are not distributed at random,
             but change systematically. These systematic changes eliminate certain environments
             and types of organisms that live in them and overemphasize the others. Thus, our
             reconstructions of evolution and ecology from the fossil record may become biased
@@ -1126,9 +1127,9 @@ ui <- navbarPage(
         wellPanel(
           tags$h3("Download Data"),
           downloadButton(
-            outputId = "download_data_strat_pal", 
-            label = "Download")
-
+            outputId = "download_data_strat_pal",
+            label = "Download"
+          )
         ),
       )
     ),
@@ -1213,10 +1214,10 @@ server <- function(input, output) {
       plot_strat_info = FALSE
     )
   })
-  
+
   output$download_data_trait_evo <- downloadHandler(
     filename = function() {
-      paste("DarwinCAT_trait_evo", Sys.time(), ".csv", sep="")
+      paste("DarwinCAT_trait_evo", Sys.time(), ".csv", sep = "")
     },
     content = function(file) {
       prepare_download_trait_evo(
@@ -1233,7 +1234,7 @@ server <- function(input, output) {
         input$parameter7_trait_evo,
         input$parameter8_trait_evo,
         input$parameter9_trait_evo
-        )
+      )
     }
   )
 
@@ -1293,13 +1294,15 @@ server <- function(input, output) {
       distanceFromShore = input$distFromShore_strat_pal
     )
   })
-  
+
   transformed_ts_strat_pal <- reactive({
-    transform_ts(ageDepthModel = ageDepthModel_strat_pal(),
-                 ts_list = evolutionarySimulations_strat_pal(),
-                 sampling_strategy = input$sampling_strategy_strat_pal,
-                 no_of_samples = input$no_of_samples_strat_pal,
-                 dist_between_samples = input$dist_between_samples_strat_pal)
+    transform_ts(
+      ageDepthModel = ageDepthModel_strat_pal(),
+      ts_list = evolutionarySimulations_strat_pal(),
+      sampling_strategy = input$sampling_strategy_strat_pal,
+      no_of_samples = input$no_of_samples_strat_pal,
+      dist_between_samples = input$dist_between_samples_strat_pal
+    )
   })
   #### Stratigraphic Paleobiology: Outputs ####
   output$ageDepthModelPlot_strat_pal <- renderPlot({
@@ -1333,10 +1336,10 @@ server <- function(input, output) {
       plot_hiatuses = input$plot_hiatuses_strat_pal
     )
   })
-  
+
   output$download_data_strat_pal <- downloadHandler(
     filename = function() {
-      paste("DarwinCAT_strat_pal", Sys.time(), ".csv", sep="")
+      paste("DarwinCAT_strat_pal", Sys.time(), ".csv", sep = "")
     },
     content = function(file) {
       prepare_download_strat_pal(
@@ -1360,7 +1363,6 @@ server <- function(input, output) {
       )
     }
   )
-  
 }
 
 shinyApp(ui = ui, server = server)

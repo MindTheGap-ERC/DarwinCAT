@@ -1,4 +1,4 @@
-# Loads data and global variables needed to run 
+# Loads data and global variables needed to run
 # the DarwinCAT app into the workspace
 
 # load age-depth models
@@ -55,15 +55,16 @@ zero_axis_col <- grey(0.2)
 zero_axis_lty <- 3
 zero_axis_lwd <- 1
 
-# specifications where to plot environment labels in wheeler diagram and 
+# specifications where to plot environment labels in wheeler diagram and
 # basin transect
-env_label_y_pos_wheeler = 2.1
-env_label_y_pos_basin_transect = 20
+env_label_y_pos_wheeler <- 2.1
+env_label_y_pos_basin_transect <- 20
 
-env_labels = c("Lagoonal Environment", "Backreef", "Forereef", "Slope",
-                       "Open\nWater")
+env_labels <- c(
+  "Lagoonal Environment", "Backreef", "Forereef", "Slope",
+  "Open\nWater"
+)
 
-env_dist_from_shore_km = c(2, 6, 8.5, 10, 11.5)
+env_dist_from_shore_km <- c(2, 6, 8.5, 10, 11.5)
 
-citation_text = "Please use citation given under https://doi.org/10.5281/zenodo.7851988"
-
+citation_text <- "Please use citation given under https://doi.org/10.5281/zenodo.7851988"
