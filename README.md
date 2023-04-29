@@ -60,10 +60,9 @@ Running the app offline requires R version 3.0.2 or later, RStudio, and the R pa
 
 Next steps in development of the App are (in no specific order):
 
-1. Add option to download data (time series & stratigraphic time series)
-2. Add option to upload user time series
-3. Branch off _ProxyCAT_, an app that focuses on preservation of proxy records
-4. Publish lesson plans for different skill/knowledge levels
+1. Add option to upload user time series
+2. Branch off _ProxyCAT_, an app that focuses on preservation of proxy records
+3. Publish lesson plans for different skill/knowledge levels
 
 ## Repository structure
 
@@ -88,6 +87,9 @@ Next steps in development of the App are (in no specific order):
   - _makeTimeDomainPlot.R_ : plot trait simulations in time
   - _makeAgeDepthModelPlot.R_ : plots age depth models
   - _makeStratDomainPlot.R_ : plot evolutionary simulations in stratigraphic domain
+  - _transform_ts.R_ : transfroms time series from time to depth domain
+    - _prepare_download_trait_evo.R_ : prepares download of trait evol. data
+  - _prepare_download_strat_pal.R_ : prepares download of strat pal data
 - _www_ : Folder with pictures used in the app
 
 ## Citation
