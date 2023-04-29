@@ -1176,6 +1176,53 @@ ui <- navbarPage(
         )
       )
     )
+  ),
+  tabPanel(
+    title = "Upload Your Data",
+    "Data Upload Goes Here",
+    #### Funding
+    hr(),
+    div(
+      style = "margin-left: 4em; margin-right: 4em; margin-bottom: 2em",
+      fluidRow(
+        column(
+          width = 3,
+          img(
+            src = "logos/UW_logo.svg",
+            alt = "Logo of UW",
+            width = "30%",
+            align = "left"
+          )
+        ),
+        column(
+          width = 3,
+          img(
+            src = "logos/IDUB_logo.jpeg",
+            alt = "Logo of IDUB",
+            width = "30%",
+            align = "left"
+          )
+        ),
+        column(
+          width = 3,
+          img(
+            src = "logos/mind_the_gap_logo.png",
+            alt = "Logo of MindTheGap",
+            width = "70%",
+            align = "left"
+          )
+        ),
+        column(
+          width = 3,
+          img(
+            src = "logos/UU_logo.jpg",
+            width = "70%",
+            alt = "Logo of UU",
+            align = "right"
+          )
+        )
+      )
+    )
   )
 )
 
