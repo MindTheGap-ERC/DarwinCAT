@@ -21,7 +21,12 @@ authors:
   - given-names: Peter
     family-names: Burgess
     affiliation: University of Liverpool
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.7851988
+    description: DarwinCAT v1.1.0
 repository-code: 'https://github.com/MindTheGap-ERC/DarwinCAT'
+repository: 'https://zenodo.org/record/7857750'
 abstract: >-
   Shiny app visualizing the effects of carbonate
   stratigraphy on trait evolution
@@ -42,3 +47,5 @@ keywords:
   - Basin Simulation
   - Geology
 license: Apache-2.0
+version: v1.1.0
+date-released: '2023-04-30'

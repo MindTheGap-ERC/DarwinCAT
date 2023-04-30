@@ -36,5 +36,7 @@
   "license": {
     "id": "Apache-2.0"
   },
-  "title": "DarwinCAT"
+  "publication_date": "2023-04-30",
+  "title": "DarwinCAT",
+  "version": "v1.1.0"
 }
