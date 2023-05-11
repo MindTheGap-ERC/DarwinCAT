@@ -594,7 +594,7 @@ ui <- navbarPage(
           )
         ),
         wellPanel(
-          tags$h3("Data Download"),
+          tags$h3("Download Data"),
           downloadButton(
             outputId = "download_data_trait_evo",
             label = "Download"
