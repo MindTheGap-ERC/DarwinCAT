@@ -17,8 +17,10 @@ source("src/makeWheelerDiagram.R")
 # functions for data download / upload
 source("src/prepare_download_trait_evo.R")
 source("src/prepare_download_strat_pal.R")
+source("src/prepare_download_upload_data.R")
 
 source("src/transform_ts.R")
+source("src/process_upload_data.R")
 
 #### Iser interface ####
 ui <- navbarPage(
@@ -1177,9 +1179,139 @@ ui <- navbarPage(
       )
     )
   ),
+  #### Upload DATA ####
   tabPanel(
     title = "Upload Your Data",
-    "Data Upload Goes Here",
+    fluidRow(
+    column(
+      width = 2,
+     wellPanel( 
+    fileInput(
+      inputId = "upload_data",
+      label = "Upload Data",
+      multiple = FALSE,
+      accept = ".csv",
+      width = NULL,
+      buttonLabel = "Browse...",
+      placeholder = "No file selected",
+      capture = NULL
+    ),
+    textOutput(
+      outputId = "upload_status"
+    )
+     ),
+    wellPanel(
+      tags$h3("Plot Options"),
+      sliderInput(
+        inputId = "axis_limits_upload_data",
+        label = "Axis Limits",
+        min = -8,
+        max = 8,
+        value = c(-3, 3),
+        step = 0.1,
+        animate = FALSE
+      ),
+      textInput(
+        inputId = "trait_name_upload_data",
+        label = "Trait Name",
+        value = "log10(Body Size)"
+      )
+    )
+    ),
+    column(
+      width = 8,
+      fluidRow(
+        fluidRow(
+          column(
+            width = 4,
+            plotOutput("stratDomainPlot_upload_data")
+          ),
+          column(
+            width = 8,
+            plotOutput("ageDepthModelPlot_upload_data")
+          )
+        ),
+        column(
+          width = 8,
+          plotOutput("time_domain_plot_upload_data"),
+          offset = 4
+        )
+      ),
+      fluidRow(
+        HTML("Hello")
+      )
+    ),
+    column(
+      width = 2,
+      wellPanel(
+        sliderInput(
+          inputId = "distFromShore_upload_data",
+          label = "Distance from Shore",
+          min = 0.1,
+          max = max_dist_from_shore_km,
+          value = 1,
+          step = 0.1,
+          post = " km",
+          animate = TRUE
+        ),
+        checkboxInput(
+          inputId = "plotSeaLevel_upload_data",
+          label = "Show Sea Level",
+          value = FALSE
+        ),
+        checkboxInput(
+          inputId = "plot_time_gaps_upload_data",
+          label = "Display Gaps in Time",
+          value = FALSE
+        ),
+        checkboxInput(
+          inputId = "plot_hiatuses_upload_data",
+          label = "Display Hiatuses in Stratigraphic Column",
+          value = FALSE
+        )
+      ),
+      wellPanel(
+        selectInput(
+          inputId = "sampling_strategy_upload_data",
+          label = "Sampling Strategy",
+          choices = list("Fixed Number", "Fixed Distance"),
+          selected = "Fixed Distance"
+        ),
+        conditionalPanel(
+          condition = "input.sampling_strategy_upload_data == 'Fixed Number'",
+          sliderInput(
+            inputId = "no_of_samples_upload_data",
+            label = "Number of Samples",
+            min = 5,
+            max = 150,
+            value = 20,
+            step = 1,
+            animate = TRUE
+          )
+        ),
+        conditionalPanel(
+          condition = "input.sampling_strategy_upload_data == 'Fixed Distance'",
+          sliderInput(
+            inputId = "dist_between_samples_upload_data",
+            label = "Distance between Samples",
+            min = 0.1,
+            max = 2,
+            value = 1,
+            step = 0.1,
+            post = " m",
+            animate = TRUE
+          )
+        )
+      ),
+      wellPanel(
+        tags$h3("Download Data"),
+        downloadButton(
+          outputId = "download_data_upload_data",
+          label = "Download"
+        )
+      ),
+    )
+    ),
     #### Funding
     hr(),
     div(
@@ -1410,6 +1542,86 @@ server <- function(input, output) {
       )
     }
   )
+  
+  #### Data Upload ####
+  
+  processed_upload_data = reactive({
+    process_upload_data(
+      upload = input$upload_data
+    )
+  })
+  
+
+  
+  ageDepthModel_upload_data <- reactive({
+    getAgeDepthModel(
+      distanceFromShore = input$distFromShore_upload_data
+    )
+  })
+  
+  transformed_ts_upload_data <- reactive({
+    transform_ts(
+      ageDepthModel = ageDepthModel_upload_data(),
+      ts_list = processed_upload_data()$ts,
+      sampling_strategy = input$sampling_strategy_upload_data,
+      no_of_samples = input$no_of_samples_upload_data,
+      dist_between_samples = input$dist_between_samples_upload_data
+    )
+  })
+  
+  output$download_data_upload_data <- downloadHandler(
+    filename = function() {
+      paste("DarwinCAT_upload", Sys.time(), ".csv", sep = "")
+    },
+    content = function(file) {
+      prepare_download_upload_data(
+        file = file,
+        transformed_ts = transformed_ts_upload_data(),
+        dist_from_shore_km = input$distFromShore_upload_data,
+        sampling_strategy = input$sampling_strategy_upload_data,
+        no_of_samples = input$no_of_samples_upload_data,
+        dist_between_samples = input$dist_between_samples_upload_data,
+        trait_name = input$trait_name_upload_data
+      )
+    }
+  )
+  
+  
+  #### Upload Data: Outputs ####
+  output$ageDepthModelPlot_upload_data <- renderPlot({
+    makeAgeDepthModelPlot(
+      ageDepthModel = ageDepthModel_upload_data(),
+      plot_time_gaps = input$plot_time_gaps_upload_data,
+      plot_hiatuses = input$plot_hiatuses_upload_data,
+      dist_from_shore_km = input$distFromShore_upload_data
+    )
+  })
+  
+  output$upload_status = reactive({
+    processed_upload_data()$status
+  })
+  
+  output$time_domain_plot_upload_data = renderPlot({
+    makeTimeDomainPlot(ts_list = processed_upload_data()$ts,
+                       ageDepthModel = ageDepthModel_upload_data(),
+                       axis_limits = input$axis_limits_upload_data,
+                       trait_name = input$trait_name_upload_data, 
+                       plotSeaLevel = input$plotSeaLevel_upload_data, 
+                       plot_time_gaps = input$plot_time_gaps_upload_data,
+                       plot_strat_info = TRUE)
+  })
+  
+  output$stratDomainPlot_upload_data <- renderPlot({
+    makeStratDomainPlot(
+      ageDepthModel = ageDepthModel_upload_data(),
+      transformed_ts = transformed_ts_upload_data(),
+      axis_limits = input$axis_limits_upload_data,
+      trait_name = input$trait_name_upload_data,
+      plotSeaLevel = input$plotSeaLevel_upload_data,
+      plot_hiatuses = input$plot_hiatuses_upload_data
+    )
+  })
+  
 }
 
 shinyApp(ui = ui, server = server)
