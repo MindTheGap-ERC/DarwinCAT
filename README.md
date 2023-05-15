@@ -34,23 +34,17 @@ Online access works with a web browser and does not require any coding skills or
 
 ## Offline Usage
 
-Running the app offline requires R version 3.0.2 or later, RStudio, and the R packages "renv", "shiny" and "png"
+Running the app offline requires R version 3.3 or later, RStudio, and the R packages "renv", "shiny" and "png"
 
-1. Install the _renv_ package by running the following code in RStudio:
-
-    ``` R
-    if (!require("renv", quietly = TRUE)) install.packages("renv")
-    ```
-
-2. Open the R project: Go to _File -> Open Project_, then navigate to the DarwinCAT folder and open the DarwinCAT Rproject file (file ending _.Rproj_)
-3. Run
+1. Open the R project: Go to _File -> Open Project_, then navigate to the DarwinCAT folder and open the DarwinCAT Rproject file (file ending _.Rproj_). This will bootstrap the _renv_ package.
+2. Run
 
     ``` R
     renv::restore()
     ```
 
     This will install all packages dependencies required to run the app.
-4. Now you can start the app by running the command
+3. Now you can start the app by running the command
 
     ``` R
     shiny::runApp()
@@ -60,9 +54,8 @@ Running the app offline requires R version 3.0.2 or later, RStudio, and the R pa
 
 Next steps in development of the App are (in no specific order):
 
-1. Add option to upload user time series
-2. Branch off _ProxyCAT_, an app that focuses on preservation of proxy records
-3. Publish lesson plans for different skill/knowledge levels
+1. Branch off _ProxyCAT_, an app that focuses on preservation of proxy records
+2. Publish lesson plans for different skill/knowledge levels
 
 ## Repository structure
 
