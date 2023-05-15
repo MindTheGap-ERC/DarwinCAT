@@ -1179,7 +1179,7 @@ ui <- navbarPage(
       )
     )
   ),
-  #### Upload DATA ####
+  #### Panel: Upload DATA ####
   tabPanel(
     title = "Upload Your Data",
     fluidRow(
@@ -1188,7 +1188,7 @@ ui <- navbarPage(
      wellPanel( 
     fileInput(
       inputId = "upload_data",
-      label = "Upload Data",
+      label = "Upload Data as .csv file",
       multiple = FALSE,
       accept = ".csv",
       width = NULL,
@@ -1198,7 +1198,55 @@ ui <- navbarPage(
     ),
     textOutput(
       outputId = "upload_status"
+    ),
+    radioButtons(
+      inputId = "separator",
+      label = "Separator",
+                 choices = c(Comma = ",",
+                             Semicolon = ";",
+                             Tab = "\t"),
+                 selected = ","),
+    selectInput(
+      inputId = "mode_upload_data",
+      label = "Upload...",
+      choices = list("Trait Values Only", "Times and Trait Values"),
+      selected = "Trait Values Only"
+    ),
+    conditionalPanel(
+      condition = "input.mode_upload_data == 'Trait Values Only'",
+      textInput(
+        inputId = "col_name_trait_val_only",
+        label = "Name of Column With Trait Values", 
+        value = "val", 
+        width = NULL,
+                placeholder = NULL)
+    ),
+    conditionalPanel(
+      condition = "input.mode_upload_data == 'Times and Trait Values'",
+      textInput(
+        inputId = "col_name_adjust_time",
+        label = "Name of Column With Time Data", value = "time", 
+        width = NULL,
+        placeholder = NULL),
+      textInput(
+        inputId = "col_name_adjust_trait",
+        label = "Name of Column With Trait Values", value = "val", 
+        width = NULL,
+        placeholder = NULL),
+      radioButtons(
+        inputId = "scale_to_sim_duration",
+        label = "Scale to Duration of Simulation?",
+        choices = c("Yes" = TRUE,
+                    "No" = FALSE),
+        inline = FALSE,
+        width = NULL,
+        choiceNames = NULL,
+        choiceValues = NULL
+      )
     )
+
+    
+ 
      ),
     wellPanel(
       tags$h3("Plot Options"),
@@ -1547,7 +1595,13 @@ server <- function(input, output) {
   
   processed_upload_data = reactive({
     process_upload_data(
-      upload = input$upload_data
+      upload = input$upload_data,
+      sep = input$separator,
+      upload_mode = input$mode_upload_data,
+      tvo_col_name = input$col_name_trait_val_only,
+      tatv_col_name_t = input$col_name_adjust_time,
+      tatv_col_name_trait = input$col_name_adjust_trait ,
+      rescale = input$scale_to_sim_duration
     )
   })
   

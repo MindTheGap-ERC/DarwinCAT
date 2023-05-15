@@ -41,8 +41,8 @@ transform_ts <- function(
     x = ageDepthModel$heightRaw,
     y = time_myr,
     xout = sampling_locations,
-    yleft = 0,
-    yright = 0,
+    yleft = NA,
+    yright = NA,
     ties = "ordered"
   )$y
 
@@ -55,8 +55,8 @@ transform_ts <- function(
       x = ts_list[[i]]$time,
       y = ts_list[[i]]$val,
       xout = times_of_deposition,
-      yleft = 0,
-      yright = 0,
+      yleft = NA,
+      yright = NA,
       na.rm = FALSE,
       ties = "ordered"
     )$y

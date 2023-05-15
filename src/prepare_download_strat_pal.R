@@ -95,5 +95,5 @@ prepare_download_strat_pal <- function(file,
   df[["citation"]] <- replace(metadata, 1, citation_text)
 
   ## generate file for dowload
-  write.csv(df, file = file)
+  write.csv(df, file = file, , row.names = TRUE)
 }
