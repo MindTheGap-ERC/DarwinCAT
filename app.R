@@ -1209,7 +1209,7 @@ ui <- navbarPage(
       condition = "input.mode_upload_data == 'Trait Values Only'",
       textInput(
         inputId = "col_name_trait_val_only",
-        label = "Name of Column With Trait Values", 
+        label = "Name of column with trait values", 
         value = "val", 
         width = NULL,
                 placeholder = NULL)
@@ -1218,17 +1218,17 @@ ui <- navbarPage(
       condition = "input.mode_upload_data == 'Times and Trait Values'",
       textInput(
         inputId = "col_name_adjust_time",
-        label = "Name of Column With Time Data", value = "time", 
+        label = "Name of column with time data", value = "time", 
         width = NULL,
         placeholder = NULL),
       textInput(
         inputId = "col_name_adjust_trait",
-        label = "Name of Column With Trait Values", value = "val", 
+        label = "Name of volumn with trait values", value = "val", 
         width = NULL,
         placeholder = NULL),
       radioButtons(
         inputId = "scale_to_sim_duration",
-        label = "Scale to Duration of Simulation?",
+        label = "Scale to duration of simulation?",
         choices = c("Yes" = TRUE,
                     "No" = FALSE),
         inline = FALSE,
@@ -1247,7 +1247,7 @@ ui <- navbarPage(
     textOutput(
       outputId = "upload_status"
     ),
-    tags$h5("Column Names found in .csv file:"),
+    tags$h5("Column names found in .csv file:"),
     verbatimTextOutput(
       outputId = "col_names"
     ),
