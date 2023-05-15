@@ -2,7 +2,7 @@
 # the DarwinCAT app into the workspace
 
 # load age-depth models
-load(file = "data/age_depth_models_for_shiny_app.RData")
+load(file = "data/age_depth_models_for_shiny_app.Rdata")
 
 # max depth for basin transect plot
 max_depth_basin_transect <- -max(sapply(

@@ -1293,7 +1293,7 @@ ui <- navbarPage(
         )
       ),
       fluidRow(
-        HTML("Hello")
+        HTML("Here you can upload your own data.")
       )
     ),
     column(
