@@ -17,8 +17,10 @@ source("src/makeWheelerDiagram.R")
 # functions for data download / upload
 source("src/prepare_download_trait_evo.R")
 source("src/prepare_download_strat_pal.R")
+source("src/prepare_download_upload_data.R")
 
 source("src/transform_ts.R")
+source("src/process_upload_data.R")
 
 #### Iser interface ####
 ui <- navbarPage(
@@ -1176,6 +1178,238 @@ ui <- navbarPage(
         )
       )
     )
+  ),
+  #### Panel: Upload DATA ####
+  tabPanel(
+    title = "Upload Your Data",
+    fluidRow(
+    column(
+      width = 2,
+     wellPanel(
+       tags$h3("Upload Trait Data for Time Domain"),
+    fileInput(
+      inputId = "upload_data",
+      label = "Upload Data as .csv file",
+      multiple = FALSE,
+      accept = ".csv",
+      width = NULL,
+      buttonLabel = "Browse...",
+      placeholder = "No file selected",
+      capture = NULL
+    ),
+
+
+    selectInput(
+      inputId = "mode_upload_data",
+      label = "Upload...",
+      choices = list("Trait Values Only", "Times and Trait Values"),
+      selected = "Trait Values Only"
+    ),
+    conditionalPanel(
+      condition = "input.mode_upload_data == 'Trait Values Only'",
+      textInput(
+        inputId = "col_name_trait_val_only",
+        label = "Name of Column With Trait Values", 
+        value = "val", 
+        width = NULL,
+                placeholder = NULL)
+    ),
+    conditionalPanel(
+      condition = "input.mode_upload_data == 'Times and Trait Values'",
+      textInput(
+        inputId = "col_name_adjust_time",
+        label = "Name of Column With Time Data", value = "time", 
+        width = NULL,
+        placeholder = NULL),
+      textInput(
+        inputId = "col_name_adjust_trait",
+        label = "Name of Column With Trait Values", value = "val", 
+        width = NULL,
+        placeholder = NULL),
+      radioButtons(
+        inputId = "scale_to_sim_duration",
+        label = "Scale to Duration of Simulation?",
+        choices = c("Yes" = TRUE,
+                    "No" = FALSE),
+        inline = FALSE,
+        width = NULL,
+        choiceNames = NULL,
+        choiceValues = NULL
+      )
+    ),
+    radioButtons(
+      inputId = "separator",
+      label = "Separator",
+      choices = c(Comma = ",",
+                  Semicolon = ";",
+                  Tab = "\t"),
+      selected = ","),
+    textOutput(
+      outputId = "upload_status"
+    ),
+    tags$h5("Column Names found in .csv file:"),
+    verbatimTextOutput(
+      outputId = "col_names"
+    ),
+
+    
+ 
+     ),
+    wellPanel(
+      tags$h3("Plot Options"),
+      sliderInput(
+        inputId = "axis_limits_upload_data",
+        label = "Axis Limits",
+        min = -8,
+        max = 8,
+        value = c(-3, 3),
+        step = 0.1,
+        animate = FALSE
+      ),
+      textInput(
+        inputId = "trait_name_upload_data",
+        label = "Trait Name",
+        value = "log10(Body Size)"
+      )
+    )
+    ),
+    column(
+      width = 8,
+      fluidRow(
+        fluidRow(
+          column(
+            width = 4,
+            plotOutput("stratDomainPlot_upload_data")
+          ),
+          column(
+            width = 8,
+            plotOutput("ageDepthModelPlot_upload_data")
+          )
+        ),
+        column(
+          width = 8,
+          plotOutput("time_domain_plot_upload_data"),
+          offset = 4
+        )
+      ),
+      fluidRow(
+        HTML("Here you can upload your own data.")
+      )
+    ),
+    column(
+      width = 2,
+      wellPanel(
+        sliderInput(
+          inputId = "distFromShore_upload_data",
+          label = "Distance from Shore",
+          min = 0.1,
+          max = max_dist_from_shore_km,
+          value = 1,
+          step = 0.1,
+          post = " km",
+          animate = TRUE
+        ),
+        checkboxInput(
+          inputId = "plotSeaLevel_upload_data",
+          label = "Show Sea Level",
+          value = FALSE
+        ),
+        checkboxInput(
+          inputId = "plot_time_gaps_upload_data",
+          label = "Display Gaps in Time",
+          value = FALSE
+        ),
+        checkboxInput(
+          inputId = "plot_hiatuses_upload_data",
+          label = "Display Hiatuses in Stratigraphic Column",
+          value = FALSE
+        )
+      ),
+      wellPanel(
+        selectInput(
+          inputId = "sampling_strategy_upload_data",
+          label = "Sampling Strategy",
+          choices = list("Fixed Number", "Fixed Distance"),
+          selected = "Fixed Distance"
+        ),
+        conditionalPanel(
+          condition = "input.sampling_strategy_upload_data == 'Fixed Number'",
+          sliderInput(
+            inputId = "no_of_samples_upload_data",
+            label = "Number of Samples",
+            min = 5,
+            max = 150,
+            value = 20,
+            step = 1,
+            animate = TRUE
+          )
+        ),
+        conditionalPanel(
+          condition = "input.sampling_strategy_upload_data == 'Fixed Distance'",
+          sliderInput(
+            inputId = "dist_between_samples_upload_data",
+            label = "Distance between Samples",
+            min = 0.1,
+            max = 2,
+            value = 1,
+            step = 0.1,
+            post = " m",
+            animate = TRUE
+          )
+        )
+      ),
+      wellPanel(
+        tags$h3("Download Data"),
+        downloadButton(
+          outputId = "download_data_upload_data",
+          label = "Download"
+        )
+      ),
+    )
+    ),
+    #### Funding
+    hr(),
+    div(
+      style = "margin-left: 4em; margin-right: 4em; margin-bottom: 2em",
+      fluidRow(
+        column(
+          width = 3,
+          img(
+            src = "logos/UW_logo.svg",
+            alt = "Logo of UW",
+            width = "30%",
+            align = "left"
+          )
+        ),
+        column(
+          width = 3,
+          img(
+            src = "logos/IDUB_logo.jpeg",
+            alt = "Logo of IDUB",
+            width = "30%",
+            align = "left"
+          )
+        ),
+        column(
+          width = 3,
+          img(
+            src = "logos/mind_the_gap_logo.png",
+            alt = "Logo of MindTheGap",
+            width = "70%",
+            align = "left"
+          )
+        ),
+        column(
+          width = 3,
+          img(
+            src = "logos/UU_logo.jpg",
+            width = "70%",
+            alt = "Logo of UU",
+            align = "right"
+          )
+        )
+      )
+    )
   )
 )
 
@@ -1363,6 +1597,96 @@ server <- function(input, output) {
       )
     }
   )
+  
+  #### Data Upload ####
+  
+  processed_upload_data = reactive({
+    process_upload_data(
+      upload = input$upload_data,
+      sep = input$separator,
+      upload_mode = input$mode_upload_data,
+      tvo_col_name = input$col_name_trait_val_only,
+      tatv_col_name_t = input$col_name_adjust_time,
+      tatv_col_name_trait = input$col_name_adjust_trait ,
+      rescale = input$scale_to_sim_duration
+    )
+  })
+  
+
+  
+  ageDepthModel_upload_data <- reactive({
+    getAgeDepthModel(
+      distanceFromShore = input$distFromShore_upload_data
+    )
+  })
+  
+  transformed_ts_upload_data <- reactive({
+    transform_ts(
+      ageDepthModel = ageDepthModel_upload_data(),
+      ts_list = processed_upload_data()$ts,
+      sampling_strategy = input$sampling_strategy_upload_data,
+      no_of_samples = input$no_of_samples_upload_data,
+      dist_between_samples = input$dist_between_samples_upload_data
+    )
+  })
+  
+  output$download_data_upload_data <- downloadHandler(
+    filename = function() {
+      paste("DarwinCAT_usrdata", Sys.time(), ".csv", sep = "")
+    },
+    content = function(file) {
+      prepare_download_upload_data(
+        file = file,
+        transformed_ts = transformed_ts_upload_data(),
+        dist_from_shore_km = input$distFromShore_upload_data,
+        sampling_strategy = input$sampling_strategy_upload_data,
+        no_of_samples = input$no_of_samples_upload_data,
+        dist_between_samples = input$dist_between_samples_upload_data,
+        trait_name = input$trait_name_upload_data
+      )
+    }
+  )
+  
+  
+  #### Upload Data: Outputs ####
+  output$ageDepthModelPlot_upload_data <- renderPlot({
+    makeAgeDepthModelPlot(
+      ageDepthModel = ageDepthModel_upload_data(),
+      plot_time_gaps = input$plot_time_gaps_upload_data,
+      plot_hiatuses = input$plot_hiatuses_upload_data,
+      dist_from_shore_km = input$distFromShore_upload_data
+    )
+  })
+  
+  output$upload_status = reactive({
+    processed_upload_data()$status
+  })
+  
+  output$col_names = reactive({
+    processed_upload_data()$names
+  })
+  
+  output$time_domain_plot_upload_data = renderPlot({
+    makeTimeDomainPlot(ts_list = processed_upload_data()$ts,
+                       ageDepthModel = ageDepthModel_upload_data(),
+                       axis_limits = input$axis_limits_upload_data,
+                       trait_name = input$trait_name_upload_data, 
+                       plotSeaLevel = input$plotSeaLevel_upload_data, 
+                       plot_time_gaps = input$plot_time_gaps_upload_data,
+                       plot_strat_info = TRUE)
+  })
+  
+  output$stratDomainPlot_upload_data <- renderPlot({
+    makeStratDomainPlot(
+      ageDepthModel = ageDepthModel_upload_data(),
+      transformed_ts = transformed_ts_upload_data(),
+      axis_limits = input$axis_limits_upload_data,
+      trait_name = input$trait_name_upload_data,
+      plotSeaLevel = input$plotSeaLevel_upload_data,
+      plot_hiatuses = input$plot_hiatuses_upload_data
+    )
+  })
+  
 }
 
 shinyApp(ui = ui, server = server)

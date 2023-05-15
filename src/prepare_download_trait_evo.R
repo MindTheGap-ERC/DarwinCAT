@@ -70,6 +70,7 @@ prepare_download_trait_evo <- function(file,
   ## add citation info
   df[["citation"]] <- replace(metadata, 1, citation_text)
 
+
   # generate file for download
-  write.csv(df, file = file)
+  write.csv(df, file = file, row.names = TRUE)
 }
