@@ -1185,7 +1185,8 @@ ui <- navbarPage(
     fluidRow(
     column(
       width = 2,
-     wellPanel( 
+     wellPanel(
+       tags$h3("Upload Data for Time Domain"),
     fileInput(
       inputId = "upload_data",
       label = "Upload Data as .csv file",
@@ -1196,16 +1197,8 @@ ui <- navbarPage(
       placeholder = "No file selected",
       capture = NULL
     ),
-    textOutput(
-      outputId = "upload_status"
-    ),
-    radioButtons(
-      inputId = "separator",
-      label = "Separator",
-                 choices = c(Comma = ",",
-                             Semicolon = ";",
-                             Tab = "\t"),
-                 selected = ","),
+
+
     selectInput(
       inputId = "mode_upload_data",
       label = "Upload...",
@@ -1243,7 +1236,21 @@ ui <- navbarPage(
         choiceNames = NULL,
         choiceValues = NULL
       )
-    )
+    ),
+    radioButtons(
+      inputId = "separator",
+      label = "Separator",
+      choices = c(Comma = ",",
+                  Semicolon = ";",
+                  Tab = "\t"),
+      selected = ","),
+    textOutput(
+      outputId = "upload_status"
+    ),
+    tags$h5("Column Names found in .csv file:"),
+    verbatimTextOutput(
+      outputId = "col_names"
+    ),
 
     
  
@@ -1653,6 +1660,10 @@ server <- function(input, output) {
   
   output$upload_status = reactive({
     processed_upload_data()$status
+  })
+  
+  output$col_names = reactive({
+    processed_upload_data()$names
   })
   
   output$time_domain_plot_upload_data = renderPlot({
