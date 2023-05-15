@@ -1375,7 +1375,7 @@ ui <- navbarPage(
         column(
           width = 3,
           img(
-            src = "logos/UW_logo.svg",
+            src = "logos/uw_logo.svg",
             alt = "Logo of UW",
             width = "30%",
             align = "left"
@@ -1384,7 +1384,7 @@ ui <- navbarPage(
         column(
           width = 3,
           img(
-            src = "logos/IDUB_logo.jpeg",
+            src = "logos/idub_logo.jpeg",
             alt = "Logo of IDUB",
             width = "30%",
             align = "left"
@@ -1402,7 +1402,7 @@ ui <- navbarPage(
         column(
           width = 3,
           img(
-            src = "logos/UU_logo.jpg",
+            src = "logos/uu_logo.jpg",
             width = "70%",
             alt = "Logo of UU",
             align = "right"
