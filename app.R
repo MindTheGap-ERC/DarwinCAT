@@ -1186,7 +1186,7 @@ ui <- navbarPage(
     column(
       width = 2,
      wellPanel(
-       tags$h3("Upload Data for Time Domain"),
+       tags$h3("Upload Trait Data for Time Domain"),
     fileInput(
       inputId = "upload_data",
       label = "Upload Data as .csv file",
@@ -1632,7 +1632,7 @@ server <- function(input, output) {
   
   output$download_data_upload_data <- downloadHandler(
     filename = function() {
-      paste("DarwinCAT_upload", Sys.time(), ".csv", sep = "")
+      paste("DarwinCAT_usrdata", Sys.time(), ".csv", sep = "")
     },
     content = function(file) {
       prepare_download_upload_data(
