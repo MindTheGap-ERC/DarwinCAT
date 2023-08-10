@@ -9,7 +9,7 @@ App to visualize the effect of carbonate stratigraphy on trait evolution
 __Niklas Hohmann__ (Maintainer)  
 Utrecht University  
 Email: n.hohmann@uu.nl  
-Web page: [uu.nl/staff/NHohmann](uu.nl/staff/NHohmann)  
+Web page: [uu.nl/staff/NHohmann](https://uu.nl/staff/NHohmann)  
 Orcid: [0000-0003-1559-1838](https://orcid.org/0000-0003-1559-1838)
 
 __Emilia Jarochowska__  
