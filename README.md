@@ -2,7 +2,7 @@
 
 ## Description
 
-App to visualize the effect of carbonate stratigraphy on trait evolution
+A web application to experiment and visualize how evolution is distorted by the geological record, focusing on carbonate platforms.
 
 ## Authors
 
