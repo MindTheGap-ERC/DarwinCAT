@@ -1,5 +1,7 @@
 # DarwinCAT
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7938320.svg)](https://doi.org/10.5281/zenodo.7938320)
+
 ## Description
 
 A web application to experiment and visualize how evolution is distorted by the geological record, focusing on carbonate platforms.
