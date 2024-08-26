@@ -95,7 +95,7 @@ ui <- navbarPage(
         time in which it was deposited.
         If omission (lack of deposition) or <a href="https://en.wikipedia.org/wiki/Erosion" target="_blank">erosion</a> took place,
         the corresponding time - with its fossils - will be missing.
-        Instead of a gradual change in morphology, we might see a jump.
+        Instead of a gradual change in morphology, we might see a jump (Hohmann et al. 2024).
         Nonetheless, some palaeontologists proposed that exceptionally complete
         geological records record evolution faithfully.
         This approach is known under the name of <i>stratophenetics</i>.
@@ -326,6 +326,11 @@ ui <- navbarPage(
          href="https://bibliotekanauki.pl/articles/20386.pdf">Features of the
          fossil record of evolution</a>. Acta Palaeontologica
          Polonica, 36, p. 91-113.
+         </li>
+         <li>
+         Hohmann, N., Koelewijn, J.R., Burgess, P., Jarochowska, E. (2024). Identification of the mode of evolution in incomplete carbonate successions. BMC Ecol Evo 24, 113 (2024). 
+         <a href="https://doi.org/10.1186/s12862-024-02287-2">
+         doi.org/10.1186/s12862-024-02287-2</a>
          </li>
          <li>
          Gingerich, P.D. (1979). The stratophenetic approach to phylogeny
@@ -770,7 +775,7 @@ ui <- navbarPage(
                (where fossils are found) (<a title="Go to Publication"
                href="https://doi.org/10.2110/palo.2020.038">Hohmann 2021</a>).
               Intervals where no rock is preserved result in gaps in the age-depth model.
-              During these gaps, no evolutionary history is recorded.
+              During these gaps, no evolutionary history is recorded (Hohmann et al. 2024).
               </p>
               '
             )
@@ -808,6 +813,11 @@ ui <- navbarPage(
               p. 53–67. <a href = "https://doi.org/10.2110/palo.2020.038">
               doi: 10.2110/palo.2020.038</a>
               </li>
+              <li>
+         Hohmann, N., Koelewijn, J.R., Burgess, P., Jarochowska, E. (2024). Identification of the mode of evolution in incomplete carbonate successions. BMC Ecol Evo 24, 113 (2024). 
+         <a href="https://doi.org/10.1186/s12862-024-02287-2">
+         doi.org/10.1186/s12862-024-02287-2</a>
+         </li>
             </ul>
             '
           )
@@ -1021,7 +1031,7 @@ ui <- navbarPage(
             but change systematically. These systematic changes eliminate certain environments
             and types of organisms that live in them and overemphasize the others. Thus, our
             reconstructions of evolution and ecology from the fossil record may become biased
-            (Patzkowsky and Holland, 2012; Danise et al., 2019).
+            (Patzkowsky and Holland, 2012; Danise et al., 2019, Hohmann et al., 2024).
             </p>
             <p>
             Select the mode of evolution and a number of lineages in the drop-down
@@ -1054,6 +1064,11 @@ ui <- navbarPage(
                 <a href="https://doi.org/10.1016/j.palaeo.2019.03.039">
                 doi.org/10.1016/j.palaeo.2019.03.039</a>
                 </li>
+                <li>
+         Hohmann, N., Koelewijn, J.R., Burgess, P., Jarochowska, E. (2024). Identification of the mode of evolution in incomplete carbonate successions. BMC Ecol Evo 24, 113 (2024). 
+         <a href="https://doi.org/10.1186/s12862-024-02287-2">
+         doi.org/10.1186/s12862-024-02287-2</a>
+         </li>
                 <li>
                 Patzkowsky, M. E., & Holland, S. M. (2012). Stratigraphic
                 paleobiology. In Stratigraphic Paleobiology.
