@@ -1,6 +1,6 @@
 # DarwinCAT
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7938320.svg)](https://doi.org/10.5281/zenodo.7938320)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.13375156.svg)](https://doi.org/10.5281/zenodo.13375156)
 
 ## Description
 
@@ -88,7 +88,7 @@ Running the app offline requires R version 3.3 or later, RStudio, and the R pack
 
 To cite the app, please use
 
--   Hohmann, Niklas, Jarochowska, Emilia, & Burgess, Peter. (2023). DarwinCAT (1.2.0). Zenodo. [DOI: 10.5281/zenodo.7851988](https://doi.org/10.5281/zenodo.7851988)
+-   Hohmann, N., Jarochowska, E., & Burgess, P. (2024). DarwinCAT (v1.2.1). Zenodo. https://doi.org/10.5281/zenodo.13375156
 
 If you use or cite the app, please also cite CarboCAT:
 
