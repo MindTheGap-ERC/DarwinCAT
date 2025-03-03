@@ -31,7 +31,7 @@ Apache 2.0 License, see LICENSE file for license text.
 
 ## Online Usage
 
-The app is available online at [stratigraphicpaleobiology.shinyapps.io/DarwinCAT](https://stratigraphicpaleobiology.shinyapps.io/DarwinCAT/)\
+The app is available online at [utrecht-university.shinyapps.io/DarwinCAT/](https://utrecht-university.shinyapps.io/DarwinCAT/)\
 Online access works with a web browser and does not require any coding skills or installations.
 
 ## Offline Usage
